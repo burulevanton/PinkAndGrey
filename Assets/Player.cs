@@ -10,17 +10,10 @@ public class Player : MonoBehaviour
 {
 
     private Rigidbody2D body;
-    private BoxCollider2D _collider2D;
-//    private int vertical;
-//    private int horizontal;
-//    private Vector2 direction;
     private bool isMoving;
     private bool isGrounded;
 
     public PlayerDirection PlayerDirection;
-    
-    public LayerMask groundCheckLayerMask;
-    public Transform groundCheckTransform;
     
     private Vector3 fp;   //Первая позиция касания
     private Vector3 lp;   //Последняя позиция касания
@@ -32,7 +25,6 @@ public class Player : MonoBehaviour
     {
         PlayerDirection = new PlayerDirection();
         body = GetComponent<Rigidbody2D>();
-        _collider2D = GetComponent<BoxCollider2D>();
         isMoving = false;
         isGrounded = false;
         dragDistance = Screen.height*5/100;

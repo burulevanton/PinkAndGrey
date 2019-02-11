@@ -13,6 +13,7 @@
           </e>
           <e p="ReadMe.txt" t="Include" />
         </e>
+        <e p="CameraFollow.cs" t="Include" />
         <e p="Player.cs" t="Include" />
         <e p="PlayerDirection.cs" t="Include" />
         <e p="Portal.cs" t="Include" />
