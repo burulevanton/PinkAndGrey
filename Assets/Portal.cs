@@ -6,14 +6,15 @@ public class Portal : MonoBehaviour
 {
 
     public GameObject OtherPortal;
-   
+    
+    //todo do something with player
+    public Player Player;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            
-            other.gameObject.transform.position = OtherPortal.gameObject.transform.position;
+           other.gameObject.transform.position = Player.PlayerDirection.GetOffsetAfterPortal(OtherPortal.transform.position);
         }
     }
 }

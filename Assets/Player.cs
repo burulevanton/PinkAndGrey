@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
@@ -9,12 +10,13 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D body;
     private BoxCollider2D _collider2D;
-    private int vertical;
-    private int horizontal;
-    private Vector2 direction;
+//    private int vertical;
+//    private int horizontal;
+//    private Vector2 direction;
     private bool isMoving;
-    private Vector2 touchOrigin = -Vector2.one;
     private bool isGrounded;
+
+    public PlayerDirection PlayerDirection;
     
     public LayerMask groundCheckLayerMask;
     public Transform groundCheckTransform;
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        PlayerDirection = new PlayerDirection();
         body = GetComponent<Rigidbody2D>();
         _collider2D = GetComponent<BoxCollider2D>();
         isMoving = false;
@@ -38,7 +41,7 @@ public class Player : MonoBehaviour
     {
         UpdateGroundStatus();
         if(isMoving)
-            body.AddForce(direction * 200.0f);
+            body.AddForce(PlayerDirection.Direction * 200.0f);
         if (isGrounded)
             isMoving = false;
         
@@ -46,10 +49,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        vertical = 0;
-        horizontal = 0;
+//        vertical = 0;
+//        horizontal = 0;
         
         if (isMoving) return;
+        PlayerDirection.Vertical = 0;
+        PlayerDirection.Horizontal = 0;
         
         
 //        if (Input.GetKey(KeyCode.UpArrow)) vertical = 1;
@@ -95,14 +100,13 @@ public class Player : MonoBehaviour
                         {
                             //Свайп вправо
                             Debug.Log("Right Swipe");
-                            horizontal = 1;
-
+                            PlayerDirection.Horizontal = 1;
                         }
                         else
                         {
                             //Свайп влево
                             Debug.Log("Left Swipe");
-                            horizontal = -1;
+                            PlayerDirection.Horizontal = -1;
                         }
                     }
                     else
@@ -112,13 +116,13 @@ public class Player : MonoBehaviour
                         {
                             //Свайп вверх
                             Debug.Log("Up Swipe");
-                            vertical = 1;
+                            PlayerDirection.Vertical = 1;
                         }
                         else
                         {
                             //Свайп вниз
                             Debug.Log("Down Swipe");
-                            vertical = -1;
+                            PlayerDirection.Vertical = -1;
                         }
                     }
                 }
@@ -126,11 +130,9 @@ public class Player : MonoBehaviour
                 touchPositions.Clear();
             }
         }
-
-        direction = new Vector2(horizontal, vertical);
-        isMoving = vertical != 0 || horizontal != 0;
+        isMoving = PlayerDirection.Vertical != 0 || PlayerDirection.Horizontal != 0;
         if(isMoving)
-            transform.rotation = GetRotateAngleZ();
+            transform.rotation = PlayerDirection.RotateAngleZ;
         Debug.Log($"isGrounded = {isGrounded}, isMoving = {isMoving}");
 
     }
@@ -140,22 +142,23 @@ public class Player : MonoBehaviour
 //        isMoving = false;
 //    }
 
-    private UnityEngine.Quaternion GetRotateAngleZ()
-    {
-        if(direction == Vector2.up)
-            return Quaternion.Euler(0,0,180f);
-        if(direction == Vector2.down)
-            return Quaternion.Euler(0,0,0f);
-        if (direction == Vector2.left)
-            return Quaternion.Euler(0, 0, -90f);
-        if (direction == Vector2.right)
-            return Quaternion.Euler(0, 0, 90f);
-        return new Quaternion();
-    }
+//    private UnityEngine.Quaternion GetRotateAngleZ()
+//    {
+//        if(direction == Vector2.up)
+//            return Quaternion.Euler(0,0,180f);
+//        if(direction == Vector2.down)
+//            return Quaternion.Euler(0,0,0f);
+//        if (direction == Vector2.left)
+//            return Quaternion.Euler(0, 0, -90f);
+//        if (direction == Vector2.right)
+//            return Quaternion.Euler(0, 0, 90f);
+//        return new Quaternion();
+//    }
 
     void UpdateGroundStatus()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.1f, groundCheckLayerMask);
     }
+    
     
 }

@@ -1583,6 +1583,7 @@ GameObject:
   - component: {fileID: 1286534047}
   - component: {fileID: 1286534046}
   - component: {fileID: 1286534045}
+  - component: {fileID: 1286534044}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -1590,6 +1591,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1286534044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286534043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238d63cd10be0c147b43ed1491bbdb0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OtherPortal: {fileID: 994857022}
+  Player: {fileID: 1865605986}
 --- !u!61 &1286534045
 BoxCollider2D:
   m_ObjectHideFlags: 0
