@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
@@ -37,45 +38,14 @@ public class Player : MonoBehaviour
         dragDistance = Screen.height*5/100;
     }
 
-    void FixedUpdate()
-    {
-        UpdateGroundStatus();
-        if(isMoving)
-            body.AddForce(PlayerDirection.Direction * 200.0f);
-        if (isGrounded)
-            isMoving = false;
-        
-    }
-
     private void Update()
     {
-//        vertical = 0;
-//        horizontal = 0;
-        
+        Debug.Log($"isGrounded = {isGrounded}, isMoving = {isMoving}");
         if (isMoving) return;
         PlayerDirection.Vertical = 0;
         PlayerDirection.Horizontal = 0;
-        
-        
-//        if (Input.GetKey(KeyCode.UpArrow)) vertical = 1;
-//        else if (Input.GetKey(KeyCode.DownArrow)) vertical = -1;
-//        else vertical = 0;
-//
-//        if (vertical == 0)
-//        {
-//            if (Input.GetKey(KeyCode.LeftArrow)) horizontal = -1;
-//            else if (Input.GetKey(KeyCode.RightArrow)) horizontal = 1;
-//            else horizontal = 0;
-//        }
         foreach (Touch touch in Input.touches) //используем цикл для отслеживания больше одного свайпа
         {
-            //должны быть закоментированы, если вы используете списки 
-            /*if (touch.phase == TouchPhase.Began) //проверяем первое касание
-            {
-                fp = touch.position;
-                lp = touch.position;
-         
-            }*/
 
             if (touch.phase == TouchPhase.Moved) //добавляем касания в список, как только они определены
             {
@@ -131,34 +101,30 @@ public class Player : MonoBehaviour
             }
         }
         isMoving = PlayerDirection.Vertical != 0 || PlayerDirection.Horizontal != 0;
-        if(isMoving)
+        if (isMoving)
+        {
             transform.rotation = PlayerDirection.RotateAngleZ;
-        Debug.Log($"isGrounded = {isGrounded}, isMoving = {isMoving}");
+            body.velocity = PlayerDirection.Direction * 40.0f;
+            StartCoroutine(WaitForLoseGround());
+        }
 
     }
 
-//    private void OnCollisionEnter2D(Collision2D other)
-//    {
-//        isMoving = false;
-//    }
-
-//    private UnityEngine.Quaternion GetRotateAngleZ()
-//    {
-//        if(direction == Vector2.up)
-//            return Quaternion.Euler(0,0,180f);
-//        if(direction == Vector2.down)
-//            return Quaternion.Euler(0,0,0f);
-//        if (direction == Vector2.left)
-//            return Quaternion.Euler(0, 0, -90f);
-//        if (direction == Vector2.right)
-//            return Quaternion.Euler(0, 0, 90f);
-//        return new Quaternion();
-//    }
-
-    void UpdateGroundStatus()
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.1f, groundCheckLayerMask);
+        isGrounded = true;
+        isMoving = false;
     }
-    
-    
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        isGrounded = false;
+    }
+
+    IEnumerator WaitForLoseGround()
+    {
+        yield return new WaitForSeconds(3*Time.deltaTime);
+        isMoving = !isGrounded;
+        yield return null;
+    }
 }
