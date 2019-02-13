@@ -13,10 +13,17 @@
           </e>
           <e p="ReadMe.txt" t="Include" />
         </e>
-        <e p="CameraFollow.cs" t="Include" />
-        <e p="Player.cs" t="Include" />
-        <e p="PlayerDirection.cs" t="Include" />
-        <e p="Portal.cs" t="Include" />
+        <e p="Scripts" t="Include">
+          <e p="CameraFollow.cs" t="Include" />
+          <e p="Collectable.cs" t="Include" />
+          <e p="Movable.cs" t="Include" />
+          <e p="MovableDirection.cs" t="Include" />
+          <e p="MoveController.cs" t="Include" />
+          <e p="Player.cs" t="Include" />
+          <e p="Portal.cs" t="Include" />
+          <e p="PrefabBrush.cs" t="Include" />
+          <e p="TestCam.cs" t="Include" />
+        </e>
       </e>
       <e p="Diplom.sln" t="IncludeFlat" />
       <e p="Library" t="ExcludeRecursive" />
