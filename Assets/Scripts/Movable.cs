@@ -39,11 +39,19 @@ public class Movable : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (other.gameObject.CompareTag("MovingPlatform"))
+        {
+            transform.parent = other.transform;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D other)
     {
         IsGrounded = false;
+        if (other.gameObject.CompareTag("MovingPlatform"))
+        {
+            transform.parent = null;
+        }
     }
     
     IEnumerator WaitForLoseGround()

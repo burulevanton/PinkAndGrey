@@ -15,13 +15,18 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="CameraFollow.cs" t="Include" />
+          <e p="CannonController.cs" t="Include" />
           <e p="Collectable.cs" t="Include" />
+          <e p="GreaterSpikesResultController.cs" t="Include" />
+          <e p="GreaterSpikeTriggerController.cs" t="Include" />
           <e p="Movable.cs" t="Include" />
           <e p="MovableDirection.cs" t="Include" />
           <e p="MoveController.cs" t="Include" />
+          <e p="MovingPlatform.cs" t="Include" />
           <e p="Player.cs" t="Include" />
           <e p="Portal.cs" t="Include" />
           <e p="PrefabBrush.cs" t="Include" />
+          <e p="ProjectileController.cs" t="Include" />
           <e p="TestCam.cs" t="Include" />
         </e>
       </e>
