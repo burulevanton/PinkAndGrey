@@ -88,8 +88,14 @@ public class MoveController : MonoBehaviour
 
         foreach (var movable in _movables)
         {
-            movable.MovableDirection.Horizontal = _movableDirection.Horizontal;
-            movable.MovableDirection.Vertical = _movableDirection.Vertical;
+            SetDirection(movable);
         }
+    }
+
+    public void SetDirection(Movable movable)
+    {
+            if (!movable.gameObject.activeSelf) return;
+            movable.MovableDirection.Horizontal = movable.IsReverseMove ? _movableDirection.Horizontal*-1 : _movableDirection.Horizontal;
+            movable.MovableDirection.Vertical = movable.IsReverseMove ? _movableDirection.Vertical*-1 : _movableDirection.Vertical;
     }
 }

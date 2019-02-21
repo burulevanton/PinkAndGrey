@@ -7,7 +7,10 @@ public class Movable : MonoBehaviour
     private Rigidbody2D _body;
     public bool IsMoving { get; private set; } = false;
     public bool IsGrounded { get; private set; } = false;
-    
+    [SerializeField] private bool _isReverseMove;
+
+    public bool IsReverseMove => _isReverseMove;
+
     public MovableDirection MovableDirection { get; } = new MovableDirection();
     
     
@@ -56,7 +59,7 @@ public class Movable : MonoBehaviour
     
     IEnumerator WaitForLoseGround()
     {
-        yield return new WaitForSeconds(3*Time.deltaTime);
+        yield return new WaitForSeconds(0.1f);
         IsMoving = !IsGrounded;
         if (!IsMoving)
         {

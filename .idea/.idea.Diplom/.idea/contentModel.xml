@@ -18,6 +18,7 @@
           <e p="CannonController.cs" t="Include" />
           <e p="ChangeOuterWallController.cs" t="Include" />
           <e p="Collectable.cs" t="Include" />
+          <e p="CopyingPortalController.cs" t="Include" />
           <e p="EnemyController.cs" t="Include" />
           <e p="FallController.cs" t="Include" />
           <e p="GreaterSpikesResultController.cs" t="Include" />
