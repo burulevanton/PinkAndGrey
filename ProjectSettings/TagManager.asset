@@ -9,6 +9,9 @@ TagManager:
   - Wall
   - Portal
   - GreaterSpike
+  - Enemy
+  - Projectile
+  - TimerWall
   layers:
   - Default
   - TransparentFX

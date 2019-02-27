@@ -29,12 +29,18 @@ public class GameController : MonoBehaviour
     public static event Action<EDirection> OnSwipe;
   
     public static GameController instance;
+    public PlayerController PlayerController;
 
     [SerializeField] private Movable[] _movables;
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        instance = this;
+      
+        if (instance == null)
+          instance = this;
+        else 
+        if (instance != this)
+          Destroy(gameObject);
+        DontDestroyOnLoad(this);
         dragDistance = Screen.height*5/100;
     }
 

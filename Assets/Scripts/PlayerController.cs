@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private float scaleX = 1f;
     private float nextSwipeTimeout;
     private float tileSize = 1.0f;
+
+    public TimerWallController OnTimerWall;
     
     
     private GameController gc;
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         gc = GameController.instance;
+        gc.PlayerController = this;
         UpdateScaleRotation(1.0f,0.0f);
     }
 
@@ -95,6 +98,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!this.CanJumpWithDirection(direction))
             return false;
+        this.OnTimerWall = null;
         this.SetMoveDirection(direction);
         return true;
     }
@@ -170,6 +174,28 @@ public class PlayerController : MonoBehaviour
                 case "Projectile":
                     DamageTaken(other.gameObject);
                     break;
+                case "TimerWall":
+                    OnTimerWall = other.gameObject.GetComponent<TimerWallController>();
+                    if (OnTimerWall.IsActivated)
+                    {
+                        StopByTransform(other.gameObject.transform);
+                        break;
+                    }
+                    OnTimerWall = (TimerWallController) null;
+                    break;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "TimerWall":
+                TimerWallController timerWallController = other.gameObject.GetComponent<TimerWallController>();
+                if (timerWallController.IsActivated)
+                    break;
+                timerWallController.ActivateWall();
+                break;
         }
     }
 
