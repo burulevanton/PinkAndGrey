@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Projectile
   - TimerWall
+  - MovingChangingPlatform
   layers:
   - Default
   - TransparentFX

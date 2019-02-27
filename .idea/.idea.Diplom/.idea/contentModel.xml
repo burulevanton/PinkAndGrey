@@ -27,6 +27,7 @@
           <e p="GreaterSpikeTriggerController.cs" t="Include" />
           <e p="Movable.cs" t="Include" />
           <e p="MovableDirection.cs" t="Include" />
+          <e p="MovingChangingPlatform.cs" t="Include" />
           <e p="MovingPlatform.cs" t="Include" />
           <e p="OuterWallsController.cs" t="Include" />
           <e p="Player.cs" t="Include" />

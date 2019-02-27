@@ -183,6 +183,11 @@ public class PlayerController : MonoBehaviour
                     }
                     OnTimerWall = (TimerWallController) null;
                     break;
+                case "MovingChangingPlatform":
+                    if(Stopped)
+                        break;
+                    ChangeDirectionWithMovingChangingPlatform(other.gameObject);
+                    break;
         }
     }
 
@@ -208,5 +213,12 @@ public class PlayerController : MonoBehaviour
     private void DamageTaken(GameObject damage)
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void ChangeDirectionWithMovingChangingPlatform(GameObject movingChangingPlatform)
+    {
+        MovingChangingPlatform movingChangingP =
+            movingChangingPlatform.gameObject.GetComponent<MovingChangingPlatform>();
+        SetMoveDirection(movingChangingP.Direction);
     }
 }
