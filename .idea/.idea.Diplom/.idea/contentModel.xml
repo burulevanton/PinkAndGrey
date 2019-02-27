@@ -19,17 +19,19 @@
           <e p="ChangeOuterWallController.cs" t="Include" />
           <e p="Collectable.cs" t="Include" />
           <e p="CopyingPortalController.cs" t="Include" />
+          <e p="EDirection.cs" t="Include" />
           <e p="EnemyController.cs" t="Include" />
           <e p="FallController.cs" t="Include" />
+          <e p="GameController.cs" t="Include" />
           <e p="GreaterSpikesResultController.cs" t="Include" />
           <e p="GreaterSpikeTriggerController.cs" t="Include" />
           <e p="Movable.cs" t="Include" />
           <e p="MovableDirection.cs" t="Include" />
-          <e p="MoveController.cs" t="Include" />
           <e p="MovingPlatform.cs" t="Include" />
           <e p="OuterWallsController.cs" t="Include" />
           <e p="Player.cs" t="Include" />
-          <e p="Portal.cs" t="Include" />
+          <e p="PlayerController.cs" t="Include" />
+          <e p="PortalController.cs" t="Include" />
           <e p="ProjectileController.cs" t="Include" />
           <e p="TestCam.cs" t="Include" />
         </e>

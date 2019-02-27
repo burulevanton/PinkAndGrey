@@ -21,6 +21,7 @@ public class GreaterSpikesResultController : MonoBehaviour
     IEnumerator LifeCycle()
     {
         yield return new WaitForSeconds(_preAttackTime);
+        UpdateRotation();
         _sprite.enabled = true;
         _boxCollider2D.enabled = true;
         yield return new WaitForSeconds(_attackTime);
@@ -28,8 +29,15 @@ public class GreaterSpikesResultController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void UpdateRotation()
     {
-        Destroy(other.gameObject);
+        if (GreaterSpikeTriggerController.Direction.x != 0.0f)
+        {
+            this.transform.eulerAngles = new Vector3(0.0f, 0.0f, -90*GreaterSpikeTriggerController.Direction.x);
+        }
+        else
+        {
+            this.transform.eulerAngles = new Vector3(0.0f, 0.0f, GreaterSpikeTriggerController.Direction.y > 0 ? 0.0f : 180.0f);
+        }
     }
 }

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Spike
   - MovingPlatform
+  - Wall
+  - Portal
+  - GreaterSpike
   layers:
   - Default
   - TransparentFX

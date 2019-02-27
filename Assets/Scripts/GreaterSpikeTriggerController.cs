@@ -10,6 +10,10 @@ public class GreaterSpikeTriggerController : MonoBehaviour
 
     private BoxCollider2D _boxCollider2D;
 
+    [SerializeField] private Vector2 _direction;
+
+    public Vector2 Direction => _direction;
+
     private void Start()
     {
         _boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
@@ -19,7 +23,7 @@ public class GreaterSpikeTriggerController : MonoBehaviour
     {
         _boxCollider2D.enabled = false;
         var item = (GameObject) Instantiate(GreaterSpikeResultPrefab);
-        item.transform.parent = transform.parent.parent;
+        item.transform.parent = transform;
         item.transform.position = transform.position;
         var spikesResult = item.gameObject.GetComponent<GreaterSpikesResultController>();
         spikesResult.GreaterSpikeTriggerController = this;
