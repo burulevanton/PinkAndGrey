@@ -6,7 +6,7 @@ public class TimerWallController : MonoBehaviour
 {
 
     private SpriteRenderer _spriteRenderer;
-    //private PlayerController _playerController;
+    private PlayerController _playerController;
     private GameController _gameController;
 
     [SerializeField] private Sprite _deactivatedSprite;
@@ -29,7 +29,7 @@ public class TimerWallController : MonoBehaviour
     {
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         _gameController = GameController.instance;
-        //_playerController = _gameController.PlayerController;
+        _playerController = _gameController.PlayerController;
     }
 
     private void Reset()

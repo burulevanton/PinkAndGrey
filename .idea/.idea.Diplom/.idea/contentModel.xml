@@ -13,7 +13,11 @@
           </e>
           <e p="ReadMe.txt" t="Include" />
         </e>
+        <e p="JsonDotNet" t="Include">
+          <e p="link.xml" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
+          <e p="BreakingPlatformController.cs" t="Include" />
           <e p="CameraFollow.cs" t="Include" />
           <e p="CannonController.cs" t="Include" />
           <e p="ChangeOuterWallController.cs" t="Include" />
@@ -36,6 +40,7 @@
           <e p="ProjectileController.cs" t="Include" />
           <e p="TestCam.cs" t="Include" />
           <e p="TimerWallController.cs" t="Include" />
+          <e p="UIController.cs" t="Include" />
         </e>
       </e>
       <e p="Diplom.sln" t="IncludeFlat" />

@@ -17,8 +17,9 @@ public class PlayerController : MonoBehaviour
     private float tileSize = 1.0f;
 
     public TimerWallController OnTimerWall;
-    
-    
+
+    [SerializeField] private bool _isReverse;
+    private Transform _parent;
     private GameController gc;
     
     private void OnEnable()
@@ -35,11 +36,12 @@ public class PlayerController : MonoBehaviour
 
     public bool Moving => !this.Stopped;
 
-    void Start()
+    void Awake()
     {
         gc = GameController.instance;
         gc.PlayerController = this;
         UpdateScaleRotation(1.0f,0.0f);
+        _parent = transform.parent;
     }
 
     // Update is called once per frame
@@ -69,6 +71,14 @@ public class PlayerController : MonoBehaviour
                             isStopped = true;
                             DamageTaken(raycastHit2D.collider.gameObject);
                             break;
+                        case "MovingPlatform":
+                            isStopped = true;
+                            StopByMovingTransform(raycastHit2D.transform);
+                            break;
+                        case "BreakingPlatform":
+                            isStopped = true;
+                            StopByTransform(raycastHit2D.transform);
+                            break;
                 }
             }
 
@@ -94,11 +104,14 @@ public class PlayerController : MonoBehaviour
         return Mathf.Approximately(direction.y, 1f) && !Mathf.Approximately(this.transform.eulerAngles.z, 180f) || Mathf.Approximately(direction.x, -1f) && !Mathf.Approximately(this.transform.eulerAngles.z, 270f) || (Mathf.Approximately(direction.x, 1f) && !Mathf.Approximately(this.transform.eulerAngles.z, 90f) || Mathf.Approximately(direction.y, -1f) && !Mathf.Approximately(this.transform.eulerAngles.z, 0.0f));
     }
     
-    private bool JumpWithDirection(Vector2 direction)
+    public bool JumpWithDirection(Vector2 direction)
     {
+        direction = _isReverse ? -direction : direction;
         if (!this.CanJumpWithDirection(direction))
             return false;
         this.OnTimerWall = null;
+        this.transform.parent = _parent;
+        //this.transform.parent = gc.transform; //todo сделать что-то с этим
         this.SetMoveDirection(direction);
         return true;
     }
@@ -158,6 +171,21 @@ public class PlayerController : MonoBehaviour
         this.nextSwipeTimeout = 0.0f;
     }
 
+    private void StopByMovingTransform(Transform transform)
+    {
+        if (this.Stopped)
+            return;
+        Vector2 position = (Vector2) transform.position - this._moveDirection * this.tileSize;
+        this.transform.position = (Vector3) position;
+        this.transform.parent = transform;
+        this.UpdateScaleRotation(this.scaleX, this.rotationZ + 180f);
+        this._moveDirection = Vector2.zero;
+        if(this.nextSwipeTimeout <= 0.0f)
+            return;
+        this.JumpWithDirection(this.nextSwipeDirection);
+        this.nextSwipeTimeout = 0.0f;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         switch (other.gameObject.tag)
@@ -200,6 +228,19 @@ public class PlayerController : MonoBehaviour
                 if (timerWallController.IsActivated)
                     break;
                 timerWallController.ActivateWall();
+                break;
+            case "CopyingPortal":
+                CopyingPortalController copyingPortalController =
+                    other.gameObject.GetComponent<CopyingPortalController>();
+                if (copyingPortalController.IsActivated)
+                {
+                    copyingPortalController.ActivatePortal(_moveDirection);
+                }
+                break;
+            case "BreakingPlatform":
+                BreakingPlatformController breakingPlatformController =
+                    other.gameObject.GetComponent<BreakingPlatformController>();
+                breakingPlatformController.BreakPlatform();
                 break;
         }
     }

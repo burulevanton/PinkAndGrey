@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CopyingPortalController : MonoBehaviour
 {
-//    [SerializeField] private GameObject CopiedPlayer;
+    [SerializeField] public GameObject CopiedPlayer;
+
+    public bool IsActivated = true;
 //    [SerializeField] private MoveController _moveController;
 //
 //    private void OnTriggerExit2D(Collider2D other)
@@ -16,4 +18,14 @@ public class CopyingPortalController : MonoBehaviour
 //        _moveController.SetDirection(CopiedPlayer.gameObject.GetComponent<Movable>());
 //        gameObject.SetActive(false);
 //    }
+    public void ActivatePortal(Vector2 moveDirection)
+    {
+        CopiedPlayer.transform.position = new Vector3(transform.position.x - moveDirection.x, 
+            transform.position.y-moveDirection.y, CopiedPlayer.transform.position.z);
+        CopiedPlayer.SetActive(true);
+        gameObject.SetActive(false);
+        IsActivated = false;
+        PlayerController playerController = CopiedPlayer.GetComponent<PlayerController>();
+        playerController.JumpWithDirection(moveDirection);
+    }
 }

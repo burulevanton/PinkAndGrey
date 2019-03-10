@@ -13,6 +13,8 @@ TagManager:
   - Projectile
   - TimerWall
   - MovingChangingPlatform
+  - CopyingPortal
+  - BreakingPlatform
   layers:
   - Default
   - TransparentFX
