@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
+using Enum;
+using Serialize;
 using UnityEngine;
+using UnityEngine.WSA;
 
-public class TimerWallController : MonoBehaviour
+public class TimerWallController : TileController
 {
 
     private SpriteRenderer _spriteRenderer;
@@ -28,13 +32,13 @@ public class TimerWallController : MonoBehaviour
     private void Awake()
     {
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        _gameController = GameController.instance;
+        _gameController = GameController.Instance;
         _playerController = _gameController.PlayerController;
     }
 
     private void Reset()
     {
-        _gameController = GameController.instance;
+        _gameController = GameController.Instance;
         //_playerController = _gameController.PlayerController;
     }
 
@@ -56,5 +60,22 @@ public class TimerWallController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public override ISerializableTileInfo Serialize()
+    {
+        var staticTileInfo = new StaticTileInfo
+        {
+            TileType = TileType.TimerWall,
+            X = transform.position.x,
+            Y = transform.position.y,
+            Z = transform.position.z
+        };
+        return staticTileInfo;
+    }
+
+    public override bool Deserialize(ISerializableTileInfo tileInfo)
+    {
+        throw new System.NotImplementedException();
     }
 }

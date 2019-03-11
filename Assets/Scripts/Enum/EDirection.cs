@@ -1,4 +1,4 @@
-namespace DefaultNamespace
+namespace Enum
 {
     public enum EDirection
     {

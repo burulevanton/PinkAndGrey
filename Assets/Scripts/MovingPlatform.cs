@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
+using Enum;
+using Serialize;
 using UnityEngine;
+using UnityEngine.WSA;
 
-public class MovingPlatform : MonoBehaviour
+public class MovingPlatform : TileController
 {
-    [SerializeField] private Vector3 _fromDirection;
-    [SerializeField] private Vector3 _toDirection;
+    [SerializeField] protected Vector3 FromDirection;
+    [SerializeField] protected Vector3 ToDirection;
     [SerializeField] private float moveSpeed;
 
     [SerializeField] private bool reverseMove = false;
@@ -18,7 +22,7 @@ public class MovingPlatform : MonoBehaviour
     void Start()
     {
         _startTime = Time.time;
-        _journeyLength = Vector3.Distance(_fromDirection, _toDirection);
+        _journeyLength = Vector3.Distance(FromDirection, ToDirection);
     }
     void Update()
     {
@@ -36,18 +40,39 @@ public class MovingPlatform : MonoBehaviour
         _fracJourney = _distCovered / _journeyLength;
         if (reverseMove)
         {
-            transform.position = Vector3.Lerp(_fromDirection, _toDirection, _fracJourney);
+            transform.position = Vector3.Lerp(FromDirection, ToDirection, _fracJourney);
         }
         else
         {
-            transform.position = Vector3.Lerp(_toDirection, _fromDirection, _fracJourney);
+            transform.position = Vector3.Lerp(ToDirection, FromDirection, _fracJourney);
         }
-        if ((Vector3.Distance(transform.position, _toDirection) == 0.0f || Vector3.Distance(transform.position, _fromDirection) == 0.0f))
+        if ((Vector3.Distance(transform.position, ToDirection) == 0.0f || Vector3.Distance(transform.position, FromDirection) == 0.0f))
         {
 
             reverseMove = !reverseMove;
             _isPause = true;
             _startTime = Time.time;
         }
+    }
+
+    public override ISerializableTileInfo Serialize()
+    {
+        var dynamicTileInfo = new DynamicTileInfo()
+        {
+            TileType = TileType.MovingPlatform,
+            X = transform.position.x,
+            Y = transform.position.y,
+            Z = transform.position.z,
+            FromDirectionX = FromDirection.x,
+            FromDirectionY = FromDirection.y,
+            ToDirectionX = ToDirection.x,
+            ToDirectionY = ToDirection.y
+        };
+        return dynamicTileInfo;
+    }
+
+    public override bool Deserialize(ISerializableTileInfo tileInfo)
+    {
+        throw new NotImplementedException();
     }
 }

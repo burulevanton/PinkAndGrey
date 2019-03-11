@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
+using Enum;
+using Serialize;
 using UnityEngine;
 
-public class GreaterSpikeTriggerController : MonoBehaviour
+public class GreaterSpikeTriggerController : TileController
 {
 
     [SerializeField] private GameObject GreaterSpikeResultPrefab;
@@ -32,5 +35,22 @@ public class GreaterSpikeTriggerController : MonoBehaviour
     public void EnableTrigger()
     {
         _boxCollider2D.enabled = true;
+    }
+
+    public override ISerializableTileInfo Serialize()
+    {
+        var staticTileInfo = new StaticTileInfo
+        {
+            TileType = TileType.GreaterSpike,
+            X = transform.position.x,
+            Y = transform.position.y,
+            Z = transform.position.z
+        };
+        return staticTileInfo;
+    }
+
+    public override bool Deserialize(ISerializableTileInfo tileInfo)
+    {
+        throw new NotImplementedException();
     }
 }

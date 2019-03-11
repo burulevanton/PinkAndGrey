@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using DefaultNamespace;
+using Enum;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        gc = GameController.instance;
+        gc = GameController.Instance;
         gc.PlayerController = this;
         UpdateScaleRotation(1.0f,0.0f);
         _parent = transform.parent;

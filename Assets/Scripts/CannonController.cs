@@ -1,8 +1,12 @@
 ﻿using System.Collections;
+using DefaultNamespace;
+using Enum;
+using Serialize;
 using UnityEngine;
 using UnityEngine.Timeline;
+using UnityEngine.WSA;
 
-public class CannonController : MonoBehaviour
+public class CannonController : TileController
 {
 
     [SerializeField] private Vector2 _direction;
@@ -33,5 +37,24 @@ public class CannonController : MonoBehaviour
                 _item.GetComponent<ProjectileController>().Direction = _direction;
             }
         }
+    }
+
+    public override ISerializableTileInfo Serialize()
+    {
+        var staticTileInfo = new StaticTileWithSomeDirectionInfo()
+        {
+            TileType = TileType.Cannon,
+            X = transform.position.x,
+            Y = transform.position.y,
+            Z = transform.position.z,
+            DirectionX = _direction.x,
+            DirectionY = _direction.y
+        };
+        return staticTileInfo;
+    }
+
+    public override bool Deserialize(ISerializableTileInfo tileInfo)
+    {
+        throw new System.NotImplementedException();
     }
 }

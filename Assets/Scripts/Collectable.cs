@@ -1,23 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
+using Enum;
+using Serialize;
 using UnityEngine;
 
-public class Collectable : MonoBehaviour
+public class Collectable : TileController
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         Destroy(gameObject);
+    }
+
+    public override ISerializableTileInfo Serialize()
+    {
+        var staticTileInfo = new StaticTileInfo
+        {
+            TileType = TileType.Collectable,
+            X = transform.position.x,
+            Y = transform.position.y,
+            Z = transform.position.z
+        };
+        return staticTileInfo;
+    }
+
+    public override bool Deserialize(ISerializableTileInfo tileInfo)
+    {
+        throw new System.NotImplementedException();
     }
 }

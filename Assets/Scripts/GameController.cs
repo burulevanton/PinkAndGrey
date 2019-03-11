@@ -2,10 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DefaultNamespace;
+using Enum;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class GameController : Singleton<GameController>
 {
     
     private Vector3 fp;   //Первая позиция касания
@@ -28,19 +28,19 @@ public class GameController : MonoBehaviour
     
     public static event Action<EDirection> OnSwipe;
   
-    public static GameController instance;
+    //public static GameController instance;
     public PlayerController PlayerController;
 
     [SerializeField] private Movable[] _movables;
     void Awake()
     {
       
-        if (instance == null)
-          instance = this;
-        else 
-        if (instance != this)
-          Destroy(gameObject);
-        DontDestroyOnLoad(this);
+//        if (instance == null)
+//          instance = this;
+//        else 
+//        if (instance != this)
+//          Destroy(gameObject);
+//        DontDestroyOnLoad(this);
         dragDistance = Screen.height*5/100;
     }
 
