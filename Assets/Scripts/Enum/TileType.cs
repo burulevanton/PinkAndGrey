@@ -11,6 +11,7 @@ namespace Enum
         MovingChangingPlatform,
         MovingPlatform,
         Portal,
+        CopyingPortal,
         Spike,
         TimerWall
     }

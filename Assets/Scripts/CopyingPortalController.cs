@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
+using Enum;
+using Serialize;
 using UnityEngine;
 
-public class CopyingPortalController : MonoBehaviour
+public class CopyingPortalController : TileController
 {
     [SerializeField] public GameObject CopiedPlayer;
 
@@ -27,5 +30,26 @@ public class CopyingPortalController : MonoBehaviour
         IsActivated = false;
         PlayerController playerController = CopiedPlayer.GetComponent<PlayerController>();
         playerController.JumpWithDirection(moveDirection);
+    }
+
+    public override ISerializableTileInfo Serialize()
+    {
+        var staticTileInfo = new StaticTileInfo
+        {
+            TileType = TileType.CopyingPortal,
+            X = transform.position.x,
+            Y = transform.position.y,
+            Z = transform.position.z
+        };
+        return staticTileInfo;
+    }
+
+    public override bool Deserialize(ISerializableTileInfo tileInfo)
+    {
+        var info = tileInfo as StaticTileInfo;
+        if (info == null)
+            return false;    
+        transform.position = new Vector3(info.X, info.Y, info.Z);
+        return true;
     }
 }

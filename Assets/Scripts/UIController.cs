@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UiController : Singleton<UiController>
+public class UIController : Singleton<UIController>
 {
     public void RestartScene()
     {
