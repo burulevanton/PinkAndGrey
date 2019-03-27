@@ -15,6 +15,7 @@ TagManager:
   - MovingChangingPlatform
   - CopyingPortal
   - BreakingPlatform
+  - GreaterSpikePlatform
   layers:
   - Default
   - TransparentFX

@@ -1,21 +1,29 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using DefaultNamespace;
 using Enum;
 using Serialize;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Vector2 = UnityEngine.Vector2;
 
-public class GreaterSpikeTriggerController : TileController
+public class GreaterSpikeTriggerController : MonoBehaviour
 {
 
     [SerializeField] private GameObject GreaterSpikeResultPrefab;
 
     private BoxCollider2D _boxCollider2D;
 
-    [SerializeField] private Vector2 _direction;
+    [SerializeField] private Vector2 direction;
 
-    public Vector2 Direction => _direction;
+    public Vector2 Direction
+    {
+        get { return direction; }
+        set { direction = value; }
+    }
 
     private void Start()
     {
@@ -35,22 +43,5 @@ public class GreaterSpikeTriggerController : TileController
     public void EnableTrigger()
     {
         _boxCollider2D.enabled = true;
-    }
-
-    public override ISerializableTileInfo Serialize()
-    {
-        var staticTileInfo = new StaticTileInfo
-        {
-            TileType = TileType.GreaterSpike,
-            X = transform.position.x,
-            Y = transform.position.y,
-            Z = transform.position.z
-        };
-        return staticTileInfo;
-    }
-
-    public override bool Deserialize(ISerializableTileInfo tileInfo)
-    {
-        throw new NotImplementedException();
     }
 }

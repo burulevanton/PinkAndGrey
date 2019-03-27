@@ -72,6 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GreaterSpikeResultPrefab: {fileID: 8060105325413355633, guid: eae6f6bd12fd5cb459d8561d55bdf86a,
     type: 3}
+  direction: {x: 0, y: 0}
 --- !u!1 &8012542957621456420
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,9 +84,10 @@ GameObject:
   - component: {fileID: 8012542957621456419}
   - component: {fileID: 8012542957621456418}
   - component: {fileID: 8012542957621456421}
+  - component: {fileID: 9120519335491677810}
   m_Layer: 0
   m_Name: GreaterSpike
-  m_TagString: Untagged
+  m_TagString: GreaterSpikePlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,3 +181,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &9120519335491677810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8012542957621456420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 414ffd52acc3425bb9ebd0dcd2c1229e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

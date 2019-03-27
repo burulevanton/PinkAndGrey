@@ -19,6 +19,10 @@ public class SpikeController : TileController
 
     public override bool Deserialize(ISerializableTileInfo tileInfo)
     {
-        throw new System.NotImplementedException();
+        var info = tileInfo as StaticTileInfo;
+        if (info == null)
+            return false;    
+        transform.position = new Vector3(info.X, info.Y, info.Z);
+        return true;
     }
 }

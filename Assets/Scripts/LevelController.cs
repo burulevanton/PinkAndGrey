@@ -27,6 +27,9 @@ public class LevelController : Singleton<LevelController>
     [SerializeField] private GameObject SpikePrefab;
     [SerializeField] private GameObject TimerWallPrefab;
     [SerializeField] private GameObject InnerWallPrefab;
+
+    private List<GameObject> portalsList = new List<GameObject>();
+   
     
     public void Serialize()
     {
@@ -34,7 +37,7 @@ public class LevelController : Singleton<LevelController>
             Object.FindObjectsOfType<TileController>();
         var infos = tileControllers.Select(x => x.Serialize()).ToList();
         var json = JsonConvert.SerializeObject(infos, Formatting.Indented);
-        string path = Application.dataPath + "/Levels/1.json";
+        string path = Application.dataPath + "/Levels/2.json";
         Debug.Log(path);
         File.WriteAllText(path, json, Encoding.UTF8);
         Debug.Log(json);
@@ -42,7 +45,7 @@ public class LevelController : Singleton<LevelController>
 
     public void Deserialize()
     {
-        string path = Application.dataPath + "/Levels/1.json";
+        string path = Application.dataPath + "/Levels/2.json";
         var json = File.ReadAllText(path);
         var tilesArray = JArray.Parse(json);
         foreach (var tile in tilesArray)
@@ -82,8 +85,53 @@ public class LevelController : Singleton<LevelController>
                         collectableClone.Deserialize(JsonConvert.DeserializeObject<StaticTileInfo>(tile.ToString()));
                         break;
                     case TileType.Enemy:
-                        
+                        var enemyClone = PoolManager.SpawnObject(EnemyPrefab).GetComponent<EnemyController>();
+                        enemyClone.Deserialize(JsonConvert.DeserializeObject<DynamicTileInfo>(tile.ToString()));
                         break;
+                    case TileType.GreaterSpike:
+                        var greaterSpikeClone = PoolManager.SpawnObject(GreaterSpikePrefab)
+                            .GetComponent<GreaterSpike>();
+                        greaterSpikeClone.Deserialize(
+                            JsonConvert.DeserializeObject<StaticTileWithSomeDirectionInfo>(tile.ToString()));
+                        break;
+                    case TileType.MovingPlatform:
+                        var movingPlatformClone = PoolManager.SpawnObject(MovingPlatformPrefab).GetComponent<MovingPlatform>();
+                        movingPlatformClone.Deserialize(
+                            JsonConvert.DeserializeObject<DynamicTileInfo>(tile.ToString()));
+                        break;
+                    case TileType.Spike:
+                        var spikeClone = PoolManager.SpawnObject(SpikePrefab).GetComponent<SpikeController>();
+                        spikeClone.Deserialize(JsonConvert.DeserializeObject<StaticTileInfo>(tile.ToString()));
+                        break;
+                    case TileType.TimerWall:
+                        var timerWallClone =
+                            PoolManager.SpawnObject(TimerWallPrefab).GetComponent<TimerWallController>();
+                        timerWallClone.Deserialize(JsonConvert.DeserializeObject<StaticTileInfo>(tile.ToString()));
+                        break;
+                    case TileType.Portal:
+                        var portalClone = PoolManager.SpawnObject(PortalPrefab).GetComponent<PortalController>();
+                        var portalTileInfo = JsonConvert.DeserializeObject<PortalTileInfo>(tile.ToString());
+                        portalClone.Deserialize(portalTileInfo);
+                        portalsList.Add(portalClone.gameObject);
+                        CheckForOtherPortal(portalsList, new Vector3(portalTileInfo.OtherPortalX,
+                            portalTileInfo.OtherPortalY,
+                            portalTileInfo.OtherPortalZ), portalClone);
+                        break;
+            }
+        }
+    }
+
+    private void CheckForOtherPortal(List<GameObject> portals, Vector3 portalPosition, PortalController portalController)
+    {
+        foreach (var portal in portalsList)
+        {
+            if (portal.transform.position == portalPosition)
+            {
+                portals.Remove(portal);
+                portalController.OtherPortal = portal;
+                portal.GetComponent<PortalController>().OtherPortal = portalController.gameObject;
+                portals.Remove(portalController.gameObject);
+                return;
             }
         }
     }

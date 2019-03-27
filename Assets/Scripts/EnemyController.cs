@@ -12,7 +12,7 @@ public class EnemyController : MovingPlatform
         Destroy(other.gameObject);
     }
 
-    public new ISerializableTileInfo Serialize()
+    public override ISerializableTileInfo Serialize()
     {
         var dynamicTileInfo = new DynamicTileInfo()
         {
@@ -28,8 +28,14 @@ public class EnemyController : MovingPlatform
         return dynamicTileInfo;
     }
 
-    public new bool Deserialize(ISerializableTileInfo tileInfo)
+    public override bool Deserialize(ISerializableTileInfo tileInfo)
     {
-        throw new System.NotImplementedException();
+        var info = tileInfo as DynamicTileInfo;
+        if (info == null)
+            return false;
+        transform.position = new Vector3(info.X, info.Y, info.Z);
+        FromDirection = new Vector3(info.FromDirectionX, info.FromDirectionY);
+        ToDirection = new Vector3(info.ToDirectionX, info.ToDirectionY);
+        return true;
     }
 }

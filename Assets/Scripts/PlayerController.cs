@@ -79,6 +79,10 @@ public class PlayerController : MonoBehaviour
                             isStopped = true;
                             StopByTransform(raycastHit2D.transform);
                             break;
+                        case "GreaterSpikePlatform":
+                            isStopped = true;
+                            StopByTransform(raycastHit2D.transform);
+                            break;
                 }
             }
 

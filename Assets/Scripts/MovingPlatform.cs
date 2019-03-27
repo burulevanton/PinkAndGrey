@@ -72,6 +72,12 @@ public class MovingPlatform : TileController
 
     public override bool Deserialize(ISerializableTileInfo tileInfo)
     {
-        throw new NotImplementedException();
+        var info = tileInfo as DynamicTileInfo;
+        if (info == null)
+            return false;
+        transform.position = new Vector3(info.X, info.Y, info.Z);
+        FromDirection = new Vector3(info.FromDirectionX, info.FromDirectionY);
+        ToDirection = new Vector3(info.ToDirectionX, info.ToDirectionY);
+        return true;
     }
 }
