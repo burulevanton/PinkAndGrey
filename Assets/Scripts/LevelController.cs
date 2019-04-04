@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,7 +29,6 @@ public class LevelController : Singleton<LevelController>
     [SerializeField] private GameObject TimerWallPrefab;
     [SerializeField] private GameObject InnerWallPrefab;
 
-    private List<GameObject> portalsList = new List<GameObject>();
    
     
     public void Serialize()
@@ -43,11 +43,13 @@ public class LevelController : Singleton<LevelController>
         Debug.Log(json);
     }
 
-    public void Deserialize()
+    public IEnumerator Deserialize()
     {
-        string path = Application.dataPath + "/Levels/2.json";
+        yield return StartCoroutine(ClearScene());
+        string path = Application.dataPath + "/Levels/" + GameController.Instance.CurrentLevel +".json";
         var json = File.ReadAllText(path);
         var tilesArray = JArray.Parse(json);
+        List<GameObject> portalsList = new List<GameObject>();
         foreach (var tile in tilesArray)
         {
             var type = (TileType) (int) tile["TileType"];
@@ -118,12 +120,24 @@ public class LevelController : Singleton<LevelController>
                             portalTileInfo.OtherPortalZ), portalClone);
                         break;
             }
+            yield return null;
+        }
+    }
+
+    public IEnumerator ClearScene()
+    {
+        var tileControllers =
+            Object.FindObjectsOfType<TileController>();
+        foreach (var tileController in tileControllers)
+        {
+            PoolManager.ReleaseObject(tileController.gameObject);
+            yield return null;
         }
     }
 
     private void CheckForOtherPortal(List<GameObject> portals, Vector3 portalPosition, PortalController portalController)
     {
-        foreach (var portal in portalsList)
+        foreach (var portal in portals)
         {
             if (portal.transform.position == portalPosition)
             {

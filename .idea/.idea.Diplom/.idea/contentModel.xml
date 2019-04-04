@@ -62,7 +62,11 @@
           <e p="TestCam.cs" t="Include" />
           <e p="TileController.cs" t="Include" />
           <e p="TimerWallController.cs" t="Include" />
-          <e p="UIController.cs" t="Include" />
+          <e p="UI" t="Include">
+            <e p="GameUIController.cs" t="Include" />
+            <e p="MenuUIController.cs" t="Include" />
+            <e p="ScreenFader.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="Diplom.sln" t="IncludeFlat" />

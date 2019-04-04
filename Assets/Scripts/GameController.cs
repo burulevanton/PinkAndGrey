@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Enum;
+using UI;
 using UnityEngine;
 
 public class GameController : Singleton<GameController>
@@ -25,11 +26,14 @@ public class GameController : Singleton<GameController>
   
     private float dblTouchTimeout;
     private float dblTouchTime = 0.19f;
+
+    public int CurrentLevel { get; set; } = 1;
     
     public static event Action<EDirection> OnSwipe;
   
     //public static GameController instance;
     public PlayerController PlayerController;
+    public GameUIController GameUiController;
 
     [SerializeField] private Movable[] _movables;
     void Awake()
@@ -41,7 +45,19 @@ public class GameController : Singleton<GameController>
 //        if (instance != this)
 //          Destroy(gameObject);
 //        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this);
         dragDistance = Screen.height*5/100;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(StartLevel());
+    }
+
+    private IEnumerator StartLevel()
+    {
+        yield return StartCoroutine(LevelController.Instance.Deserialize());
+        GameUiController.StartScene();
     }
 
     // Update is called once per frame
