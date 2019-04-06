@@ -13,6 +13,7 @@ namespace Enum
         Portal,
         CopyingPortal,
         Spike, //+
-        TimerWall //+
+        TimerWall, //+.
+        LevelEnd    
     }
 }

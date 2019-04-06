@@ -220,6 +220,9 @@ public class PlayerController : MonoBehaviour
                         break;
                     ChangeDirectionWithMovingChangingPlatform(other.gameObject);
                     break;
+                case "LevelEnd":
+                    LevelEnd();
+                    break;
         }
     }
 
@@ -265,5 +268,11 @@ public class PlayerController : MonoBehaviour
         MovingChangingPlatform movingChangingP =
             movingChangingPlatform.gameObject.GetComponent<MovingChangingPlatform>();
         SetMoveDirection(movingChangingP.Direction);
+    }
+
+    private void LevelEnd()
+    {
+        this._moveDirection = Vector2.zero;
+        GameController.Instance.LevelPassed();
     }
 }

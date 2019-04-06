@@ -1,5 +1,8 @@
+using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -8,13 +11,18 @@ namespace UI
         public ScreenFader ScreenFader;
         public void RestartScene()
         {
-            GameController.Instance.CurrentLevel++;
+            GameData.Instance.CurrentLevel++;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        public void StartScene()
+        public IEnumerator StartScene()
         {
-            StartCoroutine(ScreenFader.StartScene());
+            yield return StartCoroutine(ScreenFader.SceneAppearance());
+        }
+
+        private void Awake()
+        {
+            GameController.Instance.GameUiController = this;
         }
     }
 }

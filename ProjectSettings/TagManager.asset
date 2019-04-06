@@ -16,6 +16,7 @@ TagManager:
   - CopyingPortal
   - BreakingPlatform
   - GreaterSpikePlatform
+  - LevelEnd
   layers:
   - Default
   - TransparentFX

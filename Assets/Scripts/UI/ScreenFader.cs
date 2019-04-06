@@ -7,21 +7,16 @@ namespace UI
 {
     public class ScreenFader : MonoBehaviour
     {
-        public static bool SceneEnd;
         public float fadeSpeed = 1.5f;
-        public string nextScene;
         private Image _image;
-        private bool _sceneStarting;
 
         private void Awake()
         {
             _image = GetComponent<Image>();
             _image.enabled = true;
-            _sceneStarting = true;
-            SceneEnd = false;
         }
 
-        public IEnumerator StartScene()
+        public IEnumerator SceneAppearance()
         {
             _image.color = Color.Lerp(_image.color, Color.clear, fadeSpeed * Time.deltaTime);
 
@@ -32,10 +27,8 @@ namespace UI
             }
             _image.color = Color.clear;
             _image.enabled = false;
-            _sceneStarting = false;
         }
-
-        public IEnumerator EndScene()
+        public IEnumerator FadeScene()
         {
             _image.enabled = true;
             while (_image.color.a <= 0.95f)
@@ -44,7 +37,6 @@ namespace UI
                 yield return null;
             }
             _image.color = Color.black;
-            SceneManager.LoadScene(nextScene);
         }
     }
 }

@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1326838210027291889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1326838210027291855}
+  - component: {fileID: 1326838210027291854}
+  m_Layer: 0
+  m_Name: LevelController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1326838210027291855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326838210027291889}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1326838210027291854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326838210027291889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fa5fe67a12640c7b2af06b98ca40ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BreakingPlatformPrefab: {fileID: 2638801509294139180, guid: f9818b94f2e5d2a468f32a715c50bdc3,
+    type: 3}
+  CannonPrefab: {fileID: 4724416525566909153, guid: 52c8160aa74430041b6ab9fbdc0f1b2c,
+    type: 3}
+  CollectablePrefab: {fileID: 6520337860224697860, guid: cb863b7b9cfd31344bf42395af5ad013,
+    type: 3}
+  CopyingPortalPrefab: {fileID: 4162855114985750419, guid: 2e5fc4b28b5cf1442adf7aaa19bb9c7e,
+    type: 3}
+  EnemyPrefab: {fileID: 7745618157090459873, guid: 01a18bc8ce9bc094fbec29780236f404,
+    type: 3}
+  GreaterSpikePrefab: {fileID: 8012542957621456420, guid: bdf73e14aaa47b74bae293828f345ff2,
+    type: 3}
+  MovingChangingPlatformPrefab: {fileID: 9122252305163014754, guid: ad8b3ef8e801e4c4683f515746f667e1,
+    type: 3}
+  MovingPlatformPrefab: {fileID: 7540214138292355392, guid: ef39059271d46a64395e4f20d98cecb9,
+    type: 3}
+  PortalPrefab: {fileID: 4794014789862434698, guid: ae6c7ae7bcc7c624ead999ec27416269,
+    type: 3}
+  SpikePrefab: {fileID: 3008908165799384174, guid: 716adbc203cd1b04c9e076ebf9a86ccb,
+    type: 3}
+  TimerWallPrefab: {fileID: 3067022059819926278, guid: ad3f5f21b8300244d9375b3e88fd2595,
+    type: 3}
+  InnerWallPrefab: {fileID: 8350231374895167449, guid: a90d676e3ba0fc84090427bc259a7197,
+    type: 3}

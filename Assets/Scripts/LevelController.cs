@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -12,6 +13,8 @@ using Newtonsoft.Json.Linq;
 using ObjectPool;
 using Serialize;
 using UnityEngine;
+using Application = UnityEngine.Application;
+using Object = UnityEngine.Object;
 
 public class LevelController : Singleton<LevelController>
 {
@@ -28,7 +31,7 @@ public class LevelController : Singleton<LevelController>
     [SerializeField] private GameObject SpikePrefab;
     [SerializeField] private GameObject TimerWallPrefab;
     [SerializeField] private GameObject InnerWallPrefab;
-
+    [SerializeField] private GameObject LevelEndPrefab;
    
     
     public void Serialize()
@@ -37,7 +40,7 @@ public class LevelController : Singleton<LevelController>
             Object.FindObjectsOfType<TileController>();
         var infos = tileControllers.Select(x => x.Serialize()).ToList();
         var json = JsonConvert.SerializeObject(infos, Formatting.Indented);
-        string path = Application.dataPath + "/Levels/2.json";
+        string path = Application.dataPath + "/Levels/1.json";
         Debug.Log(path);
         File.WriteAllText(path, json, Encoding.UTF8);
         Debug.Log(json);
@@ -46,8 +49,24 @@ public class LevelController : Singleton<LevelController>
     public IEnumerator Deserialize()
     {
         yield return StartCoroutine(ClearScene());
-        string path = Application.dataPath + "/Levels/" + GameController.Instance.CurrentLevel +".json";
-        var json = File.ReadAllText(path);
+        GameController.Instance.Text.text = "Очистка уровня завершена";
+        //string path = Application.dataPath + "/Levels/" + GameData.Instance.CurrentLevel +".json";
+//        string path = Application.persistentDataPath + "/Levels/1.json";
+//        GameController.Instance.Text.text = "Получение файла";
+//        GameController.Instance.Text.text = path;
+//        string json;
+//        try
+//        {
+//            json = File.ReadAllText(path);
+//        }
+//        catch (Exception e)
+//        {
+//            GameController.Instance.Text.text = e.ToString();
+//            throw;
+//        }
+//        GameController.Instance.Text.text = "Jnrhsnbt файла";
+        var path = "Levels/" + GameData.Instance.CurrentLevel;
+        var json = Resources.Load<TextAsset>(path).text;
         var tilesArray = JArray.Parse(json);
         List<GameObject> portalsList = new List<GameObject>();
         foreach (var tile in tilesArray)
@@ -118,6 +137,10 @@ public class LevelController : Singleton<LevelController>
                         CheckForOtherPortal(portalsList, new Vector3(portalTileInfo.OtherPortalX,
                             portalTileInfo.OtherPortalY,
                             portalTileInfo.OtherPortalZ), portalClone);
+                        break;
+                    case TileType.LevelEnd:
+                        var levelEndClone = PoolManager.SpawnObject(LevelEndPrefab).GetComponent<LevelEndController>();
+                        levelEndClone.Deserialize(JsonConvert.DeserializeObject<StaticTileInfo>(tile.ToString()));
                         break;
             }
             yield return null;
