@@ -55,6 +55,7 @@
             <e p="DynamicTileInfo.cs" t="Include" />
             <e p="ISerializableMonoBehaviour.cs" t="Include" />
             <e p="ISerializableTileInfo.cs" t="Include" />
+            <e p="LevelInfo.cs" t="Include" />
             <e p="PortalTileInfo.cs" t="Include" />
             <e p="StaticTileInfo.cs" t="Include" />
             <e p="StaticTileWithSomeDirectionInfo.cs" t="Include" />

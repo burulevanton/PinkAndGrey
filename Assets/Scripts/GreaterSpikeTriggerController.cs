@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
-using DefaultNamespace;
-using Enum;
-using Serialize;
-using TMPro;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 
 public class GreaterSpikeTriggerController : MonoBehaviour

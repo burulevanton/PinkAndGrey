@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -88,6 +89,17 @@ namespace ObjectPool
             return go;
         }
 
+        public IEnumerator ClearScene()
+        {
+            var tileControllers = GetComponentsInChildren<TileController>(false);
+            Debug.Log(tileControllers.Length);
+            foreach (var tileController in tileControllers)
+            {
+                ReleaseObject(tileController.gameObject);
+                yield return null;
+            }
+        }
+
         public void PrintStatus()
         {
             foreach (var keyVal in prefabLookup)
@@ -117,6 +129,7 @@ namespace ObjectPool
         {
             Instance.releaseObject(clone);
         }
+        
 
         #endregion
     }

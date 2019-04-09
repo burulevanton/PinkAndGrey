@@ -50,6 +50,7 @@ public class GameController : Singleton<GameController>
 
   private IEnumerator StartLevel()
   {
+    yield return StartCoroutine(GameUiController.ScreenFader.FadeScene());
     Text.text = "Десериализация";
     yield return StartCoroutine(LevelController.Instance.Deserialize());
     Text.text = "Десериализация закончена";

@@ -15,6 +15,11 @@ namespace UI
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
+        public void BackToMainMenu()
+        {
+            SceneManager.LoadScene("Menu");
+        }
+
         public IEnumerator StartScene()
         {
             yield return StartCoroutine(ScreenFader.SceneAppearance());

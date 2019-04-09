@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ObjectPool;
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
@@ -16,6 +17,12 @@ public class ProjectileController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(gameObject);
+        if (other.CompareTag("TimerWall"))
+        {
+            var clone = other.gameObject.GetComponent<TimerWallController>();
+            if (!clone.IsActivated)
+                return;
+        }
+        PoolManager.ReleaseObject(gameObject);
     }
 }

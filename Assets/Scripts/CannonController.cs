@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using DefaultNamespace;
 using Enum;
+using ObjectPool;
 using Serialize;
 using UnityEngine;
 
@@ -15,10 +16,10 @@ public class CannonController : TileController
     private float _shootInterval = 2f;
 
     private GameObject _item = null;
-     
+    
 
     // Update is called once per frame
-    void Update()
+    private void Start()
     {
         StartCoroutine(Shoot());
     }
@@ -28,10 +29,10 @@ public class CannonController : TileController
         while (true)
         {
             yield return new WaitForSeconds(_shootInterval);
-            if (_item == null || _item.gameObject == null)
+            if (_item == null || !_item.activeSelf)
             {
                 Vector3 position = transform.position + (Vector3)_direction * 0.5f;
-                _item = Instantiate(_projectilePrefab, position, transform.rotation);
+                _item = PoolManager.SpawnObject(_projectilePrefab, position, transform.rotation);
                 _item.GetComponent<ProjectileController>().Direction = _direction;
             }
         }

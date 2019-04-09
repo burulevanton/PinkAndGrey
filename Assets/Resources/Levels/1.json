@@ -1,26 +1,258 @@
-﻿[
-  {
-    "TileType": 12,
-    "X": 5.5,
-    "Y": -3.5,
-    "Z": 0.0
-  },
-  {
-    "TileType": 8,
-    "X": 5.5,
-    "Y": -8.5,
-    "Z": 0.0,
-    "OtherPortalX": 0.5,
-    "OtherPortalY": 5.5,
-    "OtherPortalZ": 0.0
-  },
-  {
-    "TileType": 8,
-    "X": 0.5,
-    "Y": 5.5,
-    "Z": 0.0,
-    "OtherPortalX": 5.5,
-    "OtherPortalY": -8.5,
-    "OtherPortalZ": 0.0
+﻿{
+  "TileInfos": [
+    {
+      "TileType": 11,
+      "X": 0.0,
+      "Y": -6.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 11,
+      "X": 0.0,
+      "Y": -5.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 11,
+      "X": 0.0,
+      "Y": -4.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 11,
+      "X": 0.0,
+      "Y": -3.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 11,
+      "X": 0.0,
+      "Y": -2.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 12,
+      "X": -2.0,
+      "Y": -1.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": -2.0,
+      "Y": -2.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": -2.0,
+      "Y": -3.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 10,
+      "X": -2.0,
+      "Y": -4.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 10,
+      "X": -2.0,
+      "Y": -5.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 10,
+      "X": -2.0,
+      "Y": -6.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 10,
+      "X": -2.0,
+      "Y": -7.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 10,
+      "X": -2.0,
+      "Y": -8.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": -1.0,
+      "Y": -9.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": 0.0,
+      "Y": -9.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": 1.0,
+      "Y": -9.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": 2.0,
+      "Y": -8.0,
+      "Z": 0.0
+    },
+    {
+      "DirectionX": -1.0,
+      "DirectionY": 0.0,
+      "TileType": 1,
+      "X": 2.0,
+      "Y": -7.0,
+      "Z": 0.0,
+      "RotationZ": 90.0
+    },
+    {
+      "DirectionX": -1.0,
+      "DirectionY": 0.0,
+      "TileType": 1,
+      "X": 2.0,
+      "Y": -6.0,
+      "Z": 0.0,
+      "RotationZ": 90.0
+    },
+    {
+      "DirectionX": -1.0,
+      "DirectionY": 0.0,
+      "TileType": 1,
+      "X": 2.0,
+      "Y": -5.0,
+      "Z": 0.0,
+      "RotationZ": 90.0
+    },
+    {
+      "DirectionX": -1.0,
+      "DirectionY": 0.0,
+      "TileType": 1,
+      "X": 2.0,
+      "Y": -4.0,
+      "Z": 0.0,
+      "RotationZ": 90.0
+    },
+    {
+      "DirectionX": -1.0,
+      "DirectionY": 0.0,
+      "TileType": 1,
+      "X": 2.0,
+      "Y": -3.0,
+      "Z": 0.0,
+      "RotationZ": 90.0
+    },
+    {
+      "DirectionX": -1.0,
+      "DirectionY": 0.0,
+      "TileType": 1,
+      "X": 2.0,
+      "Y": -2.0,
+      "Z": 0.0,
+      "RotationZ": 90.0
+    },
+    {
+      "DirectionX": -1.0,
+      "DirectionY": 0.0,
+      "TileType": 1,
+      "X": 2.0,
+      "Y": -1.0,
+      "Z": 0.0,
+      "RotationZ": 90.0
+    },
+    {
+      "TileType": 5,
+      "X": 3.0,
+      "Y": -7.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": 3.0,
+      "Y": -6.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": 3.0,
+      "Y": -5.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": 3.0,
+      "Y": -4.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": 3.0,
+      "Y": -3.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": 3.0,
+      "Y": -2.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": 3.0,
+      "Y": -1.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": 3.0,
+      "Y": 0.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": 3.0,
+      "Y": 1.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": 2.0,
+      "Y": 1.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": 1.0,
+      "Y": 1.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": 0.0,
+      "Y": 1.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": -1.0,
+      "Y": 1.0,
+      "Z": 0.0
+    },
+    {
+      "TileType": 5,
+      "X": -1.0,
+      "Y": 0.0,
+      "Z": 0.0
+    }
+  ],
+  "PlayerPos": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
   }
-]
+}

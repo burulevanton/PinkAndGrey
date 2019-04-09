@@ -32,15 +32,17 @@ public class LevelController : Singleton<LevelController>
     [SerializeField] private GameObject TimerWallPrefab;
     [SerializeField] private GameObject InnerWallPrefab;
     [SerializeField] private GameObject LevelEndPrefab;
-   
-    
     public void Serialize()
     {
         var tileControllers =
             Object.FindObjectsOfType<TileController>();
         var infos = tileControllers.Select(x => x.Serialize()).ToList();
-        var json = JsonConvert.SerializeObject(infos, Formatting.Indented);
-        string path = Application.dataPath + "/Levels/1.json";
+        var levelInfo = new LevelInfo
+        {
+        TileInfos = infos, PlayerPos = GameController.Instance.PlayerController.transform.position
+        };
+        var json = JsonConvert.SerializeObject(levelInfo, Formatting.Indented);
+        string path = Application.dataPath + "/Levels/3.json";
         Debug.Log(path);
         File.WriteAllText(path, json, Encoding.UTF8);
         Debug.Log(json);
@@ -48,7 +50,7 @@ public class LevelController : Singleton<LevelController>
 
     public IEnumerator Deserialize()
     {
-        yield return StartCoroutine(ClearScene());
+        yield return StartCoroutine(PoolManager.Instance.ClearScene());
         GameController.Instance.Text.text = "Очистка уровня завершена";
         //string path = Application.dataPath + "/Levels/" + GameData.Instance.CurrentLevel +".json";
 //        string path = Application.persistentDataPath + "/Levels/1.json";
@@ -67,7 +69,10 @@ public class LevelController : Singleton<LevelController>
 //        GameController.Instance.Text.text = "Jnrhsnbt файла";
         var path = "Levels/" + GameData.Instance.CurrentLevel;
         var json = Resources.Load<TextAsset>(path).text;
-        var tilesArray = JArray.Parse(json);
+        JObject jObject = JObject.Parse(json);
+        GameController.Instance.PlayerController.transform.position =
+        JsonConvert.DeserializeObject<Vector3>(jObject["PlayerPos"].ToString());
+        var tilesArray = JArray.Parse(jObject["TileInfos"].ToString());
         List<GameObject> portalsList = new List<GameObject>();
         foreach (var tile in tilesArray)
         {
@@ -143,17 +148,6 @@ public class LevelController : Singleton<LevelController>
                         levelEndClone.Deserialize(JsonConvert.DeserializeObject<StaticTileInfo>(tile.ToString()));
                         break;
             }
-            yield return null;
-        }
-    }
-
-    public IEnumerator ClearScene()
-    {
-        var tileControllers =
-            Object.FindObjectsOfType<TileController>();
-        foreach (var tileController in tileControllers)
-        {
-            PoolManager.ReleaseObject(tileController.gameObject);
             yield return null;
         }
     }
