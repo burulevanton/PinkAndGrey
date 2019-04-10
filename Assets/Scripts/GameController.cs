@@ -16,8 +16,6 @@ public class GameController : Singleton<GameController>
   private float dragDistance; //Минимальная дистанция для определения свайпа
   private List<Vector3> touchPositions = new List<Vector3>(); //Храним все позиции касания в списке
 
-  private MovableDirection _movableDirection = new MovableDirection();
-
   private float swipeTimeout;
   private float swipeTime = 0.3f;
   private int touchId = -1;
@@ -36,7 +34,6 @@ public class GameController : Singleton<GameController>
   public PlayerController PlayerController;
   public GameUIController GameUiController;
 
-  [SerializeField] private Movable[] _movables;
 
   void Awake()
   {
@@ -45,7 +42,7 @@ public class GameController : Singleton<GameController>
 
   private void Start()
   {
-    StartCoroutine(StartLevel());
+    //StartCoroutine(StartLevel());
   }
 
   private IEnumerator StartLevel()
@@ -165,14 +162,5 @@ public class GameController : Singleton<GameController>
     if (!flag1)
       return;
     //this.ProcessDblTap(); //todo функция даблтапа
-  }
-
-  public void SetDirection(Movable movable)
-  {
-    if (!movable.gameObject.activeSelf) return;
-    movable.MovableDirection.Horizontal =
-    movable.IsReverseMove ? _movableDirection.Horizontal * -1 : _movableDirection.Horizontal;
-    movable.MovableDirection.Vertical =
-    movable.IsReverseMove ? _movableDirection.Vertical * -1 : _movableDirection.Vertical;
   }
 }

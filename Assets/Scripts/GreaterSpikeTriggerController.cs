@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using ObjectPool;
+using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 
 public class GreaterSpikeTriggerController : MonoBehaviour
@@ -24,7 +25,8 @@ public class GreaterSpikeTriggerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         _boxCollider2D.enabled = false;
-        var item = (GameObject) Instantiate(GreaterSpikeResultPrefab);
+        //var item = (GameObject) Instantiate(GreaterSpikeResultPrefab);
+        var item = PoolManager.SpawnObject(GreaterSpikeResultPrefab);
         item.transform.parent = transform;
         item.transform.position = transform.position;
         var spikesResult = item.gameObject.GetComponent<GreaterSpikesResultController>();

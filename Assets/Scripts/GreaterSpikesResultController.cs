@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ObjectPool;
 using UnityEngine;
 
 public class GreaterSpikesResultController : MonoBehaviour
@@ -15,7 +16,6 @@ public class GreaterSpikesResultController : MonoBehaviour
     {
         _sprite = gameObject.GetComponent<SpriteRenderer>();
         _boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
-        StartCoroutine(LifeCycle());
     }
 
     IEnumerator LifeCycle()
@@ -26,7 +26,14 @@ public class GreaterSpikesResultController : MonoBehaviour
         _boxCollider2D.enabled = true;
         yield return new WaitForSeconds(_attackTime);
         GreaterSpikeTriggerController.EnableTrigger();
-        Destroy(gameObject);
+        PoolManager.ReleaseObject(gameObject);
+        _sprite.enabled = false;
+        _boxCollider2D.enabled = false;
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(LifeCycle());
     }
 
     private void UpdateRotation()

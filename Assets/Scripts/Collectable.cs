@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DefaultNamespace;
 using Enum;
+using ObjectPool;
 using Serialize;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ public class Collectable : TileController
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(gameObject);
+        PoolManager.ReleaseObject(gameObject);
     }
 
     public override ISerializableTileInfo Serialize()

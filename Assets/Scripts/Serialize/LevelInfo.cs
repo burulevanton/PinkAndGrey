@@ -1,11 +1,12 @@
 using System.Collections.Generic;
+using Enum;
 using UnityEngine;
 
 namespace Serialize
 {
     public class LevelInfo
     {
-        public List<ISerializableTileInfo> TileInfos { get; set; }
+        public Dictionary<TileType,List<ISerializableTileInfo>> TileInfos { get; set; }
         public Vector3 PlayerPos { get; set; }
     }
 }

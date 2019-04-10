@@ -29,5 +29,10 @@ namespace UI
         {
             GameController.Instance.GameUiController = this;
         }
+
+        public void Deserialize()
+        {
+            StartCoroutine(LevelController.Instance.Deserialize());
+        }
     }
 }

@@ -37,9 +37,21 @@ public class LevelController : Singleton<LevelController>
         var tileControllers =
             Object.FindObjectsOfType<TileController>();
         var infos = tileControllers.Select(x => x.Serialize()).ToList();
+        var dict = new Dictionary<TileType, List<ISerializableTileInfo>>();
+        foreach (var info in infos)
+        {
+            if (dict.ContainsKey(info.TileType))
+            {
+                dict[info.TileType].Add(info);
+            }
+            else
+            {
+                dict.Add(info.TileType, new List<ISerializableTileInfo>() {info});
+            }
+        }
         var levelInfo = new LevelInfo
         {
-        TileInfos = infos, PlayerPos = GameController.Instance.PlayerController.transform.position
+        TileInfos = dict, PlayerPos = GameController.Instance.PlayerController.transform.position
         };
         var json = JsonConvert.SerializeObject(levelInfo, Formatting.Indented);
         string path = Application.dataPath + "/Levels/3.json";
@@ -52,31 +64,28 @@ public class LevelController : Singleton<LevelController>
     {
         yield return StartCoroutine(PoolManager.Instance.ClearScene());
         GameController.Instance.Text.text = "Очистка уровня завершена";
-        //string path = Application.dataPath + "/Levels/" + GameData.Instance.CurrentLevel +".json";
-//        string path = Application.persistentDataPath + "/Levels/1.json";
-//        GameController.Instance.Text.text = "Получение файла";
-//        GameController.Instance.Text.text = path;
-//        string json;
-//        try
-//        {
-//            json = File.ReadAllText(path);
-//        }
-//        catch (Exception e)
-//        {
-//            GameController.Instance.Text.text = e.ToString();
-//            throw;
-//        }
-//        GameController.Instance.Text.text = "Jnrhsnbt файла";
-        var path = "Levels/" + GameData.Instance.CurrentLevel;
+//        var path = "Levels/" + GameData.Instance.CurrentLevel;
+        var path = "Levels/1";
         var json = Resources.Load<TextAsset>(path).text;
         JObject jObject = JObject.Parse(json);
         GameController.Instance.PlayerController.transform.position =
         JsonConvert.DeserializeObject<Vector3>(jObject["PlayerPos"].ToString());
-        var tilesArray = JArray.Parse(jObject["TileInfos"].ToString());
+        var tilesDict =
+        JsonConvert.DeserializeObject<Dictionary<TileType, List<ISerializableTileInfo>>>(
+        jObject["TileInfos"].ToString());
+        foreach (var keypair in tilesDict)
+        {
+            DeserializeList(keypair.Key, keypair.Value);
+            yield return null;
+        }
+    }
+
+    private void DeserializeList(TileType type, List<ISerializableTileInfo> tilesArray)
+    {
         List<GameObject> portalsList = new List<GameObject>();
         foreach (var tile in tilesArray)
         {
-            var type = (TileType) (int) tile["TileType"];
+//            var type = (TileType) (int) tile["TileType"];
             switch (type)
             {
                     case TileType.BreakingPlatform:
@@ -148,7 +157,6 @@ public class LevelController : Singleton<LevelController>
                         levelEndClone.Deserialize(JsonConvert.DeserializeObject<StaticTileInfo>(tile.ToString()));
                         break;
             }
-            yield return null;
         }
     }
 
