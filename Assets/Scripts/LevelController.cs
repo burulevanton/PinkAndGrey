@@ -32,12 +32,13 @@ public class LevelController : Singleton<LevelController>
     [SerializeField] private GameObject TimerWallPrefab;
     [SerializeField] private GameObject InnerWallPrefab;
     [SerializeField] private GameObject LevelEndPrefab;
+    [SerializeField] private GameObject ProjectilePrefab;
     public void Serialize()
     {
         var tileControllers =
             Object.FindObjectsOfType<TileController>();
         var infos = tileControllers.Select(x => x.Serialize()).ToList();
-        var dict = new Dictionary<TileType, List<ISerializableTileInfo>>();
+        var dict = new Dictionary<TileType, List<StaticTileInfo>>();
         foreach (var info in infos)
         {
             if (dict.ContainsKey(info.TileType))
@@ -46,14 +47,18 @@ public class LevelController : Singleton<LevelController>
             }
             else
             {
-                dict.Add(info.TileType, new List<ISerializableTileInfo>() {info});
+                dict.Add(info.TileType, new List<StaticTileInfo>() {info});
             }
         }
         var levelInfo = new LevelInfo
         {
         TileInfos = dict, PlayerPos = GameController.Instance.PlayerController.transform.position
         };
-        var json = JsonConvert.SerializeObject(levelInfo, Formatting.Indented);
+        var json = JsonConvert.SerializeObject(levelInfo, Formatting.Indented, new JsonSerializerSettings()
+        {
+        TypeNameHandling = TypeNameHandling.Auto,
+        Binder = new KnownTypesBinder()
+        });
         string path = Application.dataPath + "/Levels/3.json";
         Debug.Log(path);
         File.WriteAllText(path, json, Encoding.UTF8);
@@ -65,96 +70,97 @@ public class LevelController : Singleton<LevelController>
         yield return StartCoroutine(PoolManager.Instance.ClearScene());
         GameController.Instance.Text.text = "Очистка уровня завершена";
 //        var path = "Levels/" + GameData.Instance.CurrentLevel;
-        var path = "Levels/1";
+        var path = "Levels/3";
         var json = Resources.Load<TextAsset>(path).text;
         JObject jObject = JObject.Parse(json);
         GameController.Instance.PlayerController.transform.position =
         JsonConvert.DeserializeObject<Vector3>(jObject["PlayerPos"].ToString());
+        Debug.Log(jObject["TileInfos"].ToString());
         var tilesDict =
-        JsonConvert.DeserializeObject<Dictionary<TileType, List<ISerializableTileInfo>>>(
-        jObject["TileInfos"].ToString());
+        JsonConvert.DeserializeObject<Dictionary<TileType, List<StaticTileInfo>>>(
+        jObject["TileInfos"].ToString(), new JsonSerializerSettings()
+        {
+        TypeNameHandling = TypeNameHandling.Objects,
+        Binder = new KnownTypesBinder()
+        });
         foreach (var keypair in tilesDict)
         {
             DeserializeList(keypair.Key, keypair.Value);
             yield return null;
         }
+        yield return null;
     }
 
-    private void DeserializeList(TileType type, List<ISerializableTileInfo> tilesArray)
+    private void DeserializeList(TileType type, List<StaticTileInfo> tilesArray)
     {
         List<GameObject> portalsList = new List<GameObject>();
         foreach (var tile in tilesArray)
         {
-//            var type = (TileType) (int) tile["TileType"];
             switch (type)
             {
                     case TileType.BreakingPlatform:
                         var breakingPlatformClone = PoolManager.SpawnObject(BreakingPlatformPrefab)
                             .GetComponent<BreakingPlatformController>();
                         breakingPlatformClone
-                            .Deserialize(JsonConvert.DeserializeObject<StaticTileInfo>(tile.ToString()));
+                            .Deserialize(tile);
                         break;
                     case TileType.InnerWall:
                         var innerWallClone =
                             PoolManager.SpawnObject(InnerWallPrefab).GetComponent<InnerWallController>();
-                        innerWallClone.Deserialize(JsonConvert.DeserializeObject<StaticTileInfo>(tile.ToString()));
+                        innerWallClone.Deserialize(tile);
                         break;
                     case TileType.MovingChangingPlatform:
                         var movingChangingPlatformClone = PoolManager.SpawnObject(MovingChangingPlatformPrefab)
                             .GetComponent<MovingChangingPlatform>();
-                        movingChangingPlatformClone.Deserialize(
-                            JsonConvert.DeserializeObject<StaticTileWithSomeDirectionInfo>(tile.ToString()));
+                        movingChangingPlatformClone.Deserialize(tile);
                         break;
                     case TileType.CopyingPortal:
                         var copyingPortalClone = PoolManager.SpawnObject(CopyingPortalPrefab)
                             .GetComponent<CopyingPortalController>();
-                        copyingPortalClone.Deserialize(JsonConvert.DeserializeObject<StaticTileInfo>(tile.ToString()));
+                        copyingPortalClone.Deserialize(tile);
                         break;
                     case TileType.Cannon:
                         var cannonClone = PoolManager.SpawnObject(CannonPrefab).GetComponent<CannonController>();
-                        cannonClone.Deserialize(
-                            JsonConvert.DeserializeObject<StaticTileWithSomeDirectionInfo>(tile.ToString()));
+                        cannonClone.Deserialize(tile);
                         break;
                     case TileType.Collectable:
                         var collectableClone = PoolManager.SpawnObject(CollectablePrefab).GetComponent<Collectable>();
-                        collectableClone.Deserialize(JsonConvert.DeserializeObject<StaticTileInfo>(tile.ToString()));
+                        collectableClone.Deserialize(tile);
                         break;
                     case TileType.Enemy:
                         var enemyClone = PoolManager.SpawnObject(EnemyPrefab).GetComponent<EnemyController>();
-                        enemyClone.Deserialize(JsonConvert.DeserializeObject<DynamicTileInfo>(tile.ToString()));
+                        enemyClone.Deserialize(tile);
                         break;
                     case TileType.GreaterSpike:
                         var greaterSpikeClone = PoolManager.SpawnObject(GreaterSpikePrefab)
                             .GetComponent<GreaterSpike>();
-                        greaterSpikeClone.Deserialize(
-                            JsonConvert.DeserializeObject<StaticTileWithSomeDirectionInfo>(tile.ToString()));
+                        greaterSpikeClone.Deserialize(tile);
                         break;
                     case TileType.MovingPlatform:
                         var movingPlatformClone = PoolManager.SpawnObject(MovingPlatformPrefab).GetComponent<MovingPlatform>();
-                        movingPlatformClone.Deserialize(
-                            JsonConvert.DeserializeObject<DynamicTileInfo>(tile.ToString()));
+                        movingPlatformClone.Deserialize(tile);
                         break;
                     case TileType.Spike:
                         var spikeClone = PoolManager.SpawnObject(SpikePrefab).GetComponent<SpikeController>();
-                        spikeClone.Deserialize(JsonConvert.DeserializeObject<StaticTileInfo>(tile.ToString()));
+                        spikeClone.Deserialize(tile);
                         break;
                     case TileType.TimerWall:
                         var timerWallClone =
                             PoolManager.SpawnObject(TimerWallPrefab).GetComponent<TimerWallController>();
-                        timerWallClone.Deserialize(JsonConvert.DeserializeObject<StaticTileInfo>(tile.ToString()));
+                        timerWallClone.Deserialize(tile);
                         break;
                     case TileType.Portal:
                         var portalClone = PoolManager.SpawnObject(PortalPrefab).GetComponent<PortalController>();
-                        var portalTileInfo = JsonConvert.DeserializeObject<PortalTileInfo>(tile.ToString());
-                        portalClone.Deserialize(portalTileInfo);
+                        portalClone.Deserialize(tile);
                         portalsList.Add(portalClone.gameObject);
+                        var portalTileInfo = tile as PortalTileInfo;
                         CheckForOtherPortal(portalsList, new Vector3(portalTileInfo.OtherPortalX,
                             portalTileInfo.OtherPortalY,
                             portalTileInfo.OtherPortalZ), portalClone);
                         break;
                     case TileType.LevelEnd:
                         var levelEndClone = PoolManager.SpawnObject(LevelEndPrefab).GetComponent<LevelEndController>();
-                        levelEndClone.Deserialize(JsonConvert.DeserializeObject<StaticTileInfo>(tile.ToString()));
+                        levelEndClone.Deserialize(tile);
                         break;
             }
         }

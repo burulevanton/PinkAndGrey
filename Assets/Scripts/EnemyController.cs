@@ -12,7 +12,7 @@ public class EnemyController : MovingPlatform
         Destroy(other.gameObject);
     }
 
-    public override ISerializableTileInfo Serialize()
+    public override StaticTileInfo Serialize()
     {
         var dynamicTileInfo = new DynamicTileInfo()
         {
@@ -28,7 +28,7 @@ public class EnemyController : MovingPlatform
         return dynamicTileInfo;
     }
 
-    public override bool Deserialize(ISerializableTileInfo tileInfo)
+    public override bool Deserialize(StaticTileInfo tileInfo)
     {
         var info = tileInfo as DynamicTileInfo;
         if (info == null)

@@ -9,7 +9,6 @@ public class TimerWallController : TileController
 {
 
     private SpriteRenderer _spriteRenderer;
-    private PlayerController _playerController;
     private GameController _gameController;
 
     [SerializeField] private Sprite _deactivatedSprite;
@@ -20,6 +19,7 @@ public class TimerWallController : TileController
     private float _activeTimer;
 
     public bool IsActivated => _activeTimer > 0.0f;
+    private int _landedPlayers = 0;
 
     public void ActivateWall()
     {
@@ -32,13 +32,11 @@ public class TimerWallController : TileController
     {
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         _gameController = GameController.Instance;
-        _playerController = _gameController.PlayerController;
     }
 
     private void Reset()
     {
         _gameController = GameController.Instance;
-        //_playerController = _gameController.PlayerController;
     }
 
     // Update is called once per frame
@@ -49,7 +47,7 @@ public class TimerWallController : TileController
             this._activeTimer -= Time.deltaTime;
             if (this._activeTimer <= 0.0f)
             {
-                if (_gameController.PlayerController.OnTimerWall == this)
+                if (_landedPlayers>0)
                 {
                     this._activeTimer = 0.1f;
                 }
@@ -61,7 +59,17 @@ public class TimerWallController : TileController
         }
     }
 
-    public override ISerializableTileInfo Serialize()
+    public void PlayerLand()
+    {
+        _landedPlayers++;
+    }
+
+    public void PlayerExit()
+    {
+        _landedPlayers = _landedPlayers > 0 ? _landedPlayers - 1 : 0;
+    }
+
+    public override StaticTileInfo Serialize()
     {
         var staticTileInfo = new StaticTileInfo
         {
@@ -73,7 +81,7 @@ public class TimerWallController : TileController
         return staticTileInfo;
     }
 
-    public override bool Deserialize(ISerializableTileInfo tileInfo)
+    public override bool Deserialize(StaticTileInfo tileInfo)
     {
         var info = tileInfo as StaticTileInfo;
         if (info == null)

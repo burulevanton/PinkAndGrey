@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelEndController:TileController
 {
-    public override ISerializableTileInfo Serialize()
+    public override StaticTileInfo Serialize()
     {
         var staticTileInfo = new StaticTileInfo
         {
@@ -16,7 +16,7 @@ public class LevelEndController:TileController
         return staticTileInfo;
     }
 
-    public override bool Deserialize(ISerializableTileInfo tileInfo)
+    public override bool Deserialize(StaticTileInfo tileInfo)
     {
         var info = tileInfo as StaticTileInfo;
         if (info == null)

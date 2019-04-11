@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GreaterSpike : TileController
 {
-    public override ISerializableTileInfo Serialize()
+    public override StaticTileInfo Serialize()
     {
         var greaterSpikeTrigger = gameObject.GetComponentInChildren<GreaterSpikeTriggerController>();
         var staticTileInfo = new StaticTileWithSomeDirectionInfo()
@@ -21,7 +21,7 @@ public class GreaterSpike : TileController
         return staticTileInfo;
     }
 
-    public override bool Deserialize(ISerializableTileInfo tileInfo)
+    public override bool Deserialize(StaticTileInfo tileInfo)
     {
         var info = tileInfo as StaticTileWithSomeDirectionInfo;
         if (info == null)

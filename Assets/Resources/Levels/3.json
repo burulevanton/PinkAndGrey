@@ -1,66 +1,186 @@
-{
-  "TileInfos": [
-    {
-      "TileType": 5,
-      "X": 1.0,
-      "Y": -7.5,
-      "Z": 0.0
-    },
-    {
-      "TileType": 5,
-      "X": 1.0,
-      "Y": -8.5,
-      "Z": 0.0
-    },
-    {
-      "TileType": 5,
-      "X": 1.0,
-      "Y": -9.5,
-      "Z": 0.0
-    },
-    {
-      "TileType": 5,
-      "X": 1.0,
-      "Y": -10.5,
-      "Z": 0.0
-    },
-    {
-      "DirectionX": 1.0,
-      "DirectionY": 0.0,
-      "TileType": 1,
-      "X": -6.0,
-      "Y": -10.5,
-      "Z": 0.0,
-      "RotationZ": 270.0
-    },
-    {
-      "DirectionX": 1.0,
-      "DirectionY": 0.0,
-      "TileType": 1,
-      "X": -6.0,
-      "Y": -9.5,
-      "Z": 0.0,
-      "RotationZ": 270.0
-    },
-    {
-      "DirectionX": 1.0,
-      "DirectionY": 0.0,
-      "TileType": 1,
-      "X": -6.0,
-      "Y": -8.5,
-      "Z": 0.0,
-      "RotationZ": 270.0
-    },
-    {
-      "DirectionX": 1.0,
-      "DirectionY": 0.0,
-      "TileType": 1,
-      "X": -6.0,
-      "Y": -7.5,
-      "Z": 0.0,
-      "RotationZ": 270.0
-    }
-  ],
+﻿{
+  "TileInfos": {
+    "InnerWall": [
+      {
+        "TileType": 5,
+        "X": -5.0,
+        "Y": -1.0,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -4.0,
+        "Y": -1.0,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 5.0,
+        "Y": -1.0,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 4.0,
+        "Y": -1.0,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 3.0,
+        "Y": -1.0,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 2.0,
+        "Y": -1.0,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 1.0,
+        "Y": -1.0,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 0.0,
+        "Y": -1.0,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -1.0,
+        "Y": -1.0,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -2.0,
+        "Y": -1.0,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -3.0,
+        "Y": -1.0,
+        "Z": 0.0
+      }
+    ],
+    "Cannon": [
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": 1.0,
+        "RotationZ": 0.0,
+        "TileType": 1,
+        "X": 5.0,
+        "Y": -6.0,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": 1.0,
+        "RotationZ": 0.0,
+        "TileType": 1,
+        "X": 4.0,
+        "Y": -6.0,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": 1.0,
+        "RotationZ": 0.0,
+        "TileType": 1,
+        "X": -5.0,
+        "Y": -6.0,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": 1.0,
+        "RotationZ": 0.0,
+        "TileType": 1,
+        "X": -4.0,
+        "Y": -6.0,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": 1.0,
+        "RotationZ": 0.0,
+        "TileType": 1,
+        "X": -3.0,
+        "Y": -6.0,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": 1.0,
+        "RotationZ": 0.0,
+        "TileType": 1,
+        "X": -2.0,
+        "Y": -6.0,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": 1.0,
+        "RotationZ": 0.0,
+        "TileType": 1,
+        "X": -1.0,
+        "Y": -6.0,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": 1.0,
+        "RotationZ": 0.0,
+        "TileType": 1,
+        "X": 3.0,
+        "Y": -6.0,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": 1.0,
+        "RotationZ": 0.0,
+        "TileType": 1,
+        "X": 2.0,
+        "Y": -6.0,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": 1.0,
+        "RotationZ": 0.0,
+        "TileType": 1,
+        "X": 1.0,
+        "Y": -6.0,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": 1.0,
+        "RotationZ": 0.0,
+        "TileType": 1,
+        "X": 0.0,
+        "Y": -6.0,
+        "Z": 0.0
+      }
+    ]
+  },
   "PlayerPos": {
     "x": 0.0,
     "y": 0.0,

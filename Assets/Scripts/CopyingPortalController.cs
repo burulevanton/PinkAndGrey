@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using DefaultNamespace;
 using Enum;
+using ObjectPool;
 using Serialize;
 using UnityEngine;
 
 public class CopyingPortalController : TileController
 {
-    [SerializeField] public GameObject CopiedPlayer;
+    [SerializeField] public GameObject CopiedPlayerPrefab;
 
     public bool IsActivated = true;
 //    [SerializeField] private MoveController _moveController;
@@ -23,16 +24,15 @@ public class CopyingPortalController : TileController
 //    }
     public void ActivatePortal(Vector2 moveDirection)
     {
-        CopiedPlayer.transform.position = new Vector3(transform.position.x - moveDirection.x, 
-            transform.position.y-moveDirection.y, CopiedPlayer.transform.position.z);
-        CopiedPlayer.SetActive(true);
-        gameObject.SetActive(false);
+        var copiedPlayerClone = PoolManager.SpawnObject(CopiedPlayerPrefab, new Vector3(transform.position.x - moveDirection.x,
+        transform.position.y - moveDirection.y, 0.0f), Quaternion.identity);
+        PoolManager.ReleaseObject(this.gameObject);
         IsActivated = false;
-        PlayerController playerController = CopiedPlayer.GetComponent<PlayerController>();
+        var playerController = copiedPlayerClone.GetComponent<PlayerController>();
         playerController.JumpWithDirection(moveDirection);
     }
 
-    public override ISerializableTileInfo Serialize()
+    public override StaticTileInfo Serialize()
     {
         var staticTileInfo = new StaticTileInfo
         {
@@ -44,7 +44,7 @@ public class CopyingPortalController : TileController
         return staticTileInfo;
     }
 
-    public override bool Deserialize(ISerializableTileInfo tileInfo)
+    public override bool Deserialize(StaticTileInfo tileInfo)
     {
         var info = tileInfo as StaticTileInfo;
         if (info == null)

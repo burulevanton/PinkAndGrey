@@ -2,7 +2,7 @@ using Enum;
 
 namespace Serialize
 {
-    public class StaticTileInfo: ISerializableTileInfo
+    public class StaticTileInfo
     {
         public TileType TileType { get; set; }
         public float X { get; set; }

@@ -16,7 +16,7 @@ public class MovingChangingPlatform : TileController
         set { _direction = value; }
     }
 
-    public override ISerializableTileInfo Serialize()
+    public override StaticTileInfo Serialize()
     {
         var staticTileInfo = new StaticTileWithSomeDirectionInfo()
         {
@@ -31,7 +31,7 @@ public class MovingChangingPlatform : TileController
         return staticTileInfo;
     }
 
-    public override bool Deserialize(ISerializableTileInfo tileInfo)
+    public override bool Deserialize(StaticTileInfo tileInfo)
     {
         var info = tileInfo as StaticTileWithSomeDirectionInfo;
         if (info == null)

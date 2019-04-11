@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class TileController : MonoBehaviour, ISerializableMonoBehaviour
 {
-    public abstract ISerializableTileInfo Serialize();
+    public abstract StaticTileInfo Serialize();
 
-    public abstract bool Deserialize(ISerializableTileInfo tileInfo);
+    public abstract bool Deserialize(StaticTileInfo tileInfo);
 }

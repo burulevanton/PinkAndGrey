@@ -95,4 +95,4 @@ MonoBehaviour:
   _direction: {x: 1, y: 0}
   _projectilePrefab: {fileID: 2518610963366440600, guid: 67aeccc6d8afe374b98095ddb927eb3b,
     type: 3}
-  _shootInterval: 2
+  _shootInterval: 3

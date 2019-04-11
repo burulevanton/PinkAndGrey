@@ -54,7 +54,7 @@ public class MovingPlatform : TileController
         }
     }
 
-    public override ISerializableTileInfo Serialize()
+    public override StaticTileInfo Serialize()
     {
         var dynamicTileInfo = new DynamicTileInfo()
         {
@@ -70,7 +70,7 @@ public class MovingPlatform : TileController
         return dynamicTileInfo;
     }
 
-    public override bool Deserialize(ISerializableTileInfo tileInfo)
+    public override bool Deserialize(StaticTileInfo tileInfo)
     {
         var info = tileInfo as DynamicTileInfo;
         if (info == null)

@@ -6,7 +6,7 @@ namespace DefaultNamespace
 {
     public class InnerWallController : TileController
     {
-        public override ISerializableTileInfo Serialize()
+        public override StaticTileInfo Serialize()
         {
             var staticTileInfo = new StaticTileInfo
             {
@@ -18,7 +18,7 @@ namespace DefaultNamespace
             return staticTileInfo;
         }
 
-        public override bool Deserialize(ISerializableTileInfo tileInfo)
+        public override bool Deserialize(StaticTileInfo tileInfo)
         {
             var info = tileInfo as StaticTileInfo;
             if (info == null)

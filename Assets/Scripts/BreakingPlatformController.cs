@@ -13,7 +13,7 @@ public class BreakingPlatformController : TileController
         PoolManager.ReleaseObject(gameObject);
     }
 
-    public override ISerializableTileInfo Serialize()
+    public override StaticTileInfo Serialize()
     {
         var staticTileInfo = new StaticTileInfo
         {
@@ -25,7 +25,7 @@ public class BreakingPlatformController : TileController
         return staticTileInfo;
     }
 
-    public override bool Deserialize(ISerializableTileInfo tileInfo)
+    public override bool Deserialize(StaticTileInfo tileInfo)
     {
         var info = tileInfo as StaticTileInfo;
         if (info == null)

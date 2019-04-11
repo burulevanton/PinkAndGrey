@@ -207,13 +207,13 @@ public class PlayerController : MonoBehaviour
                     DamageTaken(other.gameObject);
                     break;
                 case "TimerWall":
-                    OnTimerWall = other.gameObject.GetComponent<TimerWallController>();
-                    if (OnTimerWall.IsActivated)
+                    var timerWallController = other.gameObject.GetComponent<TimerWallController>();
+                    if (timerWallController.IsActivated)
                     {
+                        timerWallController.PlayerLand();
                         StopByTransform(other.gameObject.transform);
                         break;
                     }
-                    OnTimerWall = (TimerWallController) null;
                     break;
                 case "MovingChangingPlatform":
                     if(Stopped)
@@ -233,7 +233,10 @@ public class PlayerController : MonoBehaviour
             case "TimerWall":
                 TimerWallController timerWallController = other.gameObject.GetComponent<TimerWallController>();
                 if (timerWallController.IsActivated)
+                {
+                    timerWallController.PlayerExit();
                     break;
+                }
                 timerWallController.ActivateWall();
                 break;
             case "CopyingPortal":

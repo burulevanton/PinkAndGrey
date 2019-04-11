@@ -20,7 +20,7 @@ public class PortalController: TileController
     //        }
     //    }
 
-    public override ISerializableTileInfo Serialize()
+    public override StaticTileInfo Serialize()
     {
         var portalTileInfo = new PortalTileInfo
         {
@@ -35,7 +35,7 @@ public class PortalController: TileController
         return portalTileInfo;
     }
 
-    public override bool Deserialize(ISerializableTileInfo tileInfo)
+    public override bool Deserialize(StaticTileInfo tileInfo)
     {
         var info = tileInfo as PortalTileInfo;
         if (info == null)
