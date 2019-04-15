@@ -69,8 +69,8 @@ public class LevelController : Singleton<LevelController>
     {
         yield return StartCoroutine(PoolManager.Instance.ClearScene());
         GameController.Instance.Text.text = "Очистка уровня завершена";
-//        var path = "Levels/" + GameData.Instance.CurrentLevel;
-        var path = "Levels/3";
+        var path = "Levels/" + GameData.Instance.CurrentLevel;
+//        var path = "Levels/3";
         var json = Resources.Load<TextAsset>(path).text;
         JObject jObject = JObject.Parse(json);
         GameController.Instance.PlayerController.transform.position =

@@ -14,7 +14,7 @@ public class ProjectileController : MonoBehaviour
     {
         transform.position += Direction * Time.deltaTime * _speed;
     }
-
+    //todo сделать layermask
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("TimerWall"))
@@ -23,6 +23,8 @@ public class ProjectileController : MonoBehaviour
             if (!clone.IsActivated)
                 return;
         }
+        if(other.CompareTag("Collectable"))
+            return;
         PoolManager.ReleaseObject(gameObject);
     }
 }

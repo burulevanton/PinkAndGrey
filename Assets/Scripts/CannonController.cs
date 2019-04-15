@@ -15,12 +15,15 @@ public class CannonController : TileController
     [SerializeField]
     private float _shootInterval = 2f;
 
+    private float _timer;
+
     private GameObject _item = null;
     
 
     // Update is called once per frame
     private void Start()
     {
+//        _timer = _shootInterval;
         StartCoroutine(Shoot());
     }
 
@@ -64,4 +67,21 @@ public class CannonController : TileController
         transform.rotation = Quaternion.Euler(0f, 0f, info.RotationZ);
         return true;
     }
+
+//    protected override void OnUpdate()
+//    {
+//        if (_timer > 0.0f)
+//        {
+//            _timer -= Time.deltaTime;
+//        }
+//        else
+//        {
+//            
+//        }
+//    }
+//
+//    protected override void OnFixedUpdate()
+//    {
+//        throw new System.NotImplementedException();
+//    }
 }

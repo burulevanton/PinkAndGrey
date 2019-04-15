@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Internal.Experimental.UIElements;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ namespace UI
     public class GameUIController:MonoBehaviour
     {
         public ScreenFader ScreenFader;
+        public GameObject Panel;
         public void RestartScene()
         {
             GameData.Instance.CurrentLevel++;
@@ -33,6 +35,11 @@ namespace UI
         public void Deserialize()
         {
             StartCoroutine(LevelController.Instance.Deserialize());
+        }
+
+        public void GameMenu()
+        {
+            Panel.SetActive(true);
         }
     }
 }

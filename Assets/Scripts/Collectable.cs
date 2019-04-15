@@ -10,7 +10,10 @@ public class Collectable : TileController
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        PoolManager.ReleaseObject(gameObject);
+        if (other.CompareTag("Player"))
+        {
+            PoolManager.ReleaseObject(gameObject);
+        }
     }
 
     public override StaticTileInfo Serialize()

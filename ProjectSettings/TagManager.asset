@@ -17,6 +17,7 @@ TagManager:
   - BreakingPlatform
   - GreaterSpikePlatform
   - LevelEnd
+  - Collectable
   layers:
   - Default
   - TransparentFX

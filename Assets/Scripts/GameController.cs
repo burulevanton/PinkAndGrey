@@ -34,6 +34,7 @@ public class GameController : Singleton<GameController>
   public PlayerController PlayerController;
   public GameUIController GameUiController;
 
+  public bool IsPaused { get; private set; } = false;
 
   void Awake()
   {
@@ -42,7 +43,7 @@ public class GameController : Singleton<GameController>
 
   private void Start()
   {
-    //StartCoroutine(StartLevel());
+    StartCoroutine(StartLevel());
   }
 
   private IEnumerator StartLevel()
