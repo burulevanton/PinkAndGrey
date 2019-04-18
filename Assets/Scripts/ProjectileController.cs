@@ -12,6 +12,8 @@ public class ProjectileController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameController.Instance.IsPaused)
+            return;
         transform.position += Direction * Time.deltaTime * _speed;
     }
     //todo сделать layermask

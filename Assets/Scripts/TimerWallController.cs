@@ -9,7 +9,6 @@ public class TimerWallController : TileController
 {
 
     private SpriteRenderer _spriteRenderer;
-    private GameController _gameController;
 
     [SerializeField] private Sprite _deactivatedSprite;
     [SerializeField] private Sprite _activatedSprite;
@@ -31,17 +30,13 @@ public class TimerWallController : TileController
     private void Awake()
     {
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        _gameController = GameController.Instance;
-    }
-
-    private void Reset()
-    {
-        _gameController = GameController.Instance;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GameController.Instance.IsPaused)
+            return;
         if (this._activeTimer>0.0f)
         {
             this._activeTimer -= Time.deltaTime;

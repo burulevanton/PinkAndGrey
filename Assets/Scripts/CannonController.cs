@@ -23,8 +23,24 @@ public class CannonController : TileController
     // Update is called once per frame
     private void Start()
     {
-//        _timer = _shootInterval;
-        StartCoroutine(Shoot());
+        _timer = _shootInterval;
+//        StartCoroutine(Shoot());
+    }
+
+    private void Update()
+    {
+        if (GameController.Instance.IsPaused)
+            return;
+        if (_timer >= 0.0f)
+            _timer -= Time.deltaTime;
+        else
+        {
+            var position = transform.position + (Vector3)_direction * 0.5f;
+            _item = PoolManager.SpawnObject(_projectilePrefab, position, transform.rotation);
+            _item.GetComponent<ProjectileController>().Direction = _direction;
+            _timer = _shootInterval;
+            _item.transform.parent = transform;
+        }
     }
 
     private IEnumerator Shoot()

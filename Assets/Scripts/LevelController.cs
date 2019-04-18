@@ -33,6 +33,20 @@ public class LevelController : Singleton<LevelController>
     [SerializeField] private GameObject InnerWallPrefab;
     [SerializeField] private GameObject LevelEndPrefab;
     [SerializeField] private GameObject ProjectilePrefab;
+
+    [SerializeField] private GameObject _breakingPlatforms;
+    [SerializeField] private GameObject _cannons;
+    [SerializeField] private GameObject _collectables;
+    [SerializeField] private GameObject _copyingPortals;
+    [SerializeField] private GameObject _enemies;
+    [SerializeField] private GameObject _greaterSpikes;
+    [SerializeField] private GameObject _innerWalls;
+    [SerializeField] private GameObject _levelEnds;
+    [SerializeField] private GameObject _movingChangingPlatforms;
+    [SerializeField] private GameObject _movingPlatforms;
+    [SerializeField] private GameObject _portals;
+    [SerializeField] private GameObject _spikes;
+    [SerializeField] private GameObject _timerWalls;
     public void Serialize()
     {
         var tileControllers =
@@ -69,8 +83,8 @@ public class LevelController : Singleton<LevelController>
     {
         yield return StartCoroutine(PoolManager.Instance.ClearScene());
         GameController.Instance.Text.text = "Очистка уровня завершена";
-        var path = "Levels/" + GameData.Instance.CurrentLevel;
-//        var path = "Levels/3";
+//        var path = "Levels/" + GameData.Instance.CurrentLevel;
+        var path = "Levels/1";
         var json = Resources.Load<TextAsset>(path).text;
         JObject jObject = JObject.Parse(json);
         GameController.Instance.PlayerController.transform.position =
@@ -103,51 +117,62 @@ public class LevelController : Singleton<LevelController>
                             .GetComponent<BreakingPlatformController>();
                         breakingPlatformClone
                             .Deserialize(tile);
+                        breakingPlatformClone.transform.parent = _breakingPlatforms.transform;
                         break;
                     case TileType.InnerWall:
                         var innerWallClone =
                             PoolManager.SpawnObject(InnerWallPrefab).GetComponent<InnerWallController>();
                         innerWallClone.Deserialize(tile);
+                        innerWallClone.transform.parent = _innerWalls.transform;
                         break;
                     case TileType.MovingChangingPlatform:
                         var movingChangingPlatformClone = PoolManager.SpawnObject(MovingChangingPlatformPrefab)
                             .GetComponent<MovingChangingPlatform>();
                         movingChangingPlatformClone.Deserialize(tile);
+                        movingChangingPlatformClone.transform.parent = _movingChangingPlatforms.transform;
                         break;
                     case TileType.CopyingPortal:
                         var copyingPortalClone = PoolManager.SpawnObject(CopyingPortalPrefab)
                             .GetComponent<CopyingPortalController>();
                         copyingPortalClone.Deserialize(tile);
+                        copyingPortalClone.transform.parent = _copyingPortals.transform;
                         break;
                     case TileType.Cannon:
                         var cannonClone = PoolManager.SpawnObject(CannonPrefab).GetComponent<CannonController>();
                         cannonClone.Deserialize(tile);
+                        cannonClone.transform.parent = _cannons.transform;
                         break;
                     case TileType.Collectable:
                         var collectableClone = PoolManager.SpawnObject(CollectablePrefab).GetComponent<Collectable>();
                         collectableClone.Deserialize(tile);
+                        collectableClone.transform.parent = _collectables.transform;
                         break;
                     case TileType.Enemy:
                         var enemyClone = PoolManager.SpawnObject(EnemyPrefab).GetComponent<EnemyController>();
                         enemyClone.Deserialize(tile);
+                        enemyClone.transform.parent = _enemies.transform;
                         break;
                     case TileType.GreaterSpike:
                         var greaterSpikeClone = PoolManager.SpawnObject(GreaterSpikePrefab)
                             .GetComponent<GreaterSpike>();
                         greaterSpikeClone.Deserialize(tile);
+                        greaterSpikeClone.transform.parent = _greaterSpikes.transform;
                         break;
                     case TileType.MovingPlatform:
                         var movingPlatformClone = PoolManager.SpawnObject(MovingPlatformPrefab).GetComponent<MovingPlatform>();
                         movingPlatformClone.Deserialize(tile);
+                        movingPlatformClone.transform.parent = _movingPlatforms.transform;
                         break;
                     case TileType.Spike:
                         var spikeClone = PoolManager.SpawnObject(SpikePrefab).GetComponent<SpikeController>();
                         spikeClone.Deserialize(tile);
+                        spikeClone.transform.parent = _spikes.transform;
                         break;
                     case TileType.TimerWall:
                         var timerWallClone =
                             PoolManager.SpawnObject(TimerWallPrefab).GetComponent<TimerWallController>();
                         timerWallClone.Deserialize(tile);
+                        timerWallClone.transform.parent = _timerWalls.transform;
                         break;
                     case TileType.Portal:
                         var portalClone = PoolManager.SpawnObject(PortalPrefab).GetComponent<PortalController>();
@@ -157,10 +182,12 @@ public class LevelController : Singleton<LevelController>
                         CheckForOtherPortal(portalsList, new Vector3(portalTileInfo.OtherPortalX,
                             portalTileInfo.OtherPortalY,
                             portalTileInfo.OtherPortalZ), portalClone);
+                        portalClone.transform.parent = _portals.transform;
                         break;
                     case TileType.LevelEnd:
                         var levelEndClone = PoolManager.SpawnObject(LevelEndPrefab).GetComponent<LevelEndController>();
                         levelEndClone.Deserialize(tile);
+                        levelEndClone.transform.parent = _levelEnds.transform;
                         break;
             }
         }

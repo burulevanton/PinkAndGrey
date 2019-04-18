@@ -25,7 +25,8 @@ public class MovingPlatform : TileController
     }
     void Update()
     {
-                
+        if (GameController.Instance.IsPaused)
+            return;
         if (_isPause)
         {
             if (Time.time - _startTime > 0.5f)

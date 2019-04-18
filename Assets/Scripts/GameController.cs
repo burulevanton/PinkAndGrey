@@ -43,16 +43,18 @@ public class GameController : Singleton<GameController>
 
   private void Start()
   {
-    StartCoroutine(StartLevel());
+    //StartCoroutine(StartLevel());
   }
 
-  private IEnumerator StartLevel()
+  public IEnumerator StartLevel()
   {
+    Pause();
     yield return StartCoroutine(GameUiController.ScreenFader.FadeScene());
     Text.text = "Десериализация";
     yield return StartCoroutine(LevelController.Instance.Deserialize());
     Text.text = "Десериализация закончена";
     yield return StartCoroutine(GameUiController.StartScene());
+    UnPause();
   }
 
   public void LevelPassed()
@@ -64,6 +66,8 @@ public class GameController : Singleton<GameController>
   // Update is called once per frame
   void Update()
   {
+    if (IsPaused)
+      return;
     ReadTouches();
   }
 
@@ -163,5 +167,15 @@ public class GameController : Singleton<GameController>
     if (!flag1)
       return;
     //this.ProcessDblTap(); //todo функция даблтапа
+  }
+
+  public void Pause()
+  {
+    IsPaused = true;
+  }
+
+  public void UnPause()
+  {
+    IsPaused = false;
   }
 }

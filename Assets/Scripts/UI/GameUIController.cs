@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.Internal.Experimental.UIElements;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -13,8 +12,7 @@ namespace UI
         public GameObject Panel;
         public void RestartScene()
         {
-            GameData.Instance.CurrentLevel++;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            StartCoroutine(GameController.Instance.StartLevel());
         }
 
         public void BackToMainMenu()
@@ -40,6 +38,13 @@ namespace UI
         public void GameMenu()
         {
             Panel.SetActive(true);
+            GameController.Instance.Pause();
+        }
+
+        public void UnpauseGame()
+        {
+            Panel.SetActive(false);
+            GameController.Instance.UnPause();
         }
     }
 }

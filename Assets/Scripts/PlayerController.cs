@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameController.Instance.IsPaused)
+            return;
         Vector2 position = (Vector2) this.transform.position;
         Vector2 vector2 = this.moveSpeed * Time.deltaTime * this._moveDirection;
         float distance = Mathf.Abs((double) vector2.x == 0.0 ? vector2.y : vector2.x);
