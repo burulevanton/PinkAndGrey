@@ -1,70 +1,226 @@
 ﻿{
   "TileInfos": {
-    "InnerWall": [
+    "MovingChangingPlatform": [
       {
-        "TileType": 5,
-        "X": -5.0,
-        "Y": -1.0,
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": 1.0,
+        "RotationZ": 270.0,
+        "TileType": 6,
+        "X": 2.5,
+        "Y": -6.5,
         "Z": 0.0
       },
       {
-        "TileType": 5,
-        "X": -4.0,
-        "Y": -1.0,
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": 1.0,
+        "RotationZ": 270.0,
+        "TileType": 6,
+        "X": 1.5,
+        "Y": -6.5,
         "Z": 0.0
       },
       {
-        "TileType": 5,
-        "X": 5.0,
-        "Y": -1.0,
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": 1.0,
+        "RotationZ": 270.0,
+        "TileType": 6,
+        "X": 0.5,
+        "Y": -6.5,
         "Z": 0.0
       },
       {
-        "TileType": 5,
-        "X": 4.0,
-        "Y": -1.0,
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 1.0,
+        "DirectionY": 0.0,
+        "RotationZ": 180.0,
+        "TileType": 6,
+        "X": -7.5,
+        "Y": 7.5,
         "Z": 0.0
       },
       {
-        "TileType": 5,
-        "X": 3.0,
-        "Y": -1.0,
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 1.0,
+        "DirectionY": 0.0,
+        "RotationZ": 180.0,
+        "TileType": 6,
+        "X": -7.5,
+        "Y": 8.5,
         "Z": 0.0
       },
       {
-        "TileType": 5,
-        "X": 2.0,
-        "Y": -1.0,
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 1.0,
+        "DirectionY": 0.0,
+        "RotationZ": 180.0,
+        "TileType": 6,
+        "X": -7.5,
+        "Y": 6.5,
         "Z": 0.0
       },
       {
-        "TileType": 5,
-        "X": 1.0,
-        "Y": -1.0,
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": -1.0,
+        "DirectionY": 0.0,
+        "RotationZ": 0.0,
+        "TileType": 6,
+        "X": 7.5,
+        "Y": -6.5,
         "Z": 0.0
       },
       {
-        "TileType": 5,
-        "X": 0.0,
-        "Y": -1.0,
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": -1.0,
+        "DirectionY": 0.0,
+        "RotationZ": 0.0,
+        "TileType": 6,
+        "X": 7.5,
+        "Y": -7.5,
         "Z": 0.0
       },
       {
-        "TileType": 5,
-        "X": -1.0,
-        "Y": -1.0,
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": -1.0,
+        "DirectionY": 0.0,
+        "RotationZ": 0.0,
+        "TileType": 6,
+        "X": 7.5,
+        "Y": -8.5,
         "Z": 0.0
       },
       {
-        "TileType": 5,
-        "X": -2.0,
-        "Y": -1.0,
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": -1.0,
+        "RotationZ": 90.0,
+        "TileType": 6,
+        "X": 5.5,
+        "Y": 13.5,
         "Z": 0.0
       },
       {
-        "TileType": 5,
-        "X": -3.0,
-        "Y": -1.0,
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": -1.0,
+        "RotationZ": 90.0,
+        "TileType": 6,
+        "X": -7.5,
+        "Y": 13.5,
+        "Z": 0.0
+      }
+    ],
+    "GreaterSpike": [
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": 1.0,
+        "RotationZ": 0.0,
+        "TileType": 4,
+        "X": -1.5,
+        "Y": -6.5,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": 1.0,
+        "RotationZ": 0.0,
+        "TileType": 4,
+        "X": -0.5,
+        "Y": -6.5,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": 1.0,
+        "RotationZ": 0.0,
+        "TileType": 4,
+        "X": -2.5,
+        "Y": -6.5,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 1.0,
+        "DirectionY": 0.0,
+        "RotationZ": 270.0,
+        "TileType": 4,
+        "X": -7.5,
+        "Y": 5.5,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 1.0,
+        "DirectionY": 0.0,
+        "RotationZ": 270.0,
+        "TileType": 4,
+        "X": -7.5,
+        "Y": 4.5,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 1.0,
+        "DirectionY": 0.0,
+        "RotationZ": 270.0,
+        "TileType": 4,
+        "X": -7.5,
+        "Y": 3.5,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": -1.0,
+        "DirectionY": 0.0,
+        "RotationZ": 90.0,
+        "TileType": 4,
+        "X": 7.5,
+        "Y": -9.5,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": -1.0,
+        "DirectionY": 0.0,
+        "RotationZ": 90.0,
+        "TileType": 4,
+        "X": 7.5,
+        "Y": -10.5,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": -1.0,
+        "DirectionY": 0.0,
+        "RotationZ": 90.0,
+        "TileType": 4,
+        "X": 7.5,
+        "Y": -11.5,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": -1.0,
+        "RotationZ": 180.0,
+        "TileType": 4,
+        "X": -6.5,
+        "Y": 13.5,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 0.0,
+        "DirectionY": -1.0,
+        "RotationZ": 180.0,
+        "TileType": 4,
+        "X": 4.5,
+        "Y": 13.5,
         "Z": 0.0
       }
     ],
@@ -75,8 +231,8 @@
         "DirectionY": 1.0,
         "RotationZ": 0.0,
         "TileType": 1,
-        "X": 5.0,
-        "Y": -6.0,
+        "X": 6.5,
+        "Y": 8.5,
         "Z": 0.0
       },
       {
@@ -85,105 +241,841 @@
         "DirectionY": 1.0,
         "RotationZ": 0.0,
         "TileType": 1,
-        "X": 4.0,
-        "Y": -6.0,
+        "X": 7.5,
+        "Y": 8.5,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 1.0,
+        "DirectionY": 0.0,
+        "RotationZ": 270.0,
+        "TileType": 1,
+        "X": -7.5,
+        "Y": 2.5,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 1.0,
+        "DirectionY": 0.0,
+        "RotationZ": 270.0,
+        "TileType": 1,
+        "X": -7.5,
+        "Y": 1.5,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": 1.0,
+        "DirectionY": 0.0,
+        "RotationZ": 270.0,
+        "TileType": 1,
+        "X": -7.5,
+        "Y": 0.5,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": -1.0,
+        "DirectionY": 0.0,
+        "RotationZ": 90.0,
+        "TileType": 1,
+        "X": 7.5,
+        "Y": -14.5,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": -1.0,
+        "DirectionY": 0.0,
+        "RotationZ": 90.0,
+        "TileType": 1,
+        "X": 7.5,
+        "Y": -13.5,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "DirectionX": -1.0,
+        "DirectionY": 0.0,
+        "RotationZ": 90.0,
+        "TileType": 1,
+        "X": 7.5,
+        "Y": -12.5,
         "Z": 0.0
       },
       {
         "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
         "DirectionX": 0.0,
-        "DirectionY": 1.0,
-        "RotationZ": 0.0,
+        "DirectionY": -1.0,
+        "RotationZ": 180.0,
         "TileType": 1,
-        "X": -5.0,
-        "Y": -6.0,
+        "X": -5.5,
+        "Y": 13.5,
         "Z": 0.0
       },
       {
         "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
         "DirectionX": 0.0,
-        "DirectionY": 1.0,
-        "RotationZ": 0.0,
+        "DirectionY": -1.0,
+        "RotationZ": 180.0,
         "TileType": 1,
-        "X": -4.0,
-        "Y": -6.0,
+        "X": 3.5,
+        "Y": 13.5,
+        "Z": 0.0
+      }
+    ],
+    "TimerWall": [
+      {
+        "TileType": 11,
+        "X": -7.5,
+        "Y": -4.5,
         "Z": 0.0
       },
       {
-        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
-        "DirectionX": 0.0,
-        "DirectionY": 1.0,
-        "RotationZ": 0.0,
-        "TileType": 1,
-        "X": -3.0,
-        "Y": -6.0,
+        "TileType": 11,
+        "X": -7.5,
+        "Y": -5.5,
+        "Z": 0.0
+      }
+    ],
+    "Spike": [
+      {
+        "TileType": 10,
+        "X": 7.5,
+        "Y": -3.5,
         "Z": 0.0
       },
       {
-        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
-        "DirectionX": 0.0,
-        "DirectionY": 1.0,
-        "RotationZ": 0.0,
-        "TileType": 1,
-        "X": -2.0,
-        "Y": -6.0,
+        "TileType": 10,
+        "X": 7.5,
+        "Y": -2.5,
         "Z": 0.0
       },
       {
-        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
-        "DirectionX": 0.0,
-        "DirectionY": 1.0,
-        "RotationZ": 0.0,
-        "TileType": 1,
-        "X": -1.0,
-        "Y": -6.0,
+        "TileType": 10,
+        "X": 7.5,
+        "Y": -1.5,
+        "Z": 0.0
+      }
+    ],
+    "InnerWall": [
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": 6.5,
         "Z": 0.0
       },
       {
-        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
-        "DirectionX": 0.0,
-        "DirectionY": 1.0,
-        "RotationZ": 0.0,
-        "TileType": 1,
-        "X": 3.0,
-        "Y": -6.0,
+        "TileType": 5,
+        "X": 8.5,
+        "Y": -10.5,
         "Z": 0.0
       },
       {
-        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
-        "DirectionX": 0.0,
-        "DirectionY": 1.0,
-        "RotationZ": 0.0,
-        "TileType": 1,
-        "X": 2.0,
-        "Y": -6.0,
+        "TileType": 5,
+        "X": 8.5,
+        "Y": -9.5,
         "Z": 0.0
       },
       {
-        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
-        "DirectionX": 0.0,
-        "DirectionY": 1.0,
-        "RotationZ": 0.0,
-        "TileType": 1,
-        "X": 1.0,
-        "Y": -6.0,
+        "TileType": 5,
+        "X": -8.5,
+        "Y": 2.5,
         "Z": 0.0
       },
       {
-        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
-        "DirectionX": 0.0,
-        "DirectionY": 1.0,
-        "RotationZ": 0.0,
-        "TileType": 1,
-        "X": 0.0,
-        "Y": -6.0,
+        "TileType": 5,
+        "X": -8.5,
+        "Y": 3.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": 10.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": 11.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": 12.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": 13.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": 14.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 7.5,
+        "Y": 15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 6.5,
+        "Y": 15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 5.5,
+        "Y": 15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 4.5,
+        "Y": 15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 3.5,
+        "Y": 15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 2.5,
+        "Y": 15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 1.5,
+        "Y": 15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 0.5,
+        "Y": 15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -0.5,
+        "Y": 15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -1.5,
+        "Y": 15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -2.5,
+        "Y": 15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -3.5,
+        "Y": 15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -4.5,
+        "Y": 15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -5.5,
+        "Y": 15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -6.5,
+        "Y": 15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -7.5,
+        "Y": 15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": 15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": -8.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": -7.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": -14.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": -13.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": -12.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": -11.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": -6.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": -5.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": -4.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": -3.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": -2.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": -1.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": -0.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": 0.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": 1.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": 2.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": 3.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": 4.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": 5.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": 6.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": 7.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": 8.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": 9.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": 10.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": 11.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": 12.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": 13.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": 14.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": 15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 8.5,
+        "Y": -15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 7.5,
+        "Y": -15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 6.5,
+        "Y": -15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 5.5,
+        "Y": -15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 4.5,
+        "Y": -15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 3.5,
+        "Y": -15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 2.5,
+        "Y": -15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 1.5,
+        "Y": -15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": 0.5,
+        "Y": -15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -0.5,
+        "Y": -15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -1.5,
+        "Y": -15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -2.5,
+        "Y": -15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -3.5,
+        "Y": -15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -4.5,
+        "Y": -15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -5.5,
+        "Y": -15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -6.5,
+        "Y": -15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -7.5,
+        "Y": -15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": -15.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": -14.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": -13.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": -12.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": -11.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": -10.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": -9.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": -8.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": -7.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": -6.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": -5.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": -4.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": -3.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": -2.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": -1.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": -0.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": 0.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": 1.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": 4.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": 5.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": 7.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": 8.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 5,
+        "X": -8.5,
+        "Y": 9.5,
+        "Z": 0.0
+      }
+    ],
+    "Portal": [
+      {
+        "$type": "Serialize.PortalTileInfo, Assembly-CSharp",
+        "OtherPortalX": -1.5,
+        "OtherPortalY": -3.5,
+        "OtherPortalZ": 0.0,
+        "TileType": 8,
+        "X": 5.5,
+        "Y": -0.5,
+        "Z": 0.0
+      },
+      {
+        "$type": "Serialize.PortalTileInfo, Assembly-CSharp",
+        "OtherPortalX": 5.5,
+        "OtherPortalY": -0.5,
+        "OtherPortalZ": 0.0,
+        "TileType": 8,
+        "X": -1.5,
+        "Y": -3.5,
+        "Z": 0.0
+      }
+    ],
+    "MovingPlatform": [
+      {
+        "$type": "Serialize.DynamicTileInfo, Assembly-CSharp",
+        "FromDirectionX": -4.5,
+        "FromDirectionY": 11.5,
+        "ToDirectionX": -2.5,
+        "ToDirectionY": 11.5,
+        "TileType": 7,
+        "X": -4.5,
+        "Y": 11.5,
+        "Z": 0.0
+      }
+    ],
+    "LevelEnd": [
+      {
+        "TileType": 12,
+        "X": -3.5,
+        "Y": -4.5,
+        "Z": 0.0
+      }
+    ],
+    "Enemy": [
+      {
+        "$type": "Serialize.DynamicTileInfo, Assembly-CSharp",
+        "FromDirectionX": 3.5,
+        "FromDirectionY": 5.5,
+        "ToDirectionX": 1.5,
+        "ToDirectionY": 5.5,
+        "TileType": 3,
+        "X": 3.5,
+        "Y": 5.5,
+        "Z": 0.0
+      }
+    ],
+    "CopyingPortal": [
+      {
+        "TileType": 9,
+        "X": 0.5,
+        "Y": -7.5,
+        "Z": 0.0
+      }
+    ],
+    "Collectable": [
+      {
+        "TileType": 2,
+        "X": 2.5,
+        "Y": -10.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 2,
+        "X": 7.5,
+        "Y": 7.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 2,
+        "X": -4.5,
+        "Y": 6.5,
+        "Z": 0.0
+      }
+    ],
+    "BreakingPlatform": [
+      {
+        "TileType": 0,
+        "X": 2.5,
+        "Y": 13.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 0,
+        "X": 1.5,
+        "Y": 13.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 0,
+        "X": 0.5,
+        "Y": 13.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 0,
+        "X": -0.5,
+        "Y": 13.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 0,
+        "X": -1.5,
+        "Y": 13.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 0,
+        "X": -2.5,
+        "Y": 13.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 0,
+        "X": -3.5,
+        "Y": 13.5,
+        "Z": 0.0
+      },
+      {
+        "TileType": 0,
+        "X": -4.5,
+        "Y": 13.5,
         "Z": 0.0
       }
     ]
   },
   "PlayerPos": {
-    "x": 0.0,
-    "y": 0.0,
+    "x": 0.5,
+    "y": -1.5,
     "z": 0.0
   }
 }
