@@ -8,9 +8,21 @@ using UnityEngine;
 
 public class BreakingPlatformController : TileController
 {
+
+    private Animator _animator;
+    private BoxCollider2D _boxCollider2D;
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+        _boxCollider2D = GetComponent<BoxCollider2D>();
+    }
+
     public void BreakPlatform()
     {
-        PoolManager.ReleaseObject(gameObject);
+        //PoolManager.ReleaseObject(gameObject);
+        _animator.SetTrigger("Break");
+        _boxCollider2D.enabled = false;
     }
 
     public override StaticTileInfo Serialize()

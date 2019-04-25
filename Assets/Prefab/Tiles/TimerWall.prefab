@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3067022059819926280}
   - component: {fileID: 3067022059819926282}
   - component: {fileID: 3067022059819926279}
+  - component: {fileID: 2786253388083020033}
   m_Layer: 0
   m_Name: TimerWall
   m_TagString: TimerWall
@@ -70,7 +71,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300926, guid: 39215ed5ac24aac4dba931a105816145, type: 3}
+  m_Sprite: {fileID: -2461644228290473403, guid: db2e7e4abac4d194ba5972f3e53af54c,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,3 +123,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _deactivatedSprite: {fileID: 21300926, guid: 39215ed5ac24aac4dba931a105816145, type: 3}
   _activatedSprite: {fileID: 21300924, guid: 39215ed5ac24aac4dba931a105816145, type: 3}
+--- !u!95 &2786253388083020033
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3067022059819926278}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b407cf5a7b0460429318471e2e759d2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

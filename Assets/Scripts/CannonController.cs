@@ -18,7 +18,13 @@ public class CannonController : TileController
     private float _timer;
 
     private GameObject _item = null;
-    
+
+    private Animator _animator;
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     // Update is called once per frame
     private void Start()
@@ -35,27 +41,25 @@ public class CannonController : TileController
             _timer -= Time.deltaTime;
         else
         {
-            var position = transform.position + (Vector3)_direction * 0.5f;
-            _item = PoolManager.SpawnObject(_projectilePrefab, position, transform.rotation);
-            _item.GetComponent<ProjectileController>().Direction = _direction;
-            _timer = _shootInterval;
-            _item.transform.parent = transform;
+//            var position = transform.position + (Vector3)_direction * 0.5f;
+//            _item = PoolManager.SpawnObject(_projectilePrefab, position, transform.rotation);
+//            _item.GetComponent<ProjectileController>().Direction = _direction;
+//            _timer = _shootInterval;
+//            _item.transform.parent = transform;
+              _animator.SetTrigger("Shoot");
+              _timer = _shootInterval;
         }
     }
 
-    private IEnumerator Shoot()
+    private void Shoot()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(_shootInterval);
-            if (_item == null || !_item.activeSelf)
-            {
-                Vector3 position = transform.position + (Vector3)_direction * 0.5f;
-                _item = PoolManager.SpawnObject(_projectilePrefab, position, transform.rotation);
-                _item.GetComponent<ProjectileController>().Direction = _direction;
-            }
-        }
+        var position = transform.position + (Vector3)_direction * 0.5f;
+        _item = PoolManager.SpawnObject(_projectilePrefab, position, transform.rotation);
+        _item.GetComponent<ProjectileController>().Direction = _direction;
+        
+        _item.transform.parent = transform;
     }
+
 
     public override StaticTileInfo Serialize()
     {

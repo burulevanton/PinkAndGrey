@@ -6,6 +6,5 @@ namespace Serialize
     {
         public float DirectionX { get; set; }
         public float DirectionY { get; set; }
-        public float RotationZ { get; set; }
     }
 }

@@ -13,6 +13,7 @@ public class MovingPlatform : TileController
     [SerializeField] private float moveSpeed;
 
     [SerializeField] private bool reverseMove = false;
+    [SerializeField] protected bool updateRotation;
     private float _startTime;
     private float _journeyLength;
     private float _distCovered;
@@ -50,6 +51,8 @@ public class MovingPlatform : TileController
         {
 
             reverseMove = !reverseMove;
+            if (updateRotation)
+                UpdateRotation();
             _isPause = true;
             _startTime = Time.time;
         }
@@ -69,6 +72,11 @@ public class MovingPlatform : TileController
             ToDirectionY = ToDirection.y
         };
         return dynamicTileInfo;
+    }
+
+    private void UpdateRotation()
+    {
+        transform.rotation = reverseMove ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
     }
 
     public override bool Deserialize(StaticTileInfo tileInfo)

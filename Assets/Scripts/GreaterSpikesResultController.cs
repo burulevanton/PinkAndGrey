@@ -6,7 +6,6 @@ using UnityEngine;
 public class GreaterSpikesResultController : MonoBehaviour
 {
     public GreaterSpikeTriggerController GreaterSpikeTriggerController;
-    private SpriteRenderer _sprite;
     private BoxCollider2D _boxCollider2D;
 
     [SerializeField] private float _preAttackTime = 0.5f;
@@ -16,7 +15,6 @@ public class GreaterSpikesResultController : MonoBehaviour
 
     private void Start()
     {
-        _sprite = gameObject.GetComponent<SpriteRenderer>();
         _boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
     }
 
@@ -31,14 +29,13 @@ public class GreaterSpikesResultController : MonoBehaviour
             if (_isAttacked)
             {
                 GreaterSpikeTriggerController.EnableTrigger();
-                PoolManager.ReleaseObject(gameObject);
-                _sprite.enabled = false;
+//                PoolManager.ReleaseObject(gameObject);
+                gameObject.SetActive(false);
                 _boxCollider2D.enabled = false;
             }
             else
             {
                 UpdateRotation();
-                _sprite.enabled = true;
                 _boxCollider2D.enabled = true;
                 _isAttacked = true;
                 _timer = _attackTime;
@@ -46,18 +43,18 @@ public class GreaterSpikesResultController : MonoBehaviour
         }
     }
 
-    IEnumerator LifeCycle()
-    {
-        yield return new WaitForSeconds(_preAttackTime);
-        UpdateRotation();
-        _sprite.enabled = true;
-        _boxCollider2D.enabled = true;
-        yield return new WaitForSeconds(_attackTime);
-        GreaterSpikeTriggerController.EnableTrigger();
-        PoolManager.ReleaseObject(gameObject);
-        _sprite.enabled = false;
-        _boxCollider2D.enabled = false;
-    }
+//    IEnumerator LifeCycle()
+//    {
+//        yield return new WaitForSeconds(_preAttackTime);
+//        UpdateRotation();
+//        _sprite.enabled = true;
+//        _boxCollider2D.enabled = true;
+//        yield return new WaitForSeconds(_attackTime);
+//        GreaterSpikeTriggerController.EnableTrigger();
+//        PoolManager.ReleaseObject(gameObject);
+//        _sprite.enabled = false;
+//        _boxCollider2D.enabled = false;
+//    }
 
     private void OnEnable()
     {

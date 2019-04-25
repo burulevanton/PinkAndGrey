@@ -13,6 +13,7 @@ using Newtonsoft.Json.Linq;
 using ObjectPool;
 using Serialize;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using Application = UnityEngine.Application;
 using Object = UnityEngine.Object;
 
@@ -47,6 +48,7 @@ public class LevelController : Singleton<LevelController>
     [SerializeField] private GameObject _portals;
     [SerializeField] private GameObject _spikes;
     [SerializeField] private GameObject _timerWalls;
+    
     public void Serialize()
     {
         var tileControllers =

@@ -5,7 +5,7 @@ using Vector2 = UnityEngine.Vector2;
 public class GreaterSpikeTriggerController : MonoBehaviour
 {
 
-    [SerializeField] private GameObject GreaterSpikeResultPrefab;
+    [SerializeField] private GreaterSpikesResultController GreaterSpikeResult;
 
     private BoxCollider2D _boxCollider2D;
 
@@ -20,17 +20,18 @@ public class GreaterSpikeTriggerController : MonoBehaviour
     private void Start()
     {
         _boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
+        GreaterSpikeResult.GreaterSpikeTriggerController = this;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         _boxCollider2D.enabled = false;
         //var item = (GameObject) Instantiate(GreaterSpikeResultPrefab);
-        var item = PoolManager.SpawnObject(GreaterSpikeResultPrefab);
-        item.transform.parent = transform;
-        item.transform.position = transform.position;
-        var spikesResult = item.gameObject.GetComponent<GreaterSpikesResultController>();
-        spikesResult.GreaterSpikeTriggerController = this;
+//        var item = PoolManager.SpawnObject(GreaterSpikeResultPrefab);
+//        item.transform.parent = transform;
+//        item.transform.position = transform.position;
+//        var spikesResult = item.gameObject.GetComponent<GreaterSpikesResultController>();
+        GreaterSpikeResult.gameObject.SetActive(true);
     }
 
     public void EnableTrigger()

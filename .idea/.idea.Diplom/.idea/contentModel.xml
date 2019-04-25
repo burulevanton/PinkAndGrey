@@ -38,10 +38,10 @@
           <e p="FallController.cs" t="Include" />
           <e p="GameController.cs" t="Include" />
           <e p="GameData.cs" t="Include" />
-          <e p="GreaterSpike.cs" t="Include" />
           <e p="GreaterSpikesResultController.cs" t="Include" />
           <e p="GreaterSpikeTriggerController.cs" t="Include" />
           <e p="InnerWallController.cs" t="Include" />
+          <e p="LaserTrap.cs" t="Include" />
           <e p="LevelController.cs" t="Include" />
           <e p="LevelEndController.cs" t="Include" />
           <e p="MovingChangingPlatform.cs" t="Include" />
@@ -68,6 +68,7 @@
           <e p="SpikeController.cs" t="Include" />
           <e p="TestCam.cs" t="Include" />
           <e p="TileController.cs" t="Include" />
+          <e p="TileTest.cs" t="Include" />
           <e p="TimerWallController.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="GameUIController.cs" t="Include" />

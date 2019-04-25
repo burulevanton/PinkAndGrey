@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
                             break;
                         case "GreaterSpikePlatform":
                             isStopped = true;
-                            StopByTransform(raycastHit2D.transform);
+                            StopByTransform(raycastHit2D.transform, bigTransform:true);
                             break;
                 }
             }
@@ -161,13 +161,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void StopByTransform(Transform transform, bool setStopperPosition = false)
+    private void StopByTransform(Transform transform, bool setStopperPosition = false, bool bigTransform = false)
     {
         if(this.Stopped)
             return;
         Vector2 position = (Vector2) transform.position;
         if (!setStopperPosition)
-            position -= this._moveDirection * this.tileSize;
+            position -= this._moveDirection * (bigTransform ? this.tileSize * 0.5f : this.tileSize);
         this.transform.position = (Vector3) position;
         this.UpdateScaleRotation(this.scaleX, this.rotationZ + 180f);
         this._moveDirection = Vector2.zero;

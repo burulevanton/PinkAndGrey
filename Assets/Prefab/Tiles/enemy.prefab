@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7745618157090459875}
   - component: {fileID: 7745618157090459876}
   - component: {fileID: 7745618157090459877}
+  - component: {fileID: 777405626}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Enemy
@@ -70,7 +71,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e19b12cde6e77be4b9de87ff5b524082, type: 3}
+  m_Sprite: {fileID: -5765212839288467257, guid: e23fcacc16a9ef648b0320829f683551,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,10 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af6e9bc9b47b0c4c8dc12c0b16c08ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fromDirection: {x: 0.5, y: -10.5, z: 0}
-  _toDirection: {x: 4.5, y: -10.5, z: 0}
+  FromDirection: {x: 3.5, y: 5.5, z: 0}
+  ToDirection: {x: 1.5, y: 5.5, z: 0}
   moveSpeed: 3
   reverseMove: 0
+  updateRotation: 1
 --- !u!61 &7745618157090459877
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,3 +126,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &777405626
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7745618157090459873}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e79330a98a3540642960d06d1f788095, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
