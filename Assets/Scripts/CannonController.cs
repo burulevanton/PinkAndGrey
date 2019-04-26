@@ -1,9 +1,9 @@
 ﻿using System.Collections;
-using DefaultNamespace;
 using Enum;
 using ObjectPool;
 using Serialize;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CannonController : TileController
 {
@@ -20,6 +20,8 @@ public class CannonController : TileController
     private GameObject _item = null;
 
     private Animator _animator;
+
+    [SerializeField]private TileType tileType;
 
     private void Awake()
     {
@@ -65,13 +67,10 @@ public class CannonController : TileController
     {
         var staticTileInfo = new StaticTileWithSomeDirectionInfo()
         {
-            TileType = TileType.Cannon,
-            X = transform.position.x,
-            Y = transform.position.y,
-            Z = transform.position.z,
-            DirectionX = _direction.x,
-            DirectionY = _direction.y,
-            RotationZ = transform.eulerAngles.z
+            TileType = tileType,
+            Position = transform.position,
+            Rotation = transform.rotation.eulerAngles,
+            Direction = _direction
         };
         return staticTileInfo;
     }
@@ -80,11 +79,10 @@ public class CannonController : TileController
     {
         var info = tileInfo as StaticTileWithSomeDirectionInfo;
         if (info == null)
-            return false;    
-        transform.position = new Vector3(info.X, info.Y, info.Z);
-        _direction.x = info.DirectionX;
-        _direction.y = info.DirectionY;
-        transform.rotation = Quaternion.Euler(0f, 0f, info.RotationZ);
+            return false;
+        transform.position = info.Position;
+        _direction = info.Direction;
+        transform.rotation = Quaternion.Euler(info.Rotation);
         return true;
     }
 

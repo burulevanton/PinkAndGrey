@@ -1,4 +1,3 @@
-using DefaultNamespace;
 using Enum;
 using Serialize;
 using UnityEngine;
@@ -10,19 +9,16 @@ public class SpikeController : TileController
         var staticTileInfo = new StaticTileInfo
         {
             TileType = TileType.Spike,
-            X = transform.position.x,
-            Y = transform.position.y,
-            Z = transform.position.z
+            Position = transform.position,
+            Rotation = transform.rotation.eulerAngles
         };
         return staticTileInfo;
     }
 
     public override bool Deserialize(StaticTileInfo tileInfo)
     {
-        var info = tileInfo as StaticTileInfo;
-        if (info == null)
-            return false;    
-        transform.position = new Vector3(info.X, info.Y, info.Z);
+        transform.position = tileInfo.Position;
+        transform.rotation = Quaternion.Euler(tileInfo.Rotation);
         return true;
     }
 }

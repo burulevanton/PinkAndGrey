@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using DefaultNamespace;
 using Enum;
 using Serialize;
 using UnityEngine;
@@ -63,13 +62,10 @@ public class MovingPlatform : TileController
         var dynamicTileInfo = new DynamicTileInfo()
         {
             TileType = TileType.MovingPlatform,
-            X = transform.position.x,
-            Y = transform.position.y,
-            Z = transform.position.z,
-            FromDirectionX = FromDirection.x,
-            FromDirectionY = FromDirection.y,
-            ToDirectionX = ToDirection.x,
-            ToDirectionY = ToDirection.y
+            Position = transform.position,
+            Rotation = transform.rotation.eulerAngles,
+            FromDirection = FromDirection,
+            ToDirection = ToDirection
         };
         return dynamicTileInfo;
     }
@@ -84,9 +80,10 @@ public class MovingPlatform : TileController
         var info = tileInfo as DynamicTileInfo;
         if (info == null)
             return false;
-        transform.position = new Vector3(info.X, info.Y, info.Z);
-        FromDirection = new Vector3(info.FromDirectionX, info.FromDirectionY);
-        ToDirection = new Vector3(info.ToDirectionX, info.ToDirectionY);
+        transform.position = info.Position;
+        transform.rotation = Quaternion.Euler(info.Rotation);
+        FromDirection = info.FromDirection;
+        ToDirection = info.ToDirection;
         return true;
     }
 }

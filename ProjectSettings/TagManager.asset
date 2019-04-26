@@ -8,16 +8,18 @@ TagManager:
   - MovingPlatform
   - Wall
   - Portal
-  - GreaterSpike
   - Enemy
   - Projectile
   - TimerWall
   - MovingChangingPlatform
   - CopyingPortal
   - BreakingPlatform
-  - GreaterSpikePlatform
   - LevelEnd
   - Collectable
+  - LaserTrapTrigger
+  - LaserTrap
+  - LaserTrapPlatform
+  - GreaterSpike
   layers:
   - Default
   - TransparentFX

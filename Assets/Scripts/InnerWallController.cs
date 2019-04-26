@@ -1,30 +1,36 @@
+﻿using System.Collections;
+using System.Collections.Generic;
 using Enum;
 using Serialize;
 using UnityEngine;
 
-namespace DefaultNamespace
+public class InnerWallController : TileController
 {
-    public class InnerWallController : TileController
-    {
-        public override StaticTileInfo Serialize()
-        {
-            var staticTileInfo = new StaticTileInfo
-            {
-                TileType = TileType.InnerWall,
-                X = transform.position.x,
-                Y = transform.position.y,
-                Z = transform.position.z
-            };
-            return staticTileInfo;
-        }
+    private SpriteRenderer _spriteRenderer;
 
-        public override bool Deserialize(StaticTileInfo tileInfo)
-        {
-            var info = tileInfo as StaticTileInfo;
-            if (info == null)
-                return false;    
-            transform.position = new Vector3(info.X, info.Y, info.Z);
-            return true;
-        }
+    [SerializeField] private Sprite[] sprites;
+    private void Awake()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
     }
+
+    public override StaticTileInfo Serialize()
+    {
+        var staticTileInfo = new StaticTileInfo
+        {
+        TileType = TileType.InnerWall,
+        Position = transform.position,
+        Rotation = transform.rotation.eulerAngles
+        };
+        return staticTileInfo;
+    }
+
+    public override bool Deserialize(StaticTileInfo tileInfo)
+    {
+        transform.position = tileInfo.Position;
+        transform.rotation = Quaternion.Euler(tileInfo.Rotation);
+        return true;
+    }
+
 }

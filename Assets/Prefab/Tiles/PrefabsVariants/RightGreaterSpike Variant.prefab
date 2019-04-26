@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 8012542957621456420, guid: bdf73e14aaa47b74bae293828f345ff2,
         type: 3}
       propertyPath: m_Name
-      value: RightGreaterSpike
+      value: RightGreaterSpike Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8012542957621456419, guid: bdf73e14aaa47b74bae293828f345ff2,
         type: 3}
@@ -35,7 +35,7 @@ PrefabInstance:
     - target: {fileID: 8012542957621456419, guid: bdf73e14aaa47b74bae293828f345ff2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8012542957621456419, guid: bdf73e14aaa47b74bae293828f345ff2,
         type: 3}
@@ -45,7 +45,7 @@ PrefabInstance:
     - target: {fileID: 8012542957621456419, guid: bdf73e14aaa47b74bae293828f345ff2,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.7071068
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8012542957621456419, guid: bdf73e14aaa47b74bae293828f345ff2,
         type: 3}
@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 8012542957621456419, guid: bdf73e14aaa47b74bae293828f345ff2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 270
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8012542957612034482, guid: bdf73e14aaa47b74bae293828f345ff2,
         type: 3}

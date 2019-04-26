@@ -41,7 +41,7 @@
           <e p="GreaterSpikesResultController.cs" t="Include" />
           <e p="GreaterSpikeTriggerController.cs" t="Include" />
           <e p="InnerWallController.cs" t="Include" />
-          <e p="LaserTrap.cs" t="Include" />
+          <e p="LaserTrapController.cs" t="Include" />
           <e p="LevelController.cs" t="Include" />
           <e p="LevelEndController.cs" t="Include" />
           <e p="MovingChangingPlatform.cs" t="Include" />
@@ -60,6 +60,7 @@
             <e p="ISerializableMonoBehaviour.cs" t="Include" />
             <e p="KnownTypesBinder.cs" t="Include" />
             <e p="LevelInfo.cs" t="Include" />
+            <e p="PaletteTileInfo.cs" t="Include" />
             <e p="PortalTileInfo.cs" t="Include" />
             <e p="StaticTileInfo.cs" t="Include" />
             <e p="StaticTileWithSomeDirectionInfo.cs" t="Include" />
@@ -73,6 +74,7 @@
           <e p="UI" t="Include">
             <e p="GameUIController.cs" t="Include" />
             <e p="MenuUIController.cs" t="Include" />
+            <e p="ScoreController.cs" t="Include" />
             <e p="ScreenFader.cs" t="Include" />
           </e>
         </e>

@@ -1,12 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Runtime.Serialization;
 using System.Text;
-using DefaultNamespace;
 using Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -21,7 +17,8 @@ public class LevelController : Singleton<LevelController>
 {
 
     [SerializeField] private GameObject BreakingPlatformPrefab;
-    [SerializeField] private GameObject CannonPrefab;
+    [SerializeField] private GameObject CannonHorizontalPrefab;
+    [SerializeField] private GameObject CannonVerticalPrefab;
     [SerializeField] private GameObject CollectablePrefab;
     [SerializeField] private GameObject CopyingPortalPrefab;
     [SerializeField] private GameObject EnemyPrefab;
@@ -33,7 +30,6 @@ public class LevelController : Singleton<LevelController>
     [SerializeField] private GameObject TimerWallPrefab;
     [SerializeField] private GameObject InnerWallPrefab;
     [SerializeField] private GameObject LevelEndPrefab;
-    [SerializeField] private GameObject ProjectilePrefab;
 
     [SerializeField] private GameObject _breakingPlatforms;
     [SerializeField] private GameObject _cannons;
@@ -48,6 +44,9 @@ public class LevelController : Singleton<LevelController>
     [SerializeField] private GameObject _portals;
     [SerializeField] private GameObject _spikes;
     [SerializeField] private GameObject _timerWalls;
+
+    [SerializeField] private Tilemap tilemapEnvironment;
+    [SerializeField] private List<TileBase> tiles;
     
     public void Serialize()
     {
@@ -66,9 +65,11 @@ public class LevelController : Singleton<LevelController>
                 dict.Add(info.TileType, new List<StaticTileInfo>() {info});
             }
         }
+        
         var levelInfo = new LevelInfo
         {
-        TileInfos = dict, PlayerPos = GameController.Instance.PlayerController.transform.position
+        TileGameObjects = dict, PlayerPos = GameController.Instance.PlayerController.transform.position,
+        PaletteTileInfos = SerializeEnvironment()
         };
         var json = JsonConvert.SerializeObject(levelInfo, Formatting.Indented, new JsonSerializerSettings()
         {
@@ -81,20 +82,41 @@ public class LevelController : Singleton<LevelController>
         Debug.Log(json);
     }
 
+    private List<PaletteTileInfo> SerializeEnvironment()
+    {
+        var list = new List<PaletteTileInfo>();
+        for (int i = tilemapEnvironment.cellBounds.xMin; i < tilemapEnvironment.cellBounds.xMax; i++)
+        {
+            for (int j = tilemapEnvironment.cellBounds.yMin; j < tilemapEnvironment.cellBounds.yMax; j++)
+            {
+                Vector3Int localPlace = (new Vector3Int(i, j, (int) tilemapEnvironment.transform.position.y));
+                if (tilemapEnvironment.HasTile(localPlace))
+                {
+                    var tile = tilemapEnvironment.GetTile(localPlace);
+                    var tileInfo = new PaletteTileInfo
+                    {
+                    X = i, Y = j, IndexOfArray = tiles.FindIndex(x => x.name == tile.name)
+                    };
+                    list.Add(tileInfo);
+                }
+            }
+        }
+
+        return list;
+    }
+
     public IEnumerator Deserialize()
     {
         yield return StartCoroutine(PoolManager.Instance.ClearScene());
-        GameController.Instance.Text.text = "Очистка уровня завершена";
 //        var path = "Levels/" + GameData.Instance.CurrentLevel;
         var path = "Levels/3";
         var json = Resources.Load<TextAsset>(path).text;
         JObject jObject = JObject.Parse(json);
         GameController.Instance.PlayerController.transform.position =
         JsonConvert.DeserializeObject<Vector3>(jObject["PlayerPos"].ToString());
-        Debug.Log(jObject["TileInfos"].ToString());
         var tilesDict =
         JsonConvert.DeserializeObject<Dictionary<TileType, List<StaticTileInfo>>>(
-        jObject["TileInfos"].ToString(), new JsonSerializerSettings()
+        jObject["TileGameObjects"].ToString(), new JsonSerializerSettings()
         {
         TypeNameHandling = TypeNameHandling.Objects,
         Binder = new KnownTypesBinder()
@@ -104,7 +126,18 @@ public class LevelController : Singleton<LevelController>
             DeserializeList(keypair.Key, keypair.Value);
             yield return null;
         }
+        var environmentList =
+        JsonConvert.DeserializeObject<List<PaletteTileInfo>>(jObject["PaletteTileInfos"].ToString());
+        DeserializeEnvironment(environmentList);
         yield return null;
+    }
+
+    private void DeserializeEnvironment(List<PaletteTileInfo> list)
+    {
+        foreach (var l in list)
+        {
+            tilemapEnvironment.SetTile(new Vector3Int(l.X,l.Y, 0), tiles[l.IndexOfArray]);
+        }
     }
 
     private void DeserializeList(TileType type, List<StaticTileInfo> tilesArray)
@@ -121,12 +154,6 @@ public class LevelController : Singleton<LevelController>
                             .Deserialize(tile);
                         breakingPlatformClone.transform.parent = _breakingPlatforms.transform;
                         break;
-                    case TileType.InnerWall:
-                        var innerWallClone =
-                            PoolManager.SpawnObject(InnerWallPrefab).GetComponent<InnerWallController>();
-                        innerWallClone.Deserialize(tile);
-                        innerWallClone.transform.parent = _innerWalls.transform;
-                        break;
                     case TileType.MovingChangingPlatform:
                         var movingChangingPlatformClone = PoolManager.SpawnObject(MovingChangingPlatformPrefab)
                             .GetComponent<MovingChangingPlatform>();
@@ -139,10 +166,15 @@ public class LevelController : Singleton<LevelController>
                         copyingPortalClone.Deserialize(tile);
                         copyingPortalClone.transform.parent = _copyingPortals.transform;
                         break;
-                    case TileType.Cannon:
-                        var cannonClone = PoolManager.SpawnObject(CannonPrefab).GetComponent<CannonController>();
-                        cannonClone.Deserialize(tile);
-                        cannonClone.transform.parent = _cannons.transform;
+                    case TileType.CannonHorizontal:
+                        var cannonHorizontalClone = PoolManager.SpawnObject(CannonHorizontalPrefab).GetComponent<CannonController>();
+                        cannonHorizontalClone.Deserialize(tile);
+                        cannonHorizontalClone.transform.parent = _cannons.transform;
+                        break;
+                    case TileType.CannonVertical:
+                        var cannonVerticalClone = PoolManager.SpawnObject(CannonVerticalPrefab).GetComponent<CannonController>();
+                        cannonVerticalClone.Deserialize(tile);
+                        cannonVerticalClone.transform.parent = _cannons.transform;
                         break;
                     case TileType.Collectable:
                         var collectableClone = PoolManager.SpawnObject(CollectablePrefab).GetComponent<Collectable>();
@@ -156,7 +188,7 @@ public class LevelController : Singleton<LevelController>
                         break;
                     case TileType.GreaterSpike:
                         var greaterSpikeClone = PoolManager.SpawnObject(GreaterSpikePrefab)
-                            .GetComponent<GreaterSpike>();
+                            .GetComponent<LaserTrapController>();
                         greaterSpikeClone.Deserialize(tile);
                         greaterSpikeClone.transform.parent = _greaterSpikes.transform;
                         break;
@@ -181,15 +213,19 @@ public class LevelController : Singleton<LevelController>
                         portalClone.Deserialize(tile);
                         portalsList.Add(portalClone.gameObject);
                         var portalTileInfo = tile as PortalTileInfo;
-                        CheckForOtherPortal(portalsList, new Vector3(portalTileInfo.OtherPortalX,
-                            portalTileInfo.OtherPortalY,
-                            portalTileInfo.OtherPortalZ), portalClone);
+                        CheckForOtherPortal(portalsList, portalTileInfo.OtherPortalPosition, portalClone);
                         portalClone.transform.parent = _portals.transform;
                         break;
                     case TileType.LevelEnd:
                         var levelEndClone = PoolManager.SpawnObject(LevelEndPrefab).GetComponent<LevelEndController>();
                         levelEndClone.Deserialize(tile);
                         levelEndClone.transform.parent = _levelEnds.transform;
+                        break;
+                    case TileType.InnerWall:
+                        var InnerWallClone =
+                        PoolManager.SpawnObject(InnerWallPrefab).GetComponent<InnerWallController>();
+                        InnerWallClone.Deserialize(tile);
+                        InnerWallClone.transform.parent = _innerWalls.transform;
                         break;
             }
         }

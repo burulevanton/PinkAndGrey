@@ -3,7 +3,8 @@ namespace Enum
     public enum TileType
     {
         BreakingPlatform, //+
-        Cannon, //+
+        CannonHorizontal,//+
+        CannonVertical, //+
         Collectable, //+
         Enemy, //+
         GreaterSpike, //+

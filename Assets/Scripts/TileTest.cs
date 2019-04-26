@@ -1,22 +1,45 @@
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using Newtonsoft.Json;
+using Serialize;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class TileTest : MonoBehaviour
 {
     public Tilemap Tilemap;
-    void Start () {
-        BoundsInt bounds = Tilemap.cellBounds;
-        TileBase[] allTiles = Tilemap.GetTilesBlock(bounds);
+    public List<TileBase> tiles;
 
-        for (int x = 0; x < bounds.size.x; x++) {
-            for (int y = 0; y < bounds.size.y; y++) {
-                TileBase tile = allTiles[x + y * bounds.size.x];
-                if (tile != null) {
-                    Debug.Log("x:" + x + " y:" + y + " tile:" + tile.name);
-                } else {
-                    Debug.Log("x:" + x + " y:" + y + " tile: (null)");
-                }
-            }
-        }        
+    private List<PaletteTileInfo> _list = new List<PaletteTileInfo>();
+    void Start () {
+//        for (int i = Tilemap.cellBounds.xMin; i < Tilemap.cellBounds.xMax; i++)
+//        {
+//            for (int j = Tilemap.cellBounds.yMin; j < Tilemap.cellBounds.yMax; j++)
+//            {
+//                Vector3Int localPlace = (new Vector3Int(i, j, (int) Tilemap.transform.position.y));
+//                if (Tilemap.HasTile(localPlace))
+//                {
+//                    var tile = Tilemap.GetTile(localPlace);
+//                    var tileInfo = new PaletteTileInfo
+//                    {
+//                    X = i, Y = j, IndexOfArray = tiles.FindIndex(x => x.name == tile.name)
+//                    };
+//                    _list.Add(tileInfo);
+//                }
+//            }
+//        }
+//
+//        var json = JsonConvert.SerializeObject(_list, Formatting.Indented);
+//        string path = Application.dataPath + "/tiles.json";
+//        Debug.Log(path);
+//        File.WriteAllText(path, json, Encoding.UTF8);
+//        string path = Application.dataPath + "/tiles.json";
+//        var json = File.ReadAllText(path);
+//        _list = JsonConvert.DeserializeObject<List<PaletteTileInfo>>(json);
+//        foreach (var l in _list)
+//        {
+//            Tilemap.SetTile(new Vector3Int(l.X,l.Y, 0), tiles[l.IndexOfArray]);
+//        }
     }         
 }

@@ -6,7 +6,9 @@ namespace Serialize
 {
     public class LevelInfo
     {
-        public Dictionary<TileType,List<StaticTileInfo>> TileInfos { get; set; }
+        public Dictionary<TileType,List<StaticTileInfo>> TileGameObjects { get; set; }
+
+        public List<PaletteTileInfo> PaletteTileInfos { get; set; }
         public Vector3 PlayerPos { get; set; }
     }
 }

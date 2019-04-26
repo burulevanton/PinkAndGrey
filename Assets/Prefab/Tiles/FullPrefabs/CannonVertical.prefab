@@ -98,6 +98,7 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 7201723849871349063, guid: 174c2422ff777c7448f61a801594feb6,
     type: 3}
   _shootInterval: 3
+  tileType: 2
 --- !u!95 &4079141742209462670
 Animator:
   serializedVersion: 3

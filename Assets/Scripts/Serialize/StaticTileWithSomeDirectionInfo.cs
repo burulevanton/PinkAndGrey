@@ -1,10 +1,10 @@
 using Enum;
+using UnityEngine;
 
 namespace Serialize
 {
     public class StaticTileWithSomeDirectionInfo: StaticTileInfo
     {
-        public float DirectionX { get; set; }
-        public float DirectionY { get; set; }
+        public Vector3 Direction { get; set; }
     }
 }

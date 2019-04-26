@@ -1,12 +1,11 @@
 using Enum;
+using UnityEngine;
 
 namespace Serialize
 {
     public class DynamicTileInfo:StaticTileInfo
     {
-        public float FromDirectionX { get; set; }
-        public float FromDirectionY { get; set; }
-        public float ToDirectionX { get; set; }
-        public float ToDirectionY { get; set; }
+        public Vector3 FromDirection { get; set; }
+        public Vector3 ToDirection { get; set; }
     }
 }

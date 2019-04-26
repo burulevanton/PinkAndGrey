@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using DefaultNamespace;
 using Enum;
 using Serialize;
 using UnityEngine;
@@ -21,12 +20,9 @@ public class MovingChangingPlatform : TileController
         var staticTileInfo = new StaticTileWithSomeDirectionInfo()
         {
             TileType = TileType.MovingChangingPlatform,
-            X = transform.position.x,
-            Y = transform.position.y,
-            Z = transform.position.z,
-            DirectionX = _direction.x,
-            DirectionY = _direction.y,
-            RotationZ = transform.eulerAngles.z
+            Position = transform.position,
+            Rotation = transform.rotation.eulerAngles,
+            Direction = _direction
         };
         return staticTileInfo;
     }
@@ -35,11 +31,10 @@ public class MovingChangingPlatform : TileController
     {
         var info = tileInfo as StaticTileWithSomeDirectionInfo;
         if (info == null)
-            return false;    
-        transform.position = new Vector3(info.X, info.Y, info.Z);
-        _direction.x = info.DirectionX;
-        _direction.y = info.DirectionY;
-        transform.rotation = Quaternion.Euler(0f, 0f, info.RotationZ);
+            return false;
+        transform.position = info.Position;
+        transform.rotation = Quaternion.Euler(info.Rotation);
+        _direction = info.Direction;
         return true;
     }
 }

@@ -448,7 +448,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BreakingPlatformPrefab: {fileID: 2638801509294139180, guid: f9818b94f2e5d2a468f32a715c50bdc3,
     type: 3}
-  CannonPrefab: {fileID: 4724416525566909153, guid: 52c8160aa74430041b6ab9fbdc0f1b2c,
+  CannonHorizontalPrefab: {fileID: 8160262145339052705, guid: 9f34bae1917407f4e82fbf68738a00fe,
+    type: 3}
+  CannonVerticalPrefab: {fileID: 6444464647246194876, guid: 1cce441c05e250d4fa92b9d25b7d876c,
     type: 3}
   CollectablePrefab: {fileID: 6520337860224697860, guid: cb863b7b9cfd31344bf42395af5ad013,
     type: 3}
@@ -471,8 +473,6 @@ MonoBehaviour:
   InnerWallPrefab: {fileID: 8350231374895167449, guid: a90d676e3ba0fc84090427bc259a7197,
     type: 3}
   LevelEndPrefab: {fileID: 4548738660180714173, guid: ec3f54df03bd6e34daf741d04c44a6aa,
-    type: 3}
-  ProjectilePrefab: {fileID: 2518610963366440600, guid: 67aeccc6d8afe374b98095ddb927eb3b,
     type: 3}
   _breakingPlatforms: {fileID: 895330509}
   _cannons: {fileID: 1287074298}

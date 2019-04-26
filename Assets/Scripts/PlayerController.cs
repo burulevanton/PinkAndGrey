@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
                             isStopped = true;
                             StopByTransform(raycastHit2D.transform);
                             break;
-                        case "GreaterSpikePlatform":
+                        case "LaserTrapPlatform":
                             isStopped = true;
                             StopByTransform(raycastHit2D.transform, bigTransform:true);
                             break;
@@ -199,7 +199,7 @@ public class PlayerController : MonoBehaviour
                 case "Portal":
                     Teleport(other.gameObject);
                     break;
-                case "GreaterSpike":
+                case "LaserTrap":
                     DamageTaken(other.gameObject);
                     break;
                 case "Enemy":
@@ -224,6 +224,10 @@ public class PlayerController : MonoBehaviour
                     break;
                 case "LevelEnd":
                     LevelEnd();
+                    break;
+                case "LaserTrapTrigger":
+                    var laserTrapController = other.gameObject.GetComponentInParent<LaserTrapController>();
+                    laserTrapController.ActivateLaserTrap();
                     break;
         }
     }

@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using DefaultNamespace;
 using Enum;
 using Serialize;
 using UnityEngine;
@@ -25,12 +24,9 @@ public class PortalController: TileController
         var portalTileInfo = new PortalTileInfo
         {
             TileType = TileType.Portal,
-            X = transform.position.x,
-            Y = transform.position.y,
-            Z = transform.position.z,
-            OtherPortalX = OtherPortal.transform.position.x,
-            OtherPortalY = OtherPortal.transform.position.y,
-            OtherPortalZ = OtherPortal.transform.position.z
+            Position = transform.position,
+            Rotation = transform.rotation.eulerAngles,
+            OtherPortalPosition = OtherPortal.transform.position
         };
         return portalTileInfo;
     }
@@ -39,8 +35,9 @@ public class PortalController: TileController
     {
         var info = tileInfo as PortalTileInfo;
         if (info == null)
-            return false;    
-        transform.position = new Vector3(info.X, info.Y, info.Z);
+            return false;
+        transform.position = info.Position;
+        transform.rotation = Quaternion.Euler(info.Rotation);
         return true;
     }
 }

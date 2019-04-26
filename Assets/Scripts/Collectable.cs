@@ -1,18 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using DefaultNamespace;
 using Enum;
 using ObjectPool;
 using Serialize;
+using UI;
 using UnityEngine;
 
 public class Collectable : TileController
 {
+
+    [SerializeField] private ScoreController _scoreController;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             PoolManager.ReleaseObject(gameObject);
+            GameData.Instance.CurrentScoreOnLevel++;
+            _scoreController.UpdateScore();
         }
     }
 
@@ -21,19 +25,16 @@ public class Collectable : TileController
         var staticTileInfo = new StaticTileInfo
         {
             TileType = TileType.Collectable,
-            X = transform.position.x,
-            Y = transform.position.y,
-            Z = transform.position.z
+            Position = transform.position,
+            Rotation = transform.rotation.eulerAngles
         };
         return staticTileInfo;
     }
 
     public override bool Deserialize(StaticTileInfo tileInfo)
     {
-        var info = tileInfo as StaticTileInfo;
-        if (info == null)
-            return false;    
-        transform.position = new Vector3(info.X, info.Y, info.Z);
+        transform.position = tileInfo.Position;
+        transform.rotation = Quaternion.Euler(tileInfo.Rotation);
         return true;
     }
 }
