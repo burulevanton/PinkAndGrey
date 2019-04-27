@@ -18,17 +18,25 @@ public class TimerWallController : TileController
     private int _landedPlayers = 0;
 
     private Animator _animator;
+    private bool _nearDeactivate;
     
     public void ActivateWall()
     {
         this._activeTimer = _activeTime;
         _animator.SetTrigger("Activate");
+        _nearDeactivate = false;
     }
 
     // Start is called before the first frame update
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+    }
+
+    private void OnEnable()
+    {
+        _activeTimer = 0;
+        _nearDeactivate = false;
     }
 
     // Update is called once per frame
@@ -49,6 +57,11 @@ public class TimerWallController : TileController
                 {
                     _animator.SetTrigger("Deactivate");
                 }
+            }
+            if (!_nearDeactivate && this._activeTimer<=0.5f)
+            {
+                _animator.SetTrigger("NearDeactivate");
+                _nearDeactivate = true;
             }
         }
     }

@@ -43,7 +43,7 @@ public class GameController : Singleton<GameController>
 
   private void Start()
   {
-    //StartCoroutine(StartLevel());
+    StartCoroutine(StartLevel());
   }
 
   public IEnumerator StartLevel()
@@ -54,7 +54,14 @@ public class GameController : Singleton<GameController>
     yield return StartCoroutine(LevelController.Instance.Deserialize());
     Text.text = "Десериализация закончена";
     yield return StartCoroutine(GameUiController.StartScene());
+    GameData.Instance.CurrentScoreOnLevel = 0;
     UnPause();
+  }
+
+  public void PlayerDeath()
+  {
+    Pause();
+    GameUiController.DeathMenuOpen();
   }
 
   public void LevelPassed()

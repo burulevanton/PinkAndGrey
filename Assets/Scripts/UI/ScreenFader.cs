@@ -8,13 +8,8 @@ namespace UI
     public class ScreenFader : MonoBehaviour
     {
         public float fadeSpeed = 1.5f;
-        private Image _image;
+        [SerializeField] private Image _image;
 
-        private void Awake()
-        {
-            _image = GetComponent<Image>();
-            _image.enabled = true;
-        }
 
         public IEnumerator SceneAppearance()
         {

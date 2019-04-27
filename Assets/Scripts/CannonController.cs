@@ -29,8 +29,12 @@ public class CannonController : TileController
     }
 
     // Update is called once per frame
-    private void Start()
+    private void OnEnable()
     {
+        if (_item != null)
+        {
+            PoolManager.ReleaseObject(_item);
+        }
         _timer = _shootInterval;
 //        StartCoroutine(Shoot());
     }
@@ -58,7 +62,6 @@ public class CannonController : TileController
         var position = transform.position + (Vector3)_direction * 0.5f;
         _item = PoolManager.SpawnObject(_projectilePrefab, position, transform.rotation);
         _item.GetComponent<ProjectileController>().Direction = _direction;
-        
         _item.transform.parent = transform;
     }
 

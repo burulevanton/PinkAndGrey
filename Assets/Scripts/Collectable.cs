@@ -9,14 +9,13 @@ using UnityEngine;
 public class Collectable : TileController
 {
 
-    [SerializeField] private ScoreController _scoreController;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             PoolManager.ReleaseObject(gameObject);
             GameData.Instance.CurrentScoreOnLevel++;
-            _scoreController.UpdateScore();
+            ScoreController.Instance.UpdateScore();
         }
     }
 

@@ -30,6 +30,7 @@ public class LevelController : Singleton<LevelController>
     [SerializeField] private GameObject TimerWallPrefab;
     [SerializeField] private GameObject InnerWallPrefab;
     [SerializeField] private GameObject LevelEndPrefab;
+    [SerializeField] private GameObject PlayerPrefab;
 
     [SerializeField] private GameObject _breakingPlatforms;
     [SerializeField] private GameObject _cannons;
@@ -44,6 +45,7 @@ public class LevelController : Singleton<LevelController>
     [SerializeField] private GameObject _portals;
     [SerializeField] private GameObject _spikes;
     [SerializeField] private GameObject _timerWalls;
+    [SerializeField] private GameObject _playerWrap;
 
     [SerializeField] private Tilemap tilemapEnvironment;
     [SerializeField] private List<TileBase> tiles;
@@ -107,13 +109,19 @@ public class LevelController : Singleton<LevelController>
 
     public IEnumerator Deserialize()
     {
-        yield return StartCoroutine(PoolManager.Instance.ClearScene());
-//        var path = "Levels/" + GameData.Instance.CurrentLevel;
-        var path = "Levels/3";
+        ClearScene();
+        var path = "Levels/" + GameData.Instance.CurrentLevel;
+//        var path = "Levels/3";
         var json = Resources.Load<TextAsset>(path).text;
         JObject jObject = JObject.Parse(json);
+//        GameController.Instance.PlayerController = PoolManager.SpawnObject(PlayerPrefab,
+//        JsonConvert.DeserializeObject<Vector3>(jObject["PlayerPos"].ToString()), Quaternion.identity)
+//        .GetComponent<PlayerController>();
+//        GameController.Instance.PlayerController.transform.parent = _playerWrap.transform;
         GameController.Instance.PlayerController.transform.position =
         JsonConvert.DeserializeObject<Vector3>(jObject["PlayerPos"].ToString());
+        GameController.Instance.PlayerController.transform.rotation = Quaternion.identity;
+        GameController.Instance.PlayerController.IsAlive();
         var tilesDict =
         JsonConvert.DeserializeObject<Dictionary<TileType, List<StaticTileInfo>>>(
         jObject["TileGameObjects"].ToString(), new JsonSerializerSettings()
@@ -124,12 +132,27 @@ public class LevelController : Singleton<LevelController>
         foreach (var keypair in tilesDict)
         {
             DeserializeList(keypair.Key, keypair.Value);
-            yield return null;
+//            yield return null;
         }
         var environmentList =
         JsonConvert.DeserializeObject<List<PaletteTileInfo>>(jObject["PaletteTileInfos"].ToString());
         DeserializeEnvironment(environmentList);
         yield return null;
+    }
+
+    private void ClearScene()
+    {
+        tilemapEnvironment.ClearAllTiles();
+        var tileControllers = GetComponentsInChildren<TileController>(false);
+        Debug.Log(tileControllers.Length);
+        foreach (var tileController in tileControllers)
+        {
+            PoolManager.ReleaseObject(tileController.gameObject);
+        }
+//        if (GameController.Instance.PlayerController != null)
+//        {
+//            PoolManager.ReleaseObject(GameController.Instance.PlayerController.gameObject);            
+//        }
     }
 
     private void DeserializeEnvironment(List<PaletteTileInfo> list)

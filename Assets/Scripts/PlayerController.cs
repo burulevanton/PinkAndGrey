@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Enum;
+using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -36,18 +37,26 @@ public class PlayerController : MonoBehaviour
 
     public bool Moving => !this.Stopped;
 
+    private Animator _animator;
+
     void Awake()
     {
         gc = GameController.Instance;
         gc.PlayerController = this;
         UpdateScaleRotation(1.0f,0.0f);
         _parent = transform.parent;
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void IsAlive()
+    {
+        _animator.SetTrigger("IsAlive");
     }
 
     private void FixedUpdate()
@@ -89,7 +98,9 @@ public class PlayerController : MonoBehaviour
             }
 
             if (isStopped)
+            {
                 position = (Vector2) this.transform.position;
+            }
             else
                 position += vector2;
         }
@@ -118,6 +129,7 @@ public class PlayerController : MonoBehaviour
         this.OnTimerWall = null;
         this.transform.parent = _parent;
         //this.transform.parent = gc.transform; //todo сделать что-то с этим
+        _animator.SetTrigger("Fly");
         this.SetMoveDirection(direction);
         return true;
     }
@@ -171,6 +183,7 @@ public class PlayerController : MonoBehaviour
         this.transform.position = (Vector3) position;
         this.UpdateScaleRotation(this.scaleX, this.rotationZ + 180f);
         this._moveDirection = Vector2.zero;
+        _animator.SetTrigger("Fall");
         if ((double) this.nextSwipeTimeout <= 0.0)
             return;
         this.JumpWithDirection(this.nextSwipeDirection);
@@ -186,6 +199,7 @@ public class PlayerController : MonoBehaviour
         this.transform.parent = transform;
         this.UpdateScaleRotation(this.scaleX, this.rotationZ + 180f);
         this._moveDirection = Vector2.zero;
+        _animator.SetTrigger("Fall");
         if(this.nextSwipeTimeout <= 0.0f)
             return;
         this.JumpWithDirection(this.nextSwipeDirection);
@@ -269,7 +283,13 @@ public class PlayerController : MonoBehaviour
 
     private void DamageTaken(GameObject damage)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        _animator.SetTrigger("Death");
+        _moveDirection = Vector2.zero;
+    }
+
+    private void EndDamageAnimation()
+    {
+        GameController.Instance.PlayerDeath();
     }
 
     private void ChangeDirectionWithMovingChangingPlatform(GameObject movingChangingPlatform)

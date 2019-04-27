@@ -28,6 +28,13 @@ public class LaserTrapController : TileController
         _animator = GetComponent<Animator>();
     }
 
+    private void OnEnable()
+    {
+        _isTriggerActivated = false;
+        _isAttacked = false;
+        _timer = 0;
+    }
+
     private void Update()
     {
         if (GameController.Instance.IsPaused)

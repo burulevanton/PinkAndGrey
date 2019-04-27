@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 namespace UI
 {
-    public class ScoreController : MonoBehaviour
+    public class ScoreController : Singleton<ScoreController>
     {
         public Image[] _images;
         [SerializeField] private Sprite _active;

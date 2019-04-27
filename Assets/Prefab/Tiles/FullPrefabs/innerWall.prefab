@@ -70,7 +70,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 3ffffa8de4efe1d4a833378165042209, type: 3}
+  m_Sprite: {fileID: -2106474646230618691, guid: 3ffffa8de4efe1d4a833378165042209,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,15 +121,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: -2094710021874238713, guid: e23fcacc16a9ef648b0320829f683551, type: 3}
-  - {fileID: -3942037136331078414, guid: e23fcacc16a9ef648b0320829f683551, type: 3}
-  - {fileID: 2709712476939407970, guid: e23fcacc16a9ef648b0320829f683551, type: 3}
-  - {fileID: -7037841376345174732, guid: e23fcacc16a9ef648b0320829f683551, type: 3}
-  - {fileID: -882546751461850205, guid: e23fcacc16a9ef648b0320829f683551, type: 3}
-  - {fileID: -6957492136450286860, guid: e23fcacc16a9ef648b0320829f683551, type: 3}
-  - {fileID: -1797092809891547924, guid: e23fcacc16a9ef648b0320829f683551, type: 3}
-  - {fileID: -2282412888691856135, guid: e23fcacc16a9ef648b0320829f683551, type: 3}
-  - {fileID: -4643028936642426995, guid: e23fcacc16a9ef648b0320829f683551, type: 3}
-  - {fileID: 3908502584661027105, guid: e23fcacc16a9ef648b0320829f683551, type: 3}
-  - {fileID: 2902758137524582736, guid: e23fcacc16a9ef648b0320829f683551, type: 3}
-  - {fileID: 225479533903673637, guid: e23fcacc16a9ef648b0320829f683551, type: 3}
+  - {fileID: -478712208113734128, guid: 3ffffa8de4efe1d4a833378165042209, type: 3}
+  - {fileID: 6485218163734474786, guid: 3ffffa8de4efe1d4a833378165042209, type: 3}
+  - {fileID: -2106474646230618691, guid: 3ffffa8de4efe1d4a833378165042209, type: 3}
+  - {fileID: -1997580655937618598, guid: 3ffffa8de4efe1d4a833378165042209, type: 3}
+  - {fileID: 4531086819291552378, guid: 3ffffa8de4efe1d4a833378165042209, type: 3}
+  - {fileID: -2044683342234044200, guid: 3ffffa8de4efe1d4a833378165042209, type: 3}
+  - {fileID: -8861870662356677613, guid: 3ffffa8de4efe1d4a833378165042209, type: 3}
+  - {fileID: -4120985861864256009, guid: 3ffffa8de4efe1d4a833378165042209, type: 3}
+  - {fileID: 7667391693866413695, guid: 3ffffa8de4efe1d4a833378165042209, type: 3}
+  - {fileID: -5420054595540329333, guid: 3ffffa8de4efe1d4a833378165042209, type: 3}
+  - {fileID: -689849957261461041, guid: 3ffffa8de4efe1d4a833378165042209, type: 3}
+  - {fileID: -8612437444357824106, guid: 3ffffa8de4efe1d4a833378165042209, type: 3}

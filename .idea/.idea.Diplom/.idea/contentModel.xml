@@ -72,6 +72,7 @@
           <e p="TileTest.cs" t="Include" />
           <e p="TimerWallController.cs" t="Include" />
           <e p="UI" t="Include">
+            <e p="ButtonMenu.cs" t="Include" />
             <e p="GameUIController.cs" t="Include" />
             <e p="MenuUIController.cs" t="Include" />
             <e p="ScoreController.cs" t="Include" />

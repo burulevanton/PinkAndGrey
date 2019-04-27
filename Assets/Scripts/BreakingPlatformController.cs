@@ -17,6 +17,11 @@ public class BreakingPlatformController : TileController
         _boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
+    private void OnEnable()
+    {
+        _boxCollider2D.enabled = true;
+    }
+
     public void BreakPlatform()
     {
         //PoolManager.ReleaseObject(gameObject);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Internal.UIElements;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,9 +10,11 @@ namespace UI
     public class GameUIController:MonoBehaviour
     {
         public ScreenFader ScreenFader;
-        public GameObject Panel;
+        public GameObject GameMenu;
+        public GameObject DeathMenu;
         public void RestartScene()
         {
+            DeathMenu.SetActive(false);
             StartCoroutine(GameController.Instance.StartLevel());
         }
 
@@ -35,16 +38,21 @@ namespace UI
             StartCoroutine(LevelController.Instance.Deserialize());
         }
 
-        public void GameMenu()
+        public void GameMenuOpen()
         {
-            Panel.SetActive(true);
+            GameMenu.SetActive(true);
             GameController.Instance.Pause();
         }
 
         public void UnpauseGame()
         {
-            Panel.SetActive(false);
+            GameMenu.SetActive(false);
             GameController.Instance.UnPause();
+        }
+
+        public void DeathMenuOpen()
+        {
+            DeathMenu.SetActive(true);
         }
     }
 }
