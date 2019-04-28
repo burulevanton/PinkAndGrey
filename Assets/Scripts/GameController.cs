@@ -66,7 +66,9 @@ public class GameController : Singleton<GameController>
 
   public void LevelPassed()
   {
+    GameData.Instance.SetScoreOfLevel();
     GameData.Instance.CurrentLevel++;
+    GameData.Instance.UpdateMaxLevel();
     StartCoroutine(StartLevel());
   }
 

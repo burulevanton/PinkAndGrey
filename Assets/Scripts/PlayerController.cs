@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
 
     private Animator _animator;
 
+    private bool _alive = true;
+
     void Awake()
     {
         gc = GameController.Instance;
@@ -56,7 +58,8 @@ public class PlayerController : MonoBehaviour
 
     public void IsAlive()
     {
-        _animator.SetTrigger("IsAlive");
+        if(!_alive)   
+            _animator.SetTrigger("IsAlive");
     }
 
     private void FixedUpdate()
@@ -283,8 +286,10 @@ public class PlayerController : MonoBehaviour
 
     private void DamageTaken(GameObject damage)
     {
-        _animator.SetTrigger("Death");
+        GameController.Instance.Pause();
         _moveDirection = Vector2.zero;
+        _animator.SetTrigger("Death");
+        _alive = false;
     }
 
     private void EndDamageAnimation()

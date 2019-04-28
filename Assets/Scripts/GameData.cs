@@ -29,7 +29,7 @@ public class GameData:Singleton<GameData>
         var list = new List<int>();
         for (var i = 0; i < MaxLevel; i++)
         {
-            var score = PlayerPrefs.GetInt(string.Format("Level" + 3));
+            var score = PlayerPrefs.GetInt(string.Format("Level"+(i+1)));
             list.Add(score);
         }
 
@@ -38,7 +38,24 @@ public class GameData:Singleton<GameData>
 
     public void SetScoreOfLevel()
     {
-        PlayerPrefs.SetInt(string.Format("Level"+CurrentLevel),CurrentScoreOnLevel);
+        if (PlayerPrefs.HasKey(string.Format("Level"+CurrentLevel)))
+        {
+            var prevResult = PlayerPrefs.GetInt(string.Format("Level" + CurrentLevel));
+            if (prevResult<CurrentScoreOnLevel)
+               PlayerPrefs.SetInt(string.Format("Level"+CurrentLevel),CurrentScoreOnLevel);
+        }
+        else
+            PlayerPrefs.SetInt(string.Format("Level"+CurrentLevel),CurrentScoreOnLevel);
         PlayerPrefs.Save();
+    }
+
+    public void UpdateMaxLevel()
+    {
+        if (MaxLevel < CurrentLevel)
+        {
+            MaxLevel = CurrentLevel;
+            PlayerPrefs.SetInt("MaxLevel", MaxLevel);
+            PlayerPrefs.Save();
+        }
     }
 }

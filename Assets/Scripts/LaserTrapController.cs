@@ -33,6 +33,8 @@ public class LaserTrapController : TileController
         _isTriggerActivated = false;
         _isAttacked = false;
         _timer = 0;
+        _triggerCollider.enabled = true;
+        _resultCollider.enabled = false;
     }
 
     private void Update()

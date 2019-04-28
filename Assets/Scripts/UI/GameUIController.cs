@@ -12,6 +12,7 @@ namespace UI
         public ScreenFader ScreenFader;
         public GameObject GameMenu;
         public GameObject DeathMenu;
+        
         public void RestartScene()
         {
             DeathMenu.SetActive(false);
@@ -25,6 +26,7 @@ namespace UI
 
         public IEnumerator StartScene()
         {
+            ScoreController.Instance.ResetScore();
             yield return StartCoroutine(ScreenFader.SceneAppearance());
         }
 

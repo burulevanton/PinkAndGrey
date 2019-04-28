@@ -8,7 +8,7 @@ namespace UI
     public class MenuUIController : MonoBehaviour
     {
         public ScreenFader ScreenFader;
-        public Button[] LevelButtons;
+        public MenuButtonController[] LevelButtons;
 
         public void StartLevel()
         {
@@ -17,10 +17,17 @@ namespace UI
 
         private void Start()
         {
+            var list = GameData.Instance.GetScoreOfLevels();
             for (int i = 0; i < LevelButtons.Length; i++)
             {
-                var i1 = i+1;
-                LevelButtons[i].onClick.AddListener((() => ChangeLevel(i1)));
+                if (i<list.Count)
+                {
+                    LevelButtons[i].SetScoreButton(i+1, list[i]);
+                    var i1 = i+1;
+                    LevelButtons[i].Button.onClick.AddListener((() => ChangeLevel(i1)));
+                }
+                else
+                    LevelButtons[i].LockButton();
             }
 
             StartCoroutine(ScreenFader.SceneAppearance());
