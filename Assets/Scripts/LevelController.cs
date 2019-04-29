@@ -48,6 +48,8 @@ public class LevelController : Singleton<LevelController>
     [SerializeField] private GameObject _playerWrap;
 
     [SerializeField] private Tilemap tilemapEnvironment;
+    [SerializeField] private Tilemap tilemapWalls;
+    [SerializeField] private Tilemap tilemapSpikes;
     [SerializeField] private List<TileBase> tiles;
     
     public void Serialize()
@@ -71,7 +73,9 @@ public class LevelController : Singleton<LevelController>
         var levelInfo = new LevelInfo
         {
         TileGameObjects = dict, PlayerPos = GameController.Instance.PlayerController.transform.position,
-        PaletteTileInfos = SerializeEnvironment()
+        PaletteTileInfos = SerializeTileMap(tilemapEnvironment),
+        TileWalls = SerializeTileMap(tilemapWalls),
+        TileSpikes = SerializeTileMap(tilemapSpikes)
         };
         var json = JsonConvert.SerializeObject(levelInfo, Formatting.Indented, new JsonSerializerSettings()
         {
@@ -84,17 +88,17 @@ public class LevelController : Singleton<LevelController>
         Debug.Log(json);
     }
 
-    private List<PaletteTileInfo> SerializeEnvironment()
+    private List<PaletteTileInfo> SerializeTileMap(Tilemap tilemap)
     {
         var list = new List<PaletteTileInfo>();
-        for (int i = tilemapEnvironment.cellBounds.xMin; i < tilemapEnvironment.cellBounds.xMax; i++)
+        for (int i = tilemap.cellBounds.xMin; i < tilemap.cellBounds.xMax; i++)
         {
-            for (int j = tilemapEnvironment.cellBounds.yMin; j < tilemapEnvironment.cellBounds.yMax; j++)
+            for (int j = tilemap.cellBounds.yMin; j < tilemap.cellBounds.yMax; j++)
             {
-                Vector3Int localPlace = (new Vector3Int(i, j, (int) tilemapEnvironment.transform.position.y));
-                if (tilemapEnvironment.HasTile(localPlace))
+                Vector3Int localPlace = (new Vector3Int(i, j, (int) tilemap.transform.position.y));
+                if (tilemap.HasTile(localPlace))
                 {
-                    var tile = tilemapEnvironment.GetTile(localPlace);
+                    var tile = tilemap.GetTile(localPlace);
                     var tileInfo = new PaletteTileInfo
                     {
                     X = i, Y = j, IndexOfArray = tiles.FindIndex(x => x.name == tile.name)
@@ -111,7 +115,7 @@ public class LevelController : Singleton<LevelController>
     {
         ClearScene();
         var path = "Levels/" + GameData.Instance.CurrentLevel;
-//        var path = "Levels/3";
+        //var path = "Levels/3";
         var json = Resources.Load<TextAsset>(path).text;
         JObject jObject = JObject.Parse(json);
 //        GameController.Instance.PlayerController = PoolManager.SpawnObject(PlayerPrefab,
@@ -136,13 +140,19 @@ public class LevelController : Singleton<LevelController>
         }
         var environmentList =
         JsonConvert.DeserializeObject<List<PaletteTileInfo>>(jObject["PaletteTileInfos"].ToString());
-        DeserializeEnvironment(environmentList);
+        DeserializeTilemap(environmentList, tilemapEnvironment);
+        var wallList = JsonConvert.DeserializeObject<List<PaletteTileInfo>>(jObject["TileWalls"].ToString());
+        DeserializeTilemap(wallList, tilemapWalls);
+        var spikesList = JsonConvert.DeserializeObject<List<PaletteTileInfo>>(jObject["TileSpikes"].ToString());
+        DeserializeTilemap(spikesList, tilemapSpikes);
         yield return null;
     }
 
     private void ClearScene()
     {
         tilemapEnvironment.ClearAllTiles();
+        tilemapWalls.ClearAllTiles();
+        tilemapSpikes.ClearAllTiles();
         var tileControllers = GetComponentsInChildren<TileController>(false);
         Debug.Log(tileControllers.Length);
         foreach (var tileController in tileControllers)
@@ -155,11 +165,11 @@ public class LevelController : Singleton<LevelController>
 //        }
     }
 
-    private void DeserializeEnvironment(List<PaletteTileInfo> list)
+    private void DeserializeTilemap(List<PaletteTileInfo> list, Tilemap tilemap)
     {
         foreach (var l in list)
         {
-            tilemapEnvironment.SetTile(new Vector3Int(l.X,l.Y, 0), tiles[l.IndexOfArray]);
+            tilemap.SetTile(new Vector3Int(l.X,l.Y, 0), tiles[l.IndexOfArray]);
         }
     }
 

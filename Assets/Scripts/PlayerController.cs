@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
     private float nextSwipeTimeout;
     private float tileSize = 1.0f;
 
-    public TimerWallController OnTimerWall;
+    public MovingPlatform OnMovingPlatform;
+
 
     [SerializeField] private bool _isReverse;
     private Transform _parent;
@@ -79,23 +80,29 @@ public class PlayerController : MonoBehaviour
                 {
                         case "Wall":
                             isStopped = true;
-                            StopByTransform(raycastHit2D.transform);
-                            break;
-                        case "Spike":
-                            isStopped = true;
-                            DamageTaken(raycastHit2D.collider.gameObject);
+                            StopByTransform(raycastHit2D.point);
                             break;
                         case "MovingPlatform":
                             isStopped = true;
-                            StopByMovingTransform(raycastHit2D.transform);
+                            StopByMovingTransform(raycastHit2D.point, raycastHit2D.collider.transform);
                             break;
                         case "BreakingPlatform":
                             isStopped = true;
-                            StopByTransform(raycastHit2D.transform);
+                            StopByTransform(raycastHit2D.point);
                             break;
                         case "LaserTrapPlatform":
                             isStopped = true;
-                            StopByTransform(raycastHit2D.transform, bigTransform:true);
+                            StopByTransform(raycastHit2D.point, bigTransform:true);
+                            break;
+                        case "TimerWall":
+                            var timerWallController = raycastHit2D.collider.gameObject.GetComponent<TimerWallController>();
+                            if (timerWallController.IsActivated)
+                            {
+                                timerWallController.PlayerLand();
+                                isStopped = true;
+                                StopByTransform(raycastHit2D.point);
+                                break;
+                            }
                             break;
                 }
             }
@@ -109,6 +116,24 @@ public class PlayerController : MonoBehaviour
         }
 
         this.transform.position = (Vector3) position;
+        if (this.OnMovingPlatform != null && !this.OnMovingPlatform.IsPause)
+        {
+            Vector2 vectorSpeedPlatform = this.OnMovingPlatform.MoveSpeed * Time.deltaTime * this.OnMovingPlatform.Direction;
+            float distancePlatform =
+            Mathf.Abs((double) vectorSpeedPlatform.x == 0.0 ? vectorSpeedPlatform.y : vectorSpeedPlatform.x);
+            var raycastHit2d = Physics2D.Raycast(position+this.OnMovingPlatform.Direction*0.5f,
+            this.OnMovingPlatform.Direction, distancePlatform);
+            if (raycastHit2d.collider != null)
+            {
+                Debug.Log("PlayerPosition: " + transform.position + "Hit:" + raycastHit2d.point + " Direction:" + this.OnMovingPlatform.Direction);
+                switch (raycastHit2d.collider.tag)
+                {
+                    case "Wall":
+                        StopFromMovingPlatform(raycastHit2d.point);
+                        break;
+                }
+            }
+        }
     }
 
     private void UpdateScaleRotation(float nScaleX, float nRotationZ)
@@ -129,8 +154,8 @@ public class PlayerController : MonoBehaviour
         direction = _isReverse ? -direction : direction;
         if (!this.CanJumpWithDirection(direction))
             return false;
-        this.OnTimerWall = null;
         this.transform.parent = _parent;
+        this.OnMovingPlatform = null;
         //this.transform.parent = gc.transform; //todo сделать что-то с этим
         _animator.SetTrigger("Fly");
         this.SetMoveDirection(direction);
@@ -176,14 +201,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void StopByTransform(Transform transform, bool setStopperPosition = false, bool bigTransform = false)
+    private void StopFromMovingPlatform(Vector2 PointPosition)
     {
-        if(this.Stopped)
+        PointPosition -= this.OnMovingPlatform.Direction * 0.5f;
+        this.transform.position = (Vector3) PointPosition;
+        this.transform.parent = _parent;
+        var rotation = this.OnMovingPlatform.Direction.x != 0
+        ? this.OnMovingPlatform.Direction.x * 90f
+        : this.OnMovingPlatform.Direction.y * 180f;
+        this.UpdateScaleRotation(this.scaleX, rotation);
+        this.OnMovingPlatform = null;
+        _animator.SetTrigger("Fall");
+    }
+
+    private void StopByTransform(Vector2 Pointposition, bool setStopperPosition = false, bool bigTransform = false)
+    {
+        if (this.Stopped)
             return;
-        Vector2 position = (Vector2) transform.position;
-        if (!setStopperPosition)
-            position -= this._moveDirection * (bigTransform ? this.tileSize * 0.5f : this.tileSize);
-        this.transform.position = (Vector3) position;
+//            Pointposition -= this._moveDirection * (bigTransform ? this.tileSize * 0.5f : this.tileSize);
+        Pointposition -= this._moveDirection * 0.5f;
+        this.transform.position = (Vector3) Pointposition;
+        this.transform.parent = _parent;
+        this.OnMovingPlatform = null;
         this.UpdateScaleRotation(this.scaleX, this.rotationZ + 180f);
         this._moveDirection = Vector2.zero;
         _animator.SetTrigger("Fall");
@@ -193,13 +232,14 @@ public class PlayerController : MonoBehaviour
         this.nextSwipeTimeout = 0.0f;
     }
 
-    private void StopByMovingTransform(Transform transform)
+    private void StopByMovingTransform(Vector2 pointPosition, Transform transform)
     {
         if (this.Stopped)
             return;
-        Vector2 position = (Vector2) transform.position - this._moveDirection * this.tileSize;
+        Vector2 position = (Vector2) pointPosition - this._moveDirection * 0.5f;
         this.transform.position = (Vector3) position;
         this.transform.parent = transform;
+        this.OnMovingPlatform = transform.gameObject.GetComponent<MovingPlatform>();
         this.UpdateScaleRotation(this.scaleX, this.rotationZ + 180f);
         this._moveDirection = Vector2.zero;
         _animator.SetTrigger("Fall");
@@ -225,15 +265,6 @@ public class PlayerController : MonoBehaviour
                 case "Projectile":
                     DamageTaken(other.gameObject);
                     break;
-                case "TimerWall":
-                    var timerWallController = other.gameObject.GetComponent<TimerWallController>();
-                    if (timerWallController.IsActivated)
-                    {
-                        timerWallController.PlayerLand();
-                        StopByTransform(other.gameObject.transform);
-                        break;
-                    }
-                    break;
                 case "MovingChangingPlatform":
                     if(Stopped)
                         break;
@@ -245,6 +276,9 @@ public class PlayerController : MonoBehaviour
                 case "LaserTrapTrigger":
                     var laserTrapController = other.gameObject.GetComponentInParent<LaserTrapController>();
                     laserTrapController.ActivateLaserTrap();
+                    break;
+                case "Spike":
+                    DamageTaken(other.gameObject);
                     break;
         }
     }
@@ -307,6 +341,7 @@ public class PlayerController : MonoBehaviour
     private void LevelEnd()
     {
         this._moveDirection = Vector2.zero;
+        _animator.SetTrigger("Fall");
         GameController.Instance.LevelPassed();
     }
 }

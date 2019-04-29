@@ -59,7 +59,7 @@ public class CannonController : TileController
 
     private void Shoot()
     {
-        var position = transform.position + (Vector3)_direction * 0.5f;
+        var position = transform.position + (Vector3)_direction * 0.55f;
         _item = PoolManager.SpawnObject(_projectilePrefab, position, transform.rotation);
         _item.GetComponent<ProjectileController>().Direction = _direction;
         _item.transform.parent = transform;

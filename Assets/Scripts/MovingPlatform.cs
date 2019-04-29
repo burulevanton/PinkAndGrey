@@ -33,12 +33,15 @@ public class MovingPlatform : TileController
             {
                 _isPause = false;
                 _startTime = Time.time;
+                reverseMove = !reverseMove;
             }
             return;
         }
         _distCovered = (Time.time - _startTime) * moveSpeed;
+        Debug.Log("DistCovered:" + _distCovered + "MoveSpeed:" +moveSpeed * Time.deltaTime + "JourneyLength" + _journeyLength);
         _fracJourney = _distCovered / _journeyLength;
-        if (reverseMove)
+        Debug.Log(_fracJourney);
+        if (!reverseMove)
         {
             transform.position = Vector3.Lerp(FromDirection, ToDirection, _fracJourney);
         }
@@ -48,14 +51,31 @@ public class MovingPlatform : TileController
         }
         if ((Vector3.Distance(transform.position, ToDirection) == 0.0f || Vector3.Distance(transform.position, FromDirection) == 0.0f))
         {
-
-            reverseMove = !reverseMove;
             if (updateRotation)
                 UpdateRotation();
             _isPause = true;
             _startTime = Time.time;
         }
     }
+
+    public Vector2 Direction
+    {
+        get
+        {
+            if (FromDirection.x == ToDirection.x)
+            {
+                return reverseMove ? Vector2.down  : Vector2.up;
+            }
+            else
+            {
+                return reverseMove ? Vector2.left: Vector2.right;
+            }
+        }
+    }
+
+    public float MoveSpeed => moveSpeed;
+
+    public bool IsPause => _isPause;
 
     public override StaticTileInfo Serialize()
     {

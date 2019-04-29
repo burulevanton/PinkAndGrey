@@ -9,6 +9,9 @@ namespace Serialize
         public Dictionary<TileType,List<StaticTileInfo>> TileGameObjects { get; set; }
 
         public List<PaletteTileInfo> PaletteTileInfos { get; set; }
+
+        public List<PaletteTileInfo> TileWalls { get; set; }
+        public List<PaletteTileInfo> TileSpikes { get; set; }
         public Vector3 PlayerPos { get; set; }
     }
 }

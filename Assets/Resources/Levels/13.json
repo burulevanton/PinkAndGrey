@@ -1,0 +1,844 @@
+﻿{
+  "TileGameObjects": {
+    "GreaterSpike": [
+      {
+        "TileType": 5,
+        "Position": {
+          "x": 6.0,
+          "y": -6.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 90.0
+        }
+      }
+    ],
+    "LevelEnd": [
+      {
+        "TileType": 13,
+        "Position": {
+          "x": 5.5,
+          "y": -11.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      }
+    ],
+    "Collectable": [
+      {
+        "TileType": 3,
+        "Position": {
+          "x": 2.5,
+          "y": -9.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "TileType": 3,
+        "Position": {
+          "x": 5.5,
+          "y": -6.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "TileType": 3,
+        "Position": {
+          "x": 2.5,
+          "y": -4.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      }
+    ],
+    "TimerWall": [
+      {
+        "TileType": 12,
+        "Position": {
+          "x": 1.5,
+          "y": -5.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      }
+    ],
+    "InnerWall": [
+      {
+        "TileType": 6,
+        "Position": {
+          "x": -0.5,
+          "y": -4.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 180.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 0.5,
+          "y": -4.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 180.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 0.5,
+          "y": -4.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 270.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 0.5,
+          "y": -3.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 270.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 1.5,
+          "y": -2.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 180.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 2.5,
+          "y": -2.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 180.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 3.5,
+          "y": -2.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 180.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 4.5,
+          "y": -2.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 180.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 5.5,
+          "y": -3.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 90.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 5.5,
+          "y": -4.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 90.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 5.5,
+          "y": -5.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 90.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 5.5,
+          "y": -5.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 180.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 5.5,
+          "y": -7.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 5.5,
+          "y": -7.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 90.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 5.5,
+          "y": -8.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 90.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 4.5,
+          "y": -9.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 3.5,
+          "y": -9.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 3.5,
+          "y": -9.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 90.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 3.5,
+          "y": -10.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 90.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 3.5,
+          "y": -10.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 180.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 4.5,
+          "y": -10.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 180.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 5.5,
+          "y": -10.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 180.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 6.5,
+          "y": -11.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 90.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 5.5,
+          "y": -12.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 4.5,
+          "y": -12.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 3.5,
+          "y": -12.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 2.5,
+          "y": -12.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 1.5,
+          "y": -11.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 270.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 1.5,
+          "y": -10.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 270.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 1.5,
+          "y": -9.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 270.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 1.5,
+          "y": -9.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": 0.5,
+          "y": -9.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": -0.5,
+          "y": -6.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": -0.5,
+          "y": -8.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 270.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": -0.5,
+          "y": -7.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 270.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": -0.5,
+          "y": -6.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 270.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": -1.5,
+          "y": -6.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": -2.5,
+          "y": -6.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": -0.5,
+          "y": -4.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 90.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": -0.5,
+          "y": -3.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 90.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": -1.5,
+          "y": -2.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 180.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": -2.5,
+          "y": -2.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 180.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": -3.5,
+          "y": -3.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 270.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": -3.5,
+          "y": -4.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 270.0
+        }
+      },
+      {
+        "TileType": 6,
+        "Position": {
+          "x": -3.5,
+          "y": -5.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 270.0
+        }
+      }
+    ]
+  },
+  "PaletteTileInfos": [
+    {
+      "X": -5,
+      "Y": -9,
+      "IndexOfArray": 20
+    },
+    {
+      "X": -5,
+      "Y": -8,
+      "IndexOfArray": 18
+    },
+    {
+      "X": -5,
+      "Y": -2,
+      "IndexOfArray": 59
+    },
+    {
+      "X": -5,
+      "Y": -1,
+      "IndexOfArray": 57
+    },
+    {
+      "X": -5,
+      "Y": 0,
+      "IndexOfArray": 55
+    },
+    {
+      "X": -5,
+      "Y": 1,
+      "IndexOfArray": 53
+    },
+    {
+      "X": -5,
+      "Y": 2,
+      "IndexOfArray": 51
+    },
+    {
+      "X": -4,
+      "Y": -9,
+      "IndexOfArray": 21
+    },
+    {
+      "X": -4,
+      "Y": -8,
+      "IndexOfArray": 19
+    },
+    {
+      "X": -4,
+      "Y": -2,
+      "IndexOfArray": 60
+    },
+    {
+      "X": -4,
+      "Y": -1,
+      "IndexOfArray": 58
+    },
+    {
+      "X": -4,
+      "Y": 0,
+      "IndexOfArray": 56
+    },
+    {
+      "X": -4,
+      "Y": 1,
+      "IndexOfArray": 54
+    },
+    {
+      "X": -4,
+      "Y": 2,
+      "IndexOfArray": 52
+    },
+    {
+      "X": -3,
+      "Y": -11,
+      "IndexOfArray": 20
+    },
+    {
+      "X": -3,
+      "Y": -10,
+      "IndexOfArray": 18
+    },
+    {
+      "X": -3,
+      "Y": -6,
+      "IndexOfArray": 16
+    },
+    {
+      "X": -3,
+      "Y": -5,
+      "IndexOfArray": 14
+    },
+    {
+      "X": -2,
+      "Y": -11,
+      "IndexOfArray": 21
+    },
+    {
+      "X": -2,
+      "Y": -10,
+      "IndexOfArray": 19
+    },
+    {
+      "X": -2,
+      "Y": -6,
+      "IndexOfArray": 17
+    },
+    {
+      "X": -2,
+      "Y": -5,
+      "IndexOfArray": 15
+    },
+    {
+      "X": -1,
+      "Y": -13,
+      "IndexOfArray": 20
+    },
+    {
+      "X": -1,
+      "Y": -12,
+      "IndexOfArray": 18
+    },
+    {
+      "X": 0,
+      "Y": -13,
+      "IndexOfArray": 21
+    },
+    {
+      "X": 0,
+      "Y": -12,
+      "IndexOfArray": 19
+    },
+    {
+      "X": 0,
+      "Y": -2,
+      "IndexOfArray": 49
+    },
+    {
+      "X": 0,
+      "Y": -1,
+      "IndexOfArray": 48
+    },
+    {
+      "X": 0,
+      "Y": 0,
+      "IndexOfArray": 50
+    },
+    {
+      "X": 6,
+      "Y": -2,
+      "IndexOfArray": 49
+    },
+    {
+      "X": 6,
+      "Y": -1,
+      "IndexOfArray": 48
+    },
+    {
+      "X": 6,
+      "Y": 0,
+      "IndexOfArray": 50
+    }
+  ],
+  "PlayerPos": {
+    "x": -2.5,
+    "y": -5.5,
+    "z": 0.0
+  }
+}
