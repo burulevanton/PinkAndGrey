@@ -43,7 +43,7 @@ public class GameController : Singleton<GameController>
 
   private void Start()
   {
-    //StartCoroutine(StartLevel());
+    StartCoroutine(StartLevel());
   }
 
   public IEnumerator StartLevel()

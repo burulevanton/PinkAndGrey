@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Internal.UIElements;
 using UnityEngine.SceneManagement;
@@ -10,24 +11,41 @@ namespace UI
     public class GameUIController:MonoBehaviour
     {
         public ScreenFader ScreenFader;
-        public GameObject GameMenu;
-        public GameObject DeathMenu;
+        public GameMenu GameMenu;
+        public GameMenu DeathMenu;
+        public GameObject LevelInfoPanel;
         
         public void RestartScene()
         {
-            DeathMenu.SetActive(false);
-            StartCoroutine(GameController.Instance.StartLevel());
+            if (DeathMenu.gameObject.activeSelf)
+            {
+                DeathMenu.Close((() => StartCoroutine(GameController.Instance.StartLevel())));
+            }
+            else
+            {
+                StartCoroutine(GameController.Instance.StartLevel());
+            }
         }
 
         public void BackToMainMenu()
         {
-            SceneManager.LoadScene("Menu");
+            //todo screenfader
+            if (GameMenu.gameObject.activeSelf)
+            {
+                GameMenu.Close((() => SceneManager.LoadScene("Menu")));
+            }
+            else if (DeathMenu.gameObject.activeSelf)
+            {
+                DeathMenu.Close((() => SceneManager.LoadScene("Menu")));
+            }
         }
 
         public IEnumerator StartScene()
         {
             ScoreController.Instance.ResetScore();
             yield return StartCoroutine(ScreenFader.SceneAppearance());
+            LevelInfoPanel.SetActive(true);
+            yield return new WaitUntil(() => LevelInfoPanel.activeSelf == false);
         }
 
         private void Awake()
@@ -42,19 +60,18 @@ namespace UI
 
         public void GameMenuOpen()
         {
-            GameMenu.SetActive(true);
+            GameMenu.gameObject.SetActive(true);
             GameController.Instance.Pause();
         }
 
         public void UnpauseGame()
         {
-            GameMenu.SetActive(false);
-            GameController.Instance.UnPause();
+            GameMenu.Close(()=>GameController.Instance.UnPause());
         }
 
         public void DeathMenuOpen()
         {
-            DeathMenu.SetActive(true);
+            DeathMenu.gameObject.SetActive(true);
         }
     }
 }

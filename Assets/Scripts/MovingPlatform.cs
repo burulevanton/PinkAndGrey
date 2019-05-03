@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Enum;
 using Serialize;
+using TMPro;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class MovingPlatform : TileController
 {
@@ -13,34 +16,57 @@ public class MovingPlatform : TileController
 
     [SerializeField] private bool reverseMove = false;
     [SerializeField] protected bool updateRotation;
-    private float _startTime;
+    private float _timer;
+    [SerializeField] private float _stopTime = 0.5f;
     private float _journeyLength;
     private float _distCovered;
     private float _fracJourney;
     private bool _isPause = false;
-    void Start()
+
+    private void OnReset()
     {
-        _startTime = Time.time;
+        _distCovered = 0;
+        transform.position = FromDirection;
+        _timer = _stopTime;
+        _isPause = true;
+        reverseMove = false;
         _journeyLength = Vector3.Distance(FromDirection, ToDirection);
     }
+
+    private void OnDisable()
+    {
+        _isPause = true;
+    }
+
     void Update()
     {
         if (GameController.Instance.IsPaused)
             return;
         if (_isPause)
         {
-            if (Time.time - _startTime > 0.5f)
+            if (_timer > 0.0f)
+                _timer -= Time.deltaTime;
+            else
             {
                 _isPause = false;
-                _startTime = Time.time;
+                _timer = 0.0f;
                 reverseMove = !reverseMove;
             }
             return;
         }
-        _distCovered = (Time.time - _startTime) * moveSpeed;
-        Debug.Log("DistCovered:" + _distCovered + "MoveSpeed:" +moveSpeed * Time.deltaTime + "JourneyLength" + _journeyLength);
+        _distCovered += Time.deltaTime * moveSpeed;        
         _fracJourney = _distCovered / _journeyLength;
-        Debug.Log(_fracJourney);
+        if ((Vector3.Distance(transform.position, ToDirection) == 0.0f && !reverseMove) ||
+            (Vector3.Distance(transform.position, FromDirection) == 0.0f) && reverseMove)
+        {
+            if (updateRotation)
+                UpdateRotation();
+            _isPause = true;
+            _timer = _stopTime;
+            _distCovered = 0;
+            return;
+        }
+
         if (!reverseMove)
         {
             transform.position = Vector3.Lerp(FromDirection, ToDirection, _fracJourney);
@@ -49,33 +75,62 @@ public class MovingPlatform : TileController
         {
             transform.position = Vector3.Lerp(ToDirection, FromDirection, _fracJourney);
         }
-        if ((Vector3.Distance(transform.position, ToDirection) == 0.0f || Vector3.Distance(transform.position, FromDirection) == 0.0f))
-        {
-            if (updateRotation)
-                UpdateRotation();
-            _isPause = true;
-            _startTime = Time.time;
-        }
+        
     }
-
+    
     public Vector2 Direction
-    {
-        get
         {
-            if (FromDirection.x == ToDirection.x)
+            get
             {
-                return reverseMove ? Vector2.down  : Vector2.up;
-            }
-            else
-            {
-                return reverseMove ? Vector2.left: Vector2.right;
+                if (FromDirection.x == ToDirection.x)
+                {
+                    return reverseMove ? Vector2.down  : Vector2.up;
+                }
+                else
+                {
+                    return reverseMove ? Vector2.left: Vector2.right;
+                }
             }
         }
-    }
-
+    
     public float MoveSpeed => moveSpeed;
 
     public bool IsPause => _isPause;
+
+    public bool IsEndOfJourneyPlayer(Vector3 hit)
+    {
+        if (this.Direction == Vector2.up)
+        {
+            var vector = ToDirection + new Vector3(-1, 0.5f);
+            var heh = (hit - vector).sqrMagnitude;
+            if ((hit - (ToDirection + new Vector3(-1, 0.5f))).sqrMagnitude < 0.0001f || (hit - (ToDirection + new Vector3(1, 0.5f))).sqrMagnitude < 0.0001f)
+                return true;
+            return false;
+        }
+        if (this.Direction == Vector2.down)
+        {
+            if ((hit - (FromDirection + new Vector3(-1, -0.5f))).sqrMagnitude < 0.0001f || (hit - (FromDirection + new Vector3(1, -0.5f))).sqrMagnitude < 0.0001f)
+            {
+                return true;
+            }
+            return false;
+        }
+        if (this.Direction == Vector2.right)
+        {
+            if (hit == ToDirection + new Vector3(0.5f, -1) || hit == ToDirection + new Vector3(0.5f, 1))
+                return true;
+            return false;
+        }
+        if (this.Direction == Vector2.left)
+        {
+            if (hit == FromDirection + new Vector3(-0.5f, 1) || hit == FromDirection + new Vector3(-0.5f, -1))
+            {
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
 
     public override StaticTileInfo Serialize()
     {
@@ -100,10 +155,10 @@ public class MovingPlatform : TileController
         var info = tileInfo as DynamicTileInfo;
         if (info == null)
             return false;
-        transform.position = info.Position;
         transform.rotation = Quaternion.Euler(info.Rotation);
         FromDirection = info.FromDirection;
         ToDirection = info.ToDirection;
+        OnReset();
         return true;
     }
 }

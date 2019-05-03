@@ -123,9 +123,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FromDirection: {x: 0, y: 0, z: 0}
   ToDirection: {x: 0, y: 0, z: 0}
-  moveSpeed: 40
+  moveSpeed: 15
   reverseMove: 0
   updateRotation: 0
+  _stopTime: 0.5
 --- !u!95 &2316708631200631733
 Animator:
   serializedVersion: 3
