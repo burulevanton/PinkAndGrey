@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Internal.UIElements;
 using UnityEngine.SceneManagement;
@@ -8,12 +7,15 @@ using UnityEngine.UI;
 
 namespace UI
 {
-    public class GameUIController:MonoBehaviour
+    public class GameUIController:Singleton<GameUIController>
     {
         public ScreenFader ScreenFader;
         public GameMenu GameMenu;
         public GameMenu DeathMenu;
         public GameObject LevelInfoPanel;
+        [SerializeField] private ScoreController[] _scoreControllers;
+        [SerializeField] private Text _levelPassedText;
+        public GameMenu LevelPassedMenu;
         
         public void RestartScene()
         {
@@ -38,11 +40,17 @@ namespace UI
             {
                 DeathMenu.Close((() => SceneManager.LoadScene("Menu")));
             }
+            else if (LevelPassedMenu.gameObject.activeSelf)
+            {
+                LevelPassedMenu.Close(() => SceneManager.LoadScene("Menu"));
+            }
         }
 
         public IEnumerator StartScene()
         {
-            ScoreController.Instance.ResetScore();
+            DeathMenu.gameObject.SetActive(false);
+            GameMenu.gameObject.SetActive(false);
+            UpdateScore();
             yield return StartCoroutine(ScreenFader.SceneAppearance());
             LevelInfoPanel.SetActive(true);
             yield return new WaitUntil(() => LevelInfoPanel.activeSelf == false);
@@ -72,6 +80,27 @@ namespace UI
         public void DeathMenuOpen()
         {
             DeathMenu.gameObject.SetActive(true);
+        }
+
+        public void UpdateScore()
+        {
+            foreach (var scoreController in _scoreControllers)
+            {
+                scoreController.UpdateScore();
+            }
+        }
+
+        public void LevelPassed()
+        {
+            GameController.Instance.Pause();
+            GameData.Instance.SetScoreOfLevel();
+            _levelPassedText.text = "Level " + GameData.Instance.CurrentLevel;
+            LevelPassedMenu.gameObject.SetActive(true);
+        }
+
+        public void GoToNextLevel()
+        {
+            LevelPassedMenu.Close(()=> StartCoroutine(GameController.Instance.LevelPassed()));
         }
     }
 }

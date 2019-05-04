@@ -143,8 +143,11 @@ public class LevelController : Singleton<LevelController>
         DeserializeTilemap(environmentList, tilemapEnvironment);
         var wallList = JsonConvert.DeserializeObject<List<PaletteTileInfo>>(jObject["TileWalls"].ToString());
         DeserializeTilemap(wallList, tilemapWalls);
-        var spikesList = JsonConvert.DeserializeObject<List<PaletteTileInfo>>(jObject["TileSpikes"].ToString());
-        DeserializeTilemap(spikesList, tilemapSpikes);
+        if (jObject["TileSpikes"] != null)
+        {
+            var spikesList = JsonConvert.DeserializeObject<List<PaletteTileInfo>>(jObject["TileSpikes"].ToString());
+            DeserializeTilemap(spikesList, tilemapSpikes);
+        }
         yield return null;
     }
 
@@ -154,7 +157,6 @@ public class LevelController : Singleton<LevelController>
         tilemapWalls.ClearAllTiles();
         tilemapSpikes.ClearAllTiles();
         var tileControllers = GetComponentsInChildren<TileController>(false);
-        Debug.Log(tileControllers.Length);
         foreach (var tileController in tileControllers)
         {
             PoolManager.ReleaseObject(tileController.gameObject);
@@ -230,11 +232,6 @@ public class LevelController : Singleton<LevelController>
                         movingPlatformClone.Deserialize(tile);
                         movingPlatformClone.transform.parent = _movingPlatforms.transform;
                         break;
-                    case TileType.Spike:
-                        var spikeClone = PoolManager.SpawnObject(SpikePrefab).GetComponent<SpikeController>();
-                        spikeClone.Deserialize(tile);
-                        spikeClone.transform.parent = _spikes.transform;
-                        break;
                     case TileType.TimerWall:
                         var timerWallClone =
                             PoolManager.SpawnObject(TimerWallPrefab).GetComponent<TimerWallController>();
@@ -253,12 +250,6 @@ public class LevelController : Singleton<LevelController>
                         var levelEndClone = PoolManager.SpawnObject(LevelEndPrefab).GetComponent<LevelEndController>();
                         levelEndClone.Deserialize(tile);
                         levelEndClone.transform.parent = _levelEnds.transform;
-                        break;
-                    case TileType.InnerWall:
-                        var InnerWallClone =
-                        PoolManager.SpawnObject(InnerWallPrefab).GetComponent<InnerWallController>();
-                        InnerWallClone.Deserialize(tile);
-                        InnerWallClone.transform.parent = _innerWalls.transform;
                         break;
             }
         }

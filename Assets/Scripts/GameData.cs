@@ -7,6 +7,8 @@ public class GameData:Singleton<GameData>
     public int CurrentLevel { get; set; }
     
     public int MaxLevel { get; set; }
+
+    public int MaxAmountOfLevels { get; } = 3;
     public int CurrentScoreOnLevel { get; set; }
 
     private void Awake()

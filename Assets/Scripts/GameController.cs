@@ -28,7 +28,6 @@ public class GameController : Singleton<GameController>
   private float dblTouchTime = 0.19f;
 
   public static event Action<EDirection> OnSwipe;
-  public Text Text;
 
   //public static GameController instance;
   public PlayerController PlayerController;
@@ -50,23 +49,25 @@ public class GameController : Singleton<GameController>
   {
     Pause();
     yield return StartCoroutine(GameUiController.ScreenFader.FadeScene());
-    Text.text = "Десериализация";
     yield return StartCoroutine(LevelController.Instance.Deserialize());
-    Text.text = "Десериализация закончена";
-    yield return StartCoroutine(GameUiController.StartScene());
     GameData.Instance.CurrentScoreOnLevel = 0;
+    yield return StartCoroutine(GameUiController.StartScene());
     UnPause();
   }
 
   public void PlayerDeath()
   {
-    Pause();
     GameUiController.DeathMenuOpen();
   }
 
-  public void LevelPassed()
+  public IEnumerator LevelPassed()
   {
     GameData.Instance.SetScoreOfLevel();
+    if (GameData.Instance.CurrentLevel == GameData.Instance.MaxAmountOfLevels)
+    {
+      yield return StartCoroutine(GameUiController.ScreenFader.FadeScene());
+      SceneManager.LoadScene("Menu");
+    }
     GameData.Instance.CurrentLevel++;
     GameData.Instance.UpdateMaxLevel();
     StartCoroutine(StartLevel());

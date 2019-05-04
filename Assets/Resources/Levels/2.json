@@ -25,19 +25,6 @@
       {
         "TileType": 5,
         "Position": {
-          "x": 5.5,
-          "y": -15.0,
-          "z": 0.0
-        },
-        "Rotation": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        }
-      },
-      {
-        "TileType": 5,
-        "Position": {
           "x": 4.5,
           "y": -15.0,
           "z": 0.0
@@ -112,20 +99,33 @@
           "y": 0.0,
           "z": 0.0
         }
+      },
+      {
+        "TileType": 5,
+        "Position": {
+          "x": 5.5,
+          "y": -15.0,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
       }
     ],
     "Portal": [
       {
         "$type": "Serialize.PortalTileInfo, Assembly-CSharp",
         "OtherPortalPosition": {
-          "x": -6.5,
-          "y": -11.5,
+          "x": 1.5,
+          "y": -10.5,
           "z": 0.0
         },
         "TileType": 9,
         "Position": {
-          "x": 1.5,
-          "y": -10.5,
+          "x": -6.5,
+          "y": -11.5,
           "z": 0.0
         },
         "Rotation": {
@@ -137,14 +137,14 @@
       {
         "$type": "Serialize.PortalTileInfo, Assembly-CSharp",
         "OtherPortalPosition": {
-          "x": 1.5,
-          "y": -10.5,
+          "x": -6.5,
+          "y": -11.5,
           "z": 0.0
         },
         "TileType": 9,
         "Position": {
-          "x": -6.5,
-          "y": -11.5,
+          "x": 1.5,
+          "y": -10.5,
           "z": 0.0
         },
         "Rotation": {
@@ -155,19 +155,6 @@
       }
     ],
     "Collectable": [
-      {
-        "TileType": 3,
-        "Position": {
-          "x": -8.5,
-          "y": -15.5,
-          "z": 0.0
-        },
-        "Rotation": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        }
-      },
       {
         "TileType": 3,
         "Position": {
@@ -193,6 +180,19 @@
           "y": 0.0,
           "z": 0.0
         }
+      },
+      {
+        "TileType": 3,
+        "Position": {
+          "x": -8.5,
+          "y": -15.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
       }
     ],
     "LevelEnd": [
@@ -210,74 +210,7 @@
         }
       }
     ],
-    "Spike": [
-      {
-        "TileType": 11,
-        "Position": {
-          "x": -2.5,
-          "y": -10.5,
-          "z": 0.0
-        },
-        "Rotation": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 270.0
-        }
-      },
-      {
-        "TileType": 11,
-        "Position": {
-          "x": -8.5,
-          "y": -17.5,
-          "z": 0.0
-        },
-        "Rotation": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        }
-      },
-      {
-        "TileType": 11,
-        "Position": {
-          "x": -10.5,
-          "y": -11.5,
-          "z": 0.0
-        },
-        "Rotation": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 270.0
-        }
-      },
-      {
-        "TileType": 11,
-        "Position": {
-          "x": -0.5,
-          "y": -14.5,
-          "z": 0.0
-        },
-        "Rotation": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        }
-      }
-    ],
     "BreakingPlatform": [
-      {
-        "TileType": 0,
-        "Position": {
-          "x": -1.5,
-          "y": -10.5,
-          "z": 0.0
-        },
-        "Rotation": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 270.0
-        }
-      },
       {
         "TileType": 0,
         "Position": {
@@ -315,6 +248,19 @@
           "x": 0.0,
           "y": 0.0,
           "z": 0.0
+        }
+      },
+      {
+        "TileType": 0,
+        "Position": {
+          "x": -1.5,
+          "y": -10.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 270.0
         }
       }
     ]
@@ -453,11 +399,6 @@
   ],
   "TileWalls": [
     {
-      "X": -12,
-      "Y": -12,
-      "IndexOfArray": 63
-    },
-    {
       "X": -11,
       "Y": -13,
       "IndexOfArray": 61
@@ -506,11 +447,6 @@
       "X": -10,
       "Y": -9,
       "IndexOfArray": 63
-    },
-    {
-      "X": -9,
-      "Y": -19,
-      "IndexOfArray": 61
     },
     {
       "X": -9,
@@ -644,11 +580,6 @@
     },
     {
       "X": -4,
-      "Y": -11,
-      "IndexOfArray": 63
-    },
-    {
-      "X": -4,
       "Y": -7,
       "IndexOfArray": 61
     },
@@ -716,11 +647,6 @@
       "X": -2,
       "Y": -2,
       "IndexOfArray": 64
-    },
-    {
-      "X": -1,
-      "Y": -16,
-      "IndexOfArray": 61
     },
     {
       "X": -1,
@@ -860,7 +786,7 @@
     {
       "X": 6,
       "Y": -14,
-      "IndexOfArray": 66
+      "IndexOfArray": 68
     },
     {
       "X": 6,
@@ -921,6 +847,28 @@
       "X": 8,
       "Y": -8,
       "IndexOfArray": 62
+    }
+  ],
+  "TileSpikes": [
+    {
+      "X": -12,
+      "Y": -12,
+      "IndexOfArray": 86
+    },
+    {
+      "X": -9,
+      "Y": -19,
+      "IndexOfArray": 78
+    },
+    {
+      "X": -4,
+      "Y": -11,
+      "IndexOfArray": 86
+    },
+    {
+      "X": -1,
+      "Y": -16,
+      "IndexOfArray": 78
     }
   ],
   "PlayerPos": {

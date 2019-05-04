@@ -58,15 +58,12 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void IsAlive()
     {
         if(!_alive)   
             _animator.SetTrigger("IsAlive");
+        _animator.ResetTrigger("Fly");
     }
 
     private void FixedUpdate()
@@ -180,7 +177,6 @@ public class PlayerController : MonoBehaviour
         this.transform.parent = _parent;
         this.OnMovingPlatform = null;
         //this.transform.parent = gc.transform; //todo сделать что-то с этим
-        _animator.SetTrigger("Fly");
         this.SetMoveDirection(direction);
         return true;
     }
@@ -190,6 +186,7 @@ public class PlayerController : MonoBehaviour
         this._moveDirection = direction;
         if (!this.Moving)
             return;
+        _animator.SetTrigger("Fly");
         float nRotationZ = (double) this._moveDirection.x == 0.0 ? (float) (90.0 * (double) this._moveDirection.y - 90.0) : -90f * this._moveDirection.x;
         this.UpdateScaleRotation((double) this._moveDirection.x == 0.0 ? this.scaleX : this._moveDirection.x, nRotationZ);
     }
@@ -246,6 +243,7 @@ public class PlayerController : MonoBehaviour
         this.UpdateScaleRotation(this.scaleX, rotation);
         this.OnMovingPlatform = null;
         _animator.SetTrigger("Fall");
+        _animator.ResetTrigger("Fly");
     }
 
     private void StopByTransform(Vector2 Pointposition, bool setStopperPosition = false, bool bigTransform = false)
@@ -261,6 +259,7 @@ public class PlayerController : MonoBehaviour
         this.UpdateScaleRotation(this.scaleX, this.rotationZ + 180f);
         this._moveDirection = Vector2.zero;
         _animator.SetTrigger("Fall");
+        _animator.ResetTrigger("Fly");
         if ((double) this.nextSwipeTimeout <= 0.0)
             return;
         this.JumpWithDirection(this.nextSwipeDirection);
@@ -279,6 +278,7 @@ public class PlayerController : MonoBehaviour
         this.transform.parent = transform;
         this._moveDirection = Vector2.zero;
         _animator.SetTrigger("Fall");
+        _animator.ResetTrigger("Fly");
         if(this.nextSwipeTimeout <= 0.0f)
             return;
         this.JumpWithDirection(this.nextSwipeDirection);
@@ -357,9 +357,9 @@ public class PlayerController : MonoBehaviour
     private void DamageTaken(GameObject damage)
     {
         GameController.Instance.Pause();
+        _alive = false;
         _moveDirection = Vector2.zero;
         _animator.SetTrigger("Death");
-        _alive = false;
     }
 
     private void EndDamageAnimation()
@@ -379,6 +379,7 @@ public class PlayerController : MonoBehaviour
     {
         this._moveDirection = Vector2.zero;
         _animator.SetTrigger("Fall");
-        GameController.Instance.LevelPassed();
+        _animator.ResetTrigger("Fly");
+        GameUIController.Instance.LevelPassed();
     }
 }

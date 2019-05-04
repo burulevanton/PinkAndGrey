@@ -15,7 +15,7 @@ public class Collectable : TileController
         {
             PoolManager.ReleaseObject(gameObject);
             GameData.Instance.CurrentScoreOnLevel++;
-            ScoreController.Instance.UpdateScore();
+            GameUIController.Instance.UpdateScore();
         }
     }
 
