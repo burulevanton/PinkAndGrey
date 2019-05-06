@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d5751a2c961df945a34295ccf5e576d, type: 3}
-  m_Name: DownSpikeBrush
+  m_Name: LeftLaserTrapBrush
   m_EditorClassIdentifier: 
   m_Cells:
   - m_Tile: {fileID: 0}
@@ -35,6 +35,6 @@ MonoBehaviour:
   m_Size: {x: 1, y: 1, z: 1}
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Prefabs:
-  - {fileID: 5282404777987049811, guid: f54800d2040b68d44b7e12e1fb10ee2f, type: 3}
+  - {fileID: 1834981858994792831, guid: db22a85cff4c76e479e84ec12e5fc7ad, type: 3}
   m_PerlinScale: 0.5
   m_Z: 0

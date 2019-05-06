@@ -122,6 +122,7 @@ public class LevelController : Singleton<LevelController>
 //        JsonConvert.DeserializeObject<Vector3>(jObject["PlayerPos"].ToString()), Quaternion.identity)
 //        .GetComponent<PlayerController>();
 //        GameController.Instance.PlayerController.transform.parent = _playerWrap.transform;
+        GameController.Instance.PlayerController.transform.parent = null;
         GameController.Instance.PlayerController.transform.position =
         JsonConvert.DeserializeObject<Vector3>(jObject["PlayerPos"].ToString());
         GameController.Instance.PlayerController.transform.rotation = Quaternion.identity;
@@ -221,7 +222,7 @@ public class LevelController : Singleton<LevelController>
                         enemyClone.Deserialize(tile);
                         enemyClone.transform.parent = _enemies.transform;
                         break;
-                    case TileType.GreaterSpike:
+                    case TileType.LaserTrap:
                         var greaterSpikeClone = PoolManager.SpawnObject(GreaterSpikePrefab)
                             .GetComponent<LaserTrapController>();
                         greaterSpikeClone.Deserialize(tile);

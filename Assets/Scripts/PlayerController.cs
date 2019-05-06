@@ -61,9 +61,12 @@ public class PlayerController : MonoBehaviour
 
     public void IsAlive()
     {
-        if(!_alive)   
-            _animator.SetTrigger("IsAlive");
-        _animator.ResetTrigger("Fly");
+//        if(!_alive)   
+//            _animator.SetTrigger("IsAlive");
+//        _animator.ResetTrigger("Fly");
+        _animator.Play("Player_Idle");
+        _moveDirection = Vector2.zero;
+        OnMovingPlatform = null;
     }
 
     private void FixedUpdate()
@@ -223,19 +226,22 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 SetStopPosition(Vector2 PointPosition)
     {
-        if (PointPosition.x / 0.5f % 2f == 0.0f && _moveDirection.y !=0.0f)
-            return new Vector2((float)Math.Floor(PointPosition.x) + _moveDirection.y*0.5f, PointPosition.y);
-        if (PointPosition.y / 0.5f % 2f == 0.0f && _moveDirection.x !=0.0f)
-            return new Vector2(PointPosition.x, (float)Math.Floor(PointPosition.y) + _moveDirection.x*0.5f);
+        PointPosition = new Vector2(
+                        Mathf.Round(PointPosition.x * 10f) / 10f,
+                        Mathf.Round(PointPosition.y * 10f) / 10f);
+        if ((PointPosition.x / 0.5f % 2f == 0.0f || PointPosition.x % 0.5f != 0.0f) && _moveDirection.y !=0.0f)
+            return new Vector2((float)Math.Truncate(PointPosition.x) + _moveDirection.y*0.5f, PointPosition.y);
+        if ((PointPosition.y / 0.5f % 2f == 0.0f  || PointPosition.y % 0.5f != 0.0f) && _moveDirection.x !=0.0f)
+            return new Vector2(PointPosition.x, (float)Math.Truncate(PointPosition.y) + _moveDirection.x*0.5f);
         return PointPosition;
     }
 
     private void StopFromMovingPlatform(Vector2 PointPosition)
     {
+        this.transform.parent = _parent;
         PointPosition = SetStopPosition(PointPosition);
         PointPosition -= this.OnMovingPlatform.Direction * 0.5f;
         this.transform.position = (Vector3) PointPosition;
-        this.transform.parent = _parent;
         var rotation = this.OnMovingPlatform.Direction.x != 0
         ? this.OnMovingPlatform.Direction.x * 90f
         : this.OnMovingPlatform.Direction.y > 0
@@ -270,12 +276,13 @@ public class PlayerController : MonoBehaviour
     {
         if (this.Stopped)
             return;
-        pointPosition = SetStopPosition(pointPosition);
-        Vector2 position = (Vector2) pointPosition - this._moveDirection * 0.5f;
-        this.transform.position = (Vector3) position;
+//        pointPosition = SetStopPosition(pointPosition);
+//        Vector2 position = (Vector2) pointPosition - this._moveDirection * 0.5f;
+//        this.transform.position = (Vector3) position;
         this.OnMovingPlatform = transform.gameObject.GetComponent<MovingPlatform>();
         this.UpdateScaleRotation(this.scaleX, this.rotationZ + 180f);
         this.transform.parent = transform;
+        this.transform.localPosition = -(Vector3) this._moveDirection;
         this._moveDirection = Vector2.zero;
         _animator.SetTrigger("Fall");
         _animator.ResetTrigger("Fly");
@@ -360,6 +367,8 @@ public class PlayerController : MonoBehaviour
         _alive = false;
         _moveDirection = Vector2.zero;
         _animator.SetTrigger("Death");
+        _animator.ResetTrigger("Fly");
+        _animator.ResetTrigger("Fall");
     }
 
     private void EndDamageAnimation()

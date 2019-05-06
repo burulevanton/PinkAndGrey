@@ -71,7 +71,7 @@
         }
       }
     ],
-    "GreaterSpike": [
+    "LaserTrap": [
       {
         "TileType": 5,
         "Position": {

@@ -20,6 +20,7 @@
       <Path>.git</Path>
       <Path>.gradle</Path>
       <Path>.idea</Path>
+      <Path>.stfolder</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
       <Path>Temp</Path>

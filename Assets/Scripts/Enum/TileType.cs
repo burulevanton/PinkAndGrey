@@ -7,7 +7,7 @@ namespace Enum
         CannonVertical, //+
         Collectable, //+
         Enemy, //+
-        GreaterSpike, //+
+        LaserTrap, //+
         InnerWall, //+
         MovingChangingPlatform, //+
         MovingPlatform, //+

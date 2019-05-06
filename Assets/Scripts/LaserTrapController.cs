@@ -80,7 +80,7 @@ public class LaserTrapController : TileController
     {
         var staticTileInfo = new StaticTileInfo()
         {
-            TileType = TileType.GreaterSpike,
+            TileType = TileType.LaserTrap,
             Position = transform.position,
             Rotation = transform.rotation.eulerAngles
         };
