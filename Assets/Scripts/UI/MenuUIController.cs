@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,6 +10,8 @@ namespace UI
     {
         public ScreenFader ScreenFader;
         public MenuButtonController[] LevelButtons;
+
+        private AsyncOperation GameLoad;
 
         public void StartLevel()
         {
@@ -31,7 +34,10 @@ namespace UI
             }
 
             StartCoroutine(ScreenFader.SceneAppearance());
+            GameLoad = SceneManager.LoadSceneAsync("Game");
+            GameLoad.allowSceneActivation = false;
         }
+        
 
         private void ChangeLevel(int num)
         {
@@ -42,7 +48,8 @@ namespace UI
         private IEnumerator StartGame()
         {
             yield return StartCoroutine(ScreenFader.FadeScene());
-            SceneManager.LoadScene("Game");
+//            SceneManager.LoadScene("Game");
+            GameLoad.allowSceneActivation = true;
         }
     }
 }

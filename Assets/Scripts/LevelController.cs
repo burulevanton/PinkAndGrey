@@ -10,6 +10,7 @@ using ObjectPool;
 using Serialize;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 using Application = UnityEngine.Application;
 using Object = UnityEngine.Object;
 
@@ -51,6 +52,7 @@ public class LevelController : Singleton<LevelController>
     [SerializeField] private Tilemap tilemapWalls;
     [SerializeField] private Tilemap tilemapSpikes;
     [SerializeField] private List<TileBase> tiles;
+    
     
     public void Serialize()
     {

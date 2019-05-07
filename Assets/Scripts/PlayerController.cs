@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     
     private Vector2 _moveDirection = new Vector2(0.0f, 0.0f);
     private Vector2 nextSwipeDirection = Vector2.zero;
-    private float moveSpeed = 40f;
+    private float moveSpeed = 30f;
     private float rotationZ;
     private float scaleX = 1f;
     private float nextSwipeTimeout;

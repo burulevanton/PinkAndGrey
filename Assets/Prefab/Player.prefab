@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7265243387860224350}
   - component: {fileID: 1865605987}
   - component: {fileID: 1865605986}
+  - component: {fileID: 2745564414558883272}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -143,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9eb3b933417e454097a5c81a2eb1237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnTimerWall: {fileID: 0}
+  OnMovingPlatform: {fileID: 0}
   _isReverse: 0
 --- !u!95 &1865605986
 Animator:
@@ -164,3 +165,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2745564414558883272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865605985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b8f57c9fa9142c9b5f01fa9d060f523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EchoPrefab: {fileID: 231425620973790157, guid: dce21809544459f4b85c153cb310ab60,
+    type: 3}
+  TimeBtwSpawn: 0.005
