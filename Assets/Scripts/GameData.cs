@@ -11,6 +11,10 @@ public class GameData:Singleton<GameData>
     public int MaxAmountOfLevels { get; } = 3;
     public int CurrentScoreOnLevel { get; set; }
 
+    public int TutorialStage { get; private set; } = 0;
+
+    public bool TutorialPass => TutorialStage == 2;
+
     private void Awake()
     {
         if (PlayerPrefs.HasKey("MaxLevel"))
@@ -24,6 +28,8 @@ public class GameData:Singleton<GameData>
             PlayerPrefs.SetInt("MaxLevel", MaxLevel);
             PlayerPrefs.Save();
         }
+
+        TutorialStage = PlayerPrefs.GetInt("TutorialStage", 0);
     }
 
     public List<int> GetScoreOfLevels()
@@ -59,5 +65,12 @@ public class GameData:Singleton<GameData>
             PlayerPrefs.SetInt("MaxLevel", MaxLevel);
             PlayerPrefs.Save();
         }
+    }
+
+    public void PassTutorial(int stage)
+    {
+        TutorialStage = stage;
+        PlayerPrefs.SetInt("TutorialStage", stage);
+        PlayerPrefs.Save();
     }
 }

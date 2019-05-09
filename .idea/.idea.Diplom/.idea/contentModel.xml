@@ -74,8 +74,10 @@
             <e p="StaticTileWithSomeDirectionInfo.cs" t="Include" />
           </e>
           <e p="Singleton.cs" t="Include" />
+          <e p="SwipeController.cs" t="Include" />
           <e p="TileController.cs" t="Include" />
           <e p="TimerWallController.cs" t="Include" />
+          <e p="TutorialController.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="ButtonMenu.cs" t="Include" />
             <e p="GameMenu.cs" t="Include" />

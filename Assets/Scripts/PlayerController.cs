@@ -27,17 +27,32 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool _isReverse;
     private Transform _parent;
     private GameController gc;
+    private bool _tutorialPass;
     
     private void OnEnable()
     {
         OnMovingPlatform = null;
         transform.parent = _parent;
-        GameController.OnSwipe += new Action<EDirection>(this.ProcessSwipe);
+        if (_tutorialPass)
+        {
+            SwipeController.OnSwipe += new Action<EDirection>(this.ProcessSwipe);
+        }
+        else
+        {
+            TutorialController.OnSwipe += new Action<EDirection>(this.ProcessSwipe);
+        }
     }
 
     private void OnDisable()
     {
-        GameController.OnSwipe -= new Action<EDirection>(this.ProcessSwipe);
+        if (_tutorialPass)
+        {
+            SwipeController.OnSwipe -= new Action<EDirection>(this.ProcessSwipe);
+        }
+        else
+        {
+            TutorialController.OnSwipe -= new Action<EDirection>(this.ProcessSwipe);
+        }
     }
 
     public bool Stopped => this._moveDirection == Vector2.zero;
@@ -50,8 +65,11 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        gc = GameController.Instance;
-        gc.PlayerController = this;
+        _tutorialPass = GameData.Instance.TutorialPass;
+        if (_tutorialPass)
+        {
+            GameController.Instance.PlayerController = this;
+        }
         UpdateScaleRotation(1.0f,0.0f);
         _parent = transform.parent;
         _animator = GetComponent<Animator>();
@@ -71,7 +89,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameController.Instance.IsPaused)
+        if (_tutorialPass && GameController.Instance.IsPaused)
             return;
         Vector2 position = (Vector2) this.transform.position;
         Vector2 vector2 = this.moveSpeed * Time.deltaTime * this._moveDirection;
@@ -386,9 +404,22 @@ public class PlayerController : MonoBehaviour
 
     private void LevelEnd()
     {
+        _animator.Play("PlayerLevelPass");
+    }
+
+    public void LevelPassedAnimation()
+    {
         this._moveDirection = Vector2.zero;
-        _animator.SetTrigger("Fall");
-        _animator.ResetTrigger("Fly");
-        GameUIController.Instance.LevelPassed();
+//        _animator.SetTrigger("Fall");
+//        _animator.ResetTrigger("Fly");
+        if (_tutorialPass)
+        {
+            GameUIController.Instance.LevelPassed();
+        }
+        else
+        {
+            GameData.Instance.PassTutorial(1);
+            SceneManager.LoadScene("Menu");
+        }
     }
 }
