@@ -15,6 +15,8 @@ public class GameData:Singleton<GameData>
 
     public bool TutorialPass => TutorialStage == 2;
 
+    public bool LogoPassed { get; set; } = false;
+
     private void Awake()
     {
         if (PlayerPrefs.HasKey("MaxLevel"))

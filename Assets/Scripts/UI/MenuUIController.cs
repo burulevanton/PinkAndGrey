@@ -12,19 +12,50 @@ namespace UI
         public MenuButtonController[] LevelButtons;
 
         public GameObject _tutorialHint;
-        private AsyncOperation GameLoad;
+        private AsyncOperation SceneLoad;
+
+        public LogoController LogoController;
+        public GameObject Logo;
+
+        public GameObject LoadingPanel;
+        public Slider Slider;
 
         public void StartLevel()
         {
             StartCoroutine(ScreenFader.FadeScene());
         }
 
+        private IEnumerator LoadLevelAsync(string sceneName)
+        {
+            SceneLoad = SceneManager.LoadSceneAsync(sceneName);
+            LoadingPanel.gameObject.SetActive(true);
+            while (!SceneLoad.isDone)
+            {
+                float progress = Mathf.Clamp01(SceneLoad.progress / 0.9f);
+                Debug.Log(progress);
+                Slider.value = progress;
+                yield return null;
+            }
+        }
+
         private void Start()
         {
-            if (GameData.Instance.TutorialStage == 0)
+            if (!GameData.Instance.LogoPassed)
             {
-                SceneManager.LoadScene("Tutorial");
+                Logo.SetActive(true);
+                if (GameData.Instance.TutorialStage == 0)
+                {
+                    LogoController.action = () =>
+                    {
+                        StartCoroutine(LoadLevelAsync("Tutorial"));
+                        Logo.gameObject.SetActive(false);
+                    };
+                    return;
+                }
+
+                LogoController.action = () => Logo.gameObject.SetActive(false);
             }
+            
             if (GameData.Instance.TutorialStage == 1)
             {
                 _tutorialHint.SetActive(true);
@@ -42,34 +73,34 @@ namespace UI
                 else
                     LevelButtons[i].LockButton();
             }
-            if (GameData.Instance.TutorialPass)
-            {
-                StartCoroutine(ScreenFader.SceneAppearance());
-                GameLoad = SceneManager.LoadSceneAsync("Game");
-                GameLoad.allowSceneActivation = false;
-            }
+//            if (GameData.Instance.TutorialPass)
+//            {
+//                StartCoroutine(ScreenFader.SceneAppearance());
+//                GameLoad = SceneManager.LoadSceneAsync("Game");
+//                GameLoad.allowSceneActivation = false;
+//            }
         }
 
         private void TutorialPass()
         {
             GameData.Instance.PassTutorial(2);
             _tutorialHint.SetActive(false);
-            StartCoroutine(ScreenFader.SceneAppearance());
-            GameLoad = SceneManager.LoadSceneAsync("Game");
-            GameLoad.allowSceneActivation = false;
+            //StartCoroutine(ScreenFader.SceneAppearance());
+//            StartCoroutine(LoadLevelAsync("Game"));
         }
         private void ChangeLevel(int num)
         {
             GameData.Instance.CurrentLevel = num;
-            StartCoroutine(StartGame());
+//            StartCoroutine(StartGame());
+            StartCoroutine(LoadLevelAsync("Game"));
         }
 
-        private IEnumerator StartGame()
-        {
-            //yield return StartCoroutine(ScreenFader.FadeScene());
-//            SceneManager.LoadScene("Game");
-            GameLoad.allowSceneActivation = true;
-            yield return null;
-        }
+//        private IEnumerator StartGame()
+//        {
+//            //yield return StartCoroutine(ScreenFader.FadeScene());
+////            SceneManager.LoadScene("Game");
+//            GameLoad.allowSceneActivation = true;
+//            yield return null;
+//        }
     }
 }
