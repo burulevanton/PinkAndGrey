@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UI;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class GameData:Singleton<GameData>
     
     public int MaxLevel { get; set; }
 
-    public int MaxAmountOfLevels { get; } = 3;
+    public int MaxAmountOfLevels { get; } = 4;
     public int CurrentScoreOnLevel { get; set; }
 
     public int TutorialStage { get; private set; } = 0;
@@ -16,6 +17,8 @@ public class GameData:Singleton<GameData>
     public bool TutorialPass => TutorialStage == 2;
 
     public bool LogoPassed { get; set; } = false;
+    
+    public List<TextAsset> Assets = new List<TextAsset>();
 
     private void Awake()
     {
@@ -75,4 +78,28 @@ public class GameData:Singleton<GameData>
         PlayerPrefs.SetInt("TutorialStage", stage);
         PlayerPrefs.Save();
     }
+
+    public IEnumerator LoadAssets()
+    {
+//        for (int i = 1; i <= MaxAmountOfLevels-1; i++)
+//        {
+//            //var r = "Levels/" + (i + 1);
+//            var resourseRequest = Resources.LoadAsync("Levels/"+(i+1));
+//            while (!resourseRequest.isDone)
+//            {
+//                Debug.Log(resourseRequest.progress);
+//                yield return null;
+//            }
+//            Assets.Add((TextAsset)resourseRequest.asset);
+//            
+//            Debug.Log(Assets.Count);
+//        }
+        var assets = Resources.LoadAll("Levels");
+        foreach (var asset in assets)
+        {
+            Assets.Add((TextAsset)asset);
+        }
+        yield return null;
+    }
+    
 }

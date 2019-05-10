@@ -404,12 +404,12 @@ public class PlayerController : MonoBehaviour
 
     private void LevelEnd()
     {
+        this._moveDirection = Vector2.zero;
         _animator.Play("PlayerLevelPass");
     }
 
     public void LevelPassedAnimation()
     {
-        this._moveDirection = Vector2.zero;
 //        _animator.SetTrigger("Fall");
 //        _animator.ResetTrigger("Fly");
         if (_tutorialPass)

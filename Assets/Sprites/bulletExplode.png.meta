@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 0305dfcfbc5726c408a4533778e4558e
+guid: 0ebd261ecc9eab7429fef995596a4ac5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3753149817279275984
-    second: portav3_0
+      213: 3097634946507251821
+    second: bulletExplode_0
   - first:
-      213: 3504292309374583568
-    second: portav3_1
+      213: 1127784741680128656
+    second: bulletExplode_1
   - first:
-      213: -382722623355197229
-    second: portav3_2
+      213: 2796311436389595210
+    second: bulletExplode_2
   - first:
-      213: 7836305464801071569
-    second: portav3_3
+      213: 6467196648355279940
+    second: bulletExplode_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: portav3_0
+      name: bulletExplode_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6da89bbae31cb0438e6180175568fd7
-      internalID: 3753149817279275984
+      spriteID: 857b770501cc39d4bb30f499203f65ec
+      internalID: 3097634946507251821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: portav3_1
+      name: bulletExplode_1
       rect:
         serializedVersion: 2
         x: 16
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d42318cd98eb0f046a2bfcd61c048521
-      internalID: 3504292309374583568
+      spriteID: 450a762d80271224ca629ec586608324
+      internalID: 1127784741680128656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: portav3_2
+      name: bulletExplode_2
       rect:
         serializedVersion: 2
         x: 32
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a523679f7725ef49aa317476d9b7a0a
-      internalID: -382722623355197229
+      spriteID: 3adee0c6d6d183c4c82841520ef0155e
+      internalID: 2796311436389595210
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: portav3_3
+      name: bulletExplode_3
       rect:
         serializedVersion: 2
         x: 48
@@ -184,8 +184,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25039bf6496da614985880c9025af842
-      internalID: 7836305464801071569
+      spriteID: 13788336c40db854cbd94439e900ded6
+      internalID: 6467196648355279940
       vertices: []
       indices: 
       edges: []
@@ -193,7 +193,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 90b46e4992445f0409129aa247765f10
+    spriteID: 64145fb34cc59c84c96104c04818c514
     internalID: 0
     vertices: []
     indices: 

@@ -28,13 +28,16 @@
             </e>
           </e>
         </e>
-        <e p="Random Tile" t="Include">
-          <e p="Scripts" t="Include">
-            <e p="RandomTile.cs" t="Include" />
+        <e p="Resources" t="Include">
+          <e p="Random Tile" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="RandomTile.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="Scripts" t="Include">
           <e p="BreakingPlatformController.cs" t="Include" />
+          <e p="BulletExplodeController.cs" t="Include" />
           <e p="CannonController.cs" t="Include" />
           <e p="ChangeOuterWallController.cs" t="Include" />
           <e p="Collectable.cs" t="Include" />

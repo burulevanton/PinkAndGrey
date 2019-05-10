@@ -32,7 +32,6 @@ namespace UI
             while (!SceneLoad.isDone)
             {
                 float progress = Mathf.Clamp01(SceneLoad.progress / 0.9f);
-                Debug.Log(progress);
                 Slider.value = progress;
                 yield return null;
             }
@@ -40,6 +39,9 @@ namespace UI
 
         private void Start()
         {
+            StartCoroutine(GameData.Instance.LoadAssets());
+            /*SceneLoad = SceneManager.LoadSceneAsync("Game");
+            SceneLoad.allowSceneActivation = false;*/
             if (!GameData.Instance.LogoPassed)
             {
                 Logo.SetActive(true);
@@ -92,6 +94,7 @@ namespace UI
         {
             GameData.Instance.CurrentLevel = num;
 //            StartCoroutine(StartGame());
+//            SceneLoad.allowSceneActivation = true;
             StartCoroutine(LoadLevelAsync("Game"));
         }
 

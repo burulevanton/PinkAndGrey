@@ -27,11 +27,8 @@ public class LevelController : Singleton<LevelController>
     [SerializeField] private GameObject MovingChangingPlatformPrefab;
     [SerializeField] private GameObject MovingPlatformPrefab;
     [SerializeField] private GameObject PortalPrefab;
-    [SerializeField] private GameObject SpikePrefab;
     [SerializeField] private GameObject TimerWallPrefab;
-    [SerializeField] private GameObject InnerWallPrefab;
     [SerializeField] private GameObject LevelEndPrefab;
-    [SerializeField] private GameObject PlayerPrefab;
 
     [SerializeField] private GameObject _breakingPlatforms;
     [SerializeField] private GameObject _cannons;
@@ -39,14 +36,11 @@ public class LevelController : Singleton<LevelController>
     [SerializeField] private GameObject _copyingPortals;
     [SerializeField] private GameObject _enemies;
     [SerializeField] private GameObject _greaterSpikes;
-    [SerializeField] private GameObject _innerWalls;
     [SerializeField] private GameObject _levelEnds;
     [SerializeField] private GameObject _movingChangingPlatforms;
     [SerializeField] private GameObject _movingPlatforms;
     [SerializeField] private GameObject _portals;
-    [SerializeField] private GameObject _spikes;
     [SerializeField] private GameObject _timerWalls;
-    [SerializeField] private GameObject _playerWrap;
 
     [SerializeField] private Tilemap tilemapEnvironment;
     [SerializeField] private Tilemap tilemapWalls;
@@ -116,9 +110,10 @@ public class LevelController : Singleton<LevelController>
     public IEnumerator Deserialize()
     {
         ClearScene();
-        var path = "Levels/" + GameData.Instance.CurrentLevel;
-        //var path = "Levels/3";
-        var json = Resources.Load<TextAsset>(path).text;
+//        var path = "Levels/" + GameData.Instance.CurrentLevel;
+//        //var path = "Levels/3";
+//        var json = Resources.Load<TextAsset>(path).text;
+        var json = GameData.Instance.Assets[GameData.Instance.CurrentLevel - 1].text;
         JObject jObject = JObject.Parse(json);
 //        GameController.Instance.PlayerController = PoolManager.SpawnObject(PlayerPrefab,
 //        JsonConvert.DeserializeObject<Vector3>(jObject["PlayerPos"].ToString()), Quaternion.identity)

@@ -1,0 +1,898 @@
+﻿{
+  "TileGameObjects": {
+    "BreakingPlatform": [
+      {
+        "TileType": 0,
+        "Position": {
+          "x": -3.5,
+          "y": 6.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      }
+    ],
+    "LaserTrap": [
+      {
+        "TileType": 5,
+        "Position": {
+          "x": -9.5,
+          "y": 10.0,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 180.0
+        }
+      },
+      {
+        "TileType": 5,
+        "Position": {
+          "x": -11.0,
+          "y": 8.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 270.0
+        }
+      },
+      {
+        "TileType": 5,
+        "Position": {
+          "x": -11.0,
+          "y": 7.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 270.0
+        }
+      }
+    ],
+    "Portal": [
+      {
+        "$type": "Serialize.PortalTileInfo, Assembly-CSharp",
+        "OtherPortalPosition": {
+          "x": -4.5,
+          "y": 9.5,
+          "z": 0.0
+        },
+        "TileType": 9,
+        "Position": {
+          "x": -7.5,
+          "y": 7.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "$type": "Serialize.PortalTileInfo, Assembly-CSharp",
+        "OtherPortalPosition": {
+          "x": -7.5,
+          "y": 7.5,
+          "z": 0.0
+        },
+        "TileType": 9,
+        "Position": {
+          "x": -4.5,
+          "y": 9.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      }
+    ],
+    "MovingPlatform": [
+      {
+        "$type": "Serialize.DynamicTileInfo, Assembly-CSharp",
+        "FromDirection": {
+          "x": -6.5,
+          "y": 4.5,
+          "z": 0.0
+        },
+        "ToDirection": {
+          "x": -4.5,
+          "y": 4.5,
+          "z": 0.0
+        },
+        "TileType": 8,
+        "Position": {
+          "x": -4.5,
+          "y": 4.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "$type": "Serialize.DynamicTileInfo, Assembly-CSharp",
+        "FromDirection": {
+          "x": -7.5,
+          "y": 4.5,
+          "z": 0.0
+        },
+        "ToDirection": {
+          "x": -5.5,
+          "y": 4.5,
+          "z": 0.0
+        },
+        "TileType": 8,
+        "Position": {
+          "x": -5.5,
+          "y": 4.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "$type": "Serialize.DynamicTileInfo, Assembly-CSharp",
+        "FromDirection": {
+          "x": -8.5,
+          "y": 4.5,
+          "z": 0.0
+        },
+        "ToDirection": {
+          "x": -6.5,
+          "y": 4.5,
+          "z": 0.0
+        },
+        "TileType": 8,
+        "Position": {
+          "x": -6.5,
+          "y": 4.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "$type": "Serialize.DynamicTileInfo, Assembly-CSharp",
+        "FromDirection": {
+          "x": -1.5,
+          "y": 8.5,
+          "z": 0.0
+        },
+        "ToDirection": {
+          "x": -1.5,
+          "y": 13.5,
+          "z": 0.0
+        },
+        "TileType": 8,
+        "Position": {
+          "x": -1.5,
+          "y": 8.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "$type": "Serialize.DynamicTileInfo, Assembly-CSharp",
+        "FromDirection": {
+          "x": -1.5,
+          "y": 9.5,
+          "z": 0.0
+        },
+        "ToDirection": {
+          "x": -1.5,
+          "y": 14.5,
+          "z": 0.0
+        },
+        "TileType": 8,
+        "Position": {
+          "x": -1.5,
+          "y": 9.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      }
+    ],
+    "Collectable": [
+      {
+        "TileType": 3,
+        "Position": {
+          "x": -3.5,
+          "y": 14.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "TileType": 3,
+        "Position": {
+          "x": -8.5,
+          "y": 8.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "TileType": 3,
+        "Position": {
+          "x": -8.5,
+          "y": 1.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      }
+    ],
+    "TimerWall": [
+      {
+        "TileType": 12,
+        "Position": {
+          "x": -9.5,
+          "y": 7.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      }
+    ],
+    "MovingChangingPlatform": [
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "Direction": {
+          "x": 1.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "TileType": 7,
+        "Position": {
+          "x": -10.5,
+          "y": 9.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 90.0
+        }
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "Direction": {
+          "x": 0.0,
+          "y": -1.0,
+          "z": 0.0
+        },
+        "TileType": 7,
+        "Position": {
+          "x": -4.5,
+          "y": 8.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      },
+      {
+        "$type": "Serialize.StaticTileWithSomeDirectionInfo, Assembly-CSharp",
+        "Direction": {
+          "x": 0.0,
+          "y": -1.0,
+          "z": 0.0
+        },
+        "TileType": 7,
+        "Position": {
+          "x": -8.5,
+          "y": 9.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      }
+    ],
+    "LevelEnd": [
+      {
+        "TileType": 13,
+        "Position": {
+          "x": -5.5,
+          "y": 7.5,
+          "z": 0.0
+        },
+        "Rotation": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      }
+    ]
+  },
+  "PaletteTileInfos": [
+    {
+      "X": -11,
+      "Y": 12,
+      "IndexOfArray": 20
+    },
+    {
+      "X": -11,
+      "Y": 13,
+      "IndexOfArray": 18
+    },
+    {
+      "X": -10,
+      "Y": 12,
+      "IndexOfArray": 21
+    },
+    {
+      "X": -10,
+      "Y": 13,
+      "IndexOfArray": 19
+    },
+    {
+      "X": -9,
+      "Y": -2,
+      "IndexOfArray": 2
+    },
+    {
+      "X": -9,
+      "Y": -1,
+      "IndexOfArray": 0
+    },
+    {
+      "X": -9,
+      "Y": 4,
+      "IndexOfArray": 5
+    },
+    {
+      "X": -8,
+      "Y": -2,
+      "IndexOfArray": 3
+    },
+    {
+      "X": -8,
+      "Y": -1,
+      "IndexOfArray": 1
+    },
+    {
+      "X": -8,
+      "Y": 4,
+      "IndexOfArray": 5
+    },
+    {
+      "X": -8,
+      "Y": 11,
+      "IndexOfArray": 20
+    },
+    {
+      "X": -8,
+      "Y": 12,
+      "IndexOfArray": 18
+    },
+    {
+      "X": -7,
+      "Y": 4,
+      "IndexOfArray": 5
+    },
+    {
+      "X": -7,
+      "Y": 11,
+      "IndexOfArray": 21
+    },
+    {
+      "X": -7,
+      "Y": 12,
+      "IndexOfArray": 19
+    },
+    {
+      "X": -6,
+      "Y": 4,
+      "IndexOfArray": 5
+    },
+    {
+      "X": -5,
+      "Y": 4,
+      "IndexOfArray": 5
+    },
+    {
+      "X": -4,
+      "Y": -6,
+      "IndexOfArray": 16
+    },
+    {
+      "X": -4,
+      "Y": -5,
+      "IndexOfArray": 14
+    },
+    {
+      "X": -3,
+      "Y": -6,
+      "IndexOfArray": 17
+    },
+    {
+      "X": -3,
+      "Y": -5,
+      "IndexOfArray": 15
+    },
+    {
+      "X": -2,
+      "Y": 5,
+      "IndexOfArray": 24
+    },
+    {
+      "X": -2,
+      "Y": 6,
+      "IndexOfArray": 22
+    },
+    {
+      "X": -2,
+      "Y": 8,
+      "IndexOfArray": 4
+    },
+    {
+      "X": -2,
+      "Y": 9,
+      "IndexOfArray": 4
+    },
+    {
+      "X": -2,
+      "Y": 10,
+      "IndexOfArray": 4
+    },
+    {
+      "X": -2,
+      "Y": 11,
+      "IndexOfArray": 4
+    },
+    {
+      "X": -2,
+      "Y": 12,
+      "IndexOfArray": 4
+    },
+    {
+      "X": -2,
+      "Y": 13,
+      "IndexOfArray": 4
+    },
+    {
+      "X": -2,
+      "Y": 14,
+      "IndexOfArray": 4
+    },
+    {
+      "X": -1,
+      "Y": 5,
+      "IndexOfArray": 25
+    },
+    {
+      "X": -1,
+      "Y": 6,
+      "IndexOfArray": 23
+    }
+  ],
+  "TileWalls": [
+    {
+      "X": -12,
+      "Y": 9,
+      "IndexOfArray": 63
+    },
+    {
+      "X": -11,
+      "Y": 6,
+      "IndexOfArray": 61
+    },
+    {
+      "X": -11,
+      "Y": 10,
+      "IndexOfArray": 64
+    },
+    {
+      "X": -10,
+      "Y": 6,
+      "IndexOfArray": 61
+    },
+    {
+      "X": -9,
+      "Y": 0,
+      "IndexOfArray": 61
+    },
+    {
+      "X": -9,
+      "Y": 6,
+      "IndexOfArray": 65
+    },
+    {
+      "X": -9,
+      "Y": 10,
+      "IndexOfArray": 64
+    },
+    {
+      "X": -8,
+      "Y": 0,
+      "IndexOfArray": 61
+    },
+    {
+      "X": -8,
+      "Y": 8,
+      "IndexOfArray": 72
+    },
+    {
+      "X": -8,
+      "Y": 9,
+      "IndexOfArray": 62
+    },
+    {
+      "X": -7,
+      "Y": 1,
+      "IndexOfArray": 66
+    },
+    {
+      "X": -7,
+      "Y": 6,
+      "IndexOfArray": 62
+    },
+    {
+      "X": -7,
+      "Y": 7,
+      "IndexOfArray": 75
+    },
+    {
+      "X": -6,
+      "Y": -6,
+      "IndexOfArray": 63
+    },
+    {
+      "X": -6,
+      "Y": -5,
+      "IndexOfArray": 63
+    },
+    {
+      "X": -6,
+      "Y": -4,
+      "IndexOfArray": 63
+    },
+    {
+      "X": -6,
+      "Y": -3,
+      "IndexOfArray": 63
+    },
+    {
+      "X": -6,
+      "Y": 0,
+      "IndexOfArray": 61
+    },
+    {
+      "X": -6,
+      "Y": 6,
+      "IndexOfArray": 61
+    },
+    {
+      "X": -6,
+      "Y": 8,
+      "IndexOfArray": 73
+    },
+    {
+      "X": -5,
+      "Y": -7,
+      "IndexOfArray": 61
+    },
+    {
+      "X": -5,
+      "Y": -2,
+      "IndexOfArray": 64
+    },
+    {
+      "X": -5,
+      "Y": 0,
+      "IndexOfArray": 61
+    },
+    {
+      "X": -5,
+      "Y": 6,
+      "IndexOfArray": 65
+    },
+    {
+      "X": -5,
+      "Y": 14,
+      "IndexOfArray": 73
+    },
+    {
+      "X": -4,
+      "Y": -7,
+      "IndexOfArray": 61
+    },
+    {
+      "X": -4,
+      "Y": -2,
+      "IndexOfArray": 64
+    },
+    {
+      "X": -4,
+      "Y": 0,
+      "IndexOfArray": 61
+    },
+    {
+      "X": -4,
+      "Y": 2,
+      "IndexOfArray": 72
+    },
+    {
+      "X": -4,
+      "Y": 3,
+      "IndexOfArray": 62
+    },
+    {
+      "X": -4,
+      "Y": 4,
+      "IndexOfArray": 62
+    },
+    {
+      "X": -4,
+      "Y": 15,
+      "IndexOfArray": 64
+    },
+    {
+      "X": -3,
+      "Y": -7,
+      "IndexOfArray": 61
+    },
+    {
+      "X": -3,
+      "Y": -2,
+      "IndexOfArray": 64
+    },
+    {
+      "X": -3,
+      "Y": -1,
+      "IndexOfArray": 63
+    },
+    {
+      "X": -3,
+      "Y": 0,
+      "IndexOfArray": 65
+    },
+    {
+      "X": -3,
+      "Y": 2,
+      "IndexOfArray": 64
+    },
+    {
+      "X": -3,
+      "Y": 6,
+      "IndexOfArray": 62
+    },
+    {
+      "X": -3,
+      "Y": 15,
+      "IndexOfArray": 64
+    },
+    {
+      "X": -2,
+      "Y": -7,
+      "IndexOfArray": 61
+    },
+    {
+      "X": -2,
+      "Y": -2,
+      "IndexOfArray": 67
+    },
+    {
+      "X": -2,
+      "Y": 2,
+      "IndexOfArray": 64
+    },
+    {
+      "X": -2,
+      "Y": 15,
+      "IndexOfArray": 64
+    },
+    {
+      "X": -1,
+      "Y": -7,
+      "IndexOfArray": 61
+    },
+    {
+      "X": -1,
+      "Y": 0,
+      "IndexOfArray": 72
+    },
+    {
+      "X": -1,
+      "Y": 1,
+      "IndexOfArray": 62
+    },
+    {
+      "X": 0,
+      "Y": -6,
+      "IndexOfArray": 62
+    },
+    {
+      "X": 0,
+      "Y": -5,
+      "IndexOfArray": 62
+    },
+    {
+      "X": 0,
+      "Y": -4,
+      "IndexOfArray": 62
+    },
+    {
+      "X": 0,
+      "Y": -3,
+      "IndexOfArray": 62
+    },
+    {
+      "X": 0,
+      "Y": -2,
+      "IndexOfArray": 62
+    },
+    {
+      "X": 0,
+      "Y": -1,
+      "IndexOfArray": 62
+    }
+  ],
+  "TileSpikes": [
+    {
+      "X": -10,
+      "Y": 1,
+      "IndexOfArray": 86
+    },
+    {
+      "X": -10,
+      "Y": 2,
+      "IndexOfArray": 86
+    },
+    {
+      "X": -10,
+      "Y": 3,
+      "IndexOfArray": 86
+    },
+    {
+      "X": -10,
+      "Y": 4,
+      "IndexOfArray": 86
+    },
+    {
+      "X": -9,
+      "Y": 5,
+      "IndexOfArray": 77
+    },
+    {
+      "X": -7,
+      "Y": 5,
+      "IndexOfArray": 80
+    },
+    {
+      "X": -6,
+      "Y": 5,
+      "IndexOfArray": 89
+    },
+    {
+      "X": -6,
+      "Y": 9,
+      "IndexOfArray": 86
+    },
+    {
+      "X": -6,
+      "Y": 10,
+      "IndexOfArray": 86
+    },
+    {
+      "X": -6,
+      "Y": 11,
+      "IndexOfArray": 86
+    },
+    {
+      "X": -6,
+      "Y": 12,
+      "IndexOfArray": 86
+    },
+    {
+      "X": -6,
+      "Y": 13,
+      "IndexOfArray": 86
+    },
+    {
+      "X": -5,
+      "Y": 5,
+      "IndexOfArray": 89
+    },
+    {
+      "X": -4,
+      "Y": 5,
+      "IndexOfArray": 78
+    },
+    {
+      "X": -3,
+      "Y": 7,
+      "IndexOfArray": 84
+    },
+    {
+      "X": -2,
+      "Y": 7,
+      "IndexOfArray": 78
+    },
+    {
+      "X": -1,
+      "Y": 8,
+      "IndexOfArray": 82
+    },
+    {
+      "X": -1,
+      "Y": 9,
+      "IndexOfArray": 82
+    },
+    {
+      "X": -1,
+      "Y": 10,
+      "IndexOfArray": 82
+    },
+    {
+      "X": -1,
+      "Y": 11,
+      "IndexOfArray": 82
+    },
+    {
+      "X": -1,
+      "Y": 12,
+      "IndexOfArray": 82
+    },
+    {
+      "X": -1,
+      "Y": 13,
+      "IndexOfArray": 82
+    },
+    {
+      "X": -1,
+      "Y": 14,
+      "IndexOfArray": 82
+    }
+  ],
+  "PlayerPos": {
+    "x": -2.5,
+    "y": -5.5,
+    "z": 0.0
+  }
+}
