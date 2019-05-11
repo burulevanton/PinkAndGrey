@@ -23,16 +23,36 @@ public class ProjectileController : MonoBehaviour
         bool stop = false;
         if (raycastHit2D.collider != null)
         {
-            if (raycastHit2D.collider.tag == "TimerWall")
+            switch (raycastHit2D.collider.tag)
             {
-                var clone = raycastHit2D.collider.gameObject.GetComponent<TimerWallController>();
-                if(clone.IsActivated)
+                case "TimerWall":
+                    var clone = raycastHit2D.collider.gameObject.GetComponent<TimerWallController>();
+                    if(clone.IsActivated)
+                        stop = StopByTransform(raycastHit2D.point);
+                    break;
+                case "Wall":
                     stop = StopByTransform(raycastHit2D.point);
+                    break;
+                case "Spike":
+                    stop = StopByTransform(raycastHit2D.point);
+                    break;
+                case "LaserTrap":
+                    stop = StopByTransform(raycastHit2D.point);
+                    break;
+                case "Player":
+                    PoolManager.ReleaseObject(gameObject);
+                    break;
             }
-            else
-            {
-                stop = StopByTransform(raycastHit2D.point);
-            }
+//            if (raycastHit2D.collider.tag == "TimerWall")
+//            {
+//                var clone = raycastHit2D.collider.gameObject.GetComponent<TimerWallController>();
+//                if(clone.IsActivated)
+//                    stop = StopByTransform(raycastHit2D.point);
+//            }
+//            else
+//            {
+//                stop = StopByTransform(raycastHit2D.point);
+//            }
         }
         if(!stop)
             transform.position += vector;

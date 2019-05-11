@@ -468,7 +468,7 @@
         "FromDirection": {
           "x": -8.5,
           "y": -13.5,
-          "z": 1.0
+          "z": 0.0
         },
         "ToDirection": {
           "x": -8.5,

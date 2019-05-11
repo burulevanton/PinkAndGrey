@@ -6,10 +6,6 @@ using UnityEngine;
 
 public class EnemyController : MovingPlatform
 {
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Destroy(other.gameObject);
-    }
 
     public override StaticTileInfo Serialize()
     {
@@ -29,10 +25,10 @@ public class EnemyController : MovingPlatform
         var info = tileInfo as DynamicTileInfo;
         if (info == null)
             return false;
-        transform.position = info.Position;
         FromDirection = info.FromDirection;
         ToDirection = info.ToDirection;
         transform.rotation = Quaternion.Euler(info.Rotation);
+        base.OnReset();
         return true;
     }
 }

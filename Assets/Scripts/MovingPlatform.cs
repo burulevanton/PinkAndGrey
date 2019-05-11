@@ -22,13 +22,13 @@ public class MovingPlatform : TileController
     private float _fracJourney;
     private bool _isPause = false;
 
-    private void OnReset()
+    protected void OnReset()
     {
         _distCovered = 0;
         transform.position = FromDirection;
         _timer = _stopTime;
         _isPause = true;
-        reverseMove = false;
+        reverseMove = true;
         _journeyLength = Vector3.Distance(FromDirection, ToDirection);
     }
 
@@ -54,7 +54,7 @@ public class MovingPlatform : TileController
             return;
         }
         _distCovered += Time.deltaTime * moveSpeed;        
-        _fracJourney = _distCovered / _journeyLength;
+        _fracJourney = _distCovered / _journeyLength;  
         if ((Vector3.Distance(transform.position, ToDirection) == 0.0f && !reverseMove) ||
             (Vector3.Distance(transform.position, FromDirection) == 0.0f) && reverseMove)
         {
@@ -74,7 +74,6 @@ public class MovingPlatform : TileController
         {
             transform.position = Vector3.Lerp(ToDirection, FromDirection, _fracJourney);
         }
-        
     }
     
     public Vector2 Direction

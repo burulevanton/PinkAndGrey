@@ -50,6 +50,7 @@ namespace UI
         {
             DeathMenu.gameObject.SetActive(false);
             GameMenu.gameObject.SetActive(false);
+            LevelPassedMenu.gameObject.SetActive(false);
             UpdateScore();
             yield return StartCoroutine(ScreenFader.SceneAppearance());
             LevelInfoPanel.SetActive(true);
@@ -68,8 +69,11 @@ namespace UI
 
         public void GameMenuOpen()
         {
-            GameMenu.gameObject.SetActive(true);
-            GameController.Instance.Pause();
+            if (!DeathMenu.gameObject.activeSelf && !LevelPassedMenu.gameObject.activeSelf)
+            {
+                GameMenu.gameObject.SetActive(true);
+                GameController.Instance.Pause();   
+            }
         }
 
         public void UnpauseGame()

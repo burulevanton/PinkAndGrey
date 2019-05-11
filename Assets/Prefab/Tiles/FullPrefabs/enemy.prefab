@@ -97,9 +97,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FromDirection: {x: 3.5, y: 5.5, z: 0}
   ToDirection: {x: 1.5, y: 5.5, z: 0}
-  moveSpeed: 3
+  moveSpeed: 5
   reverseMove: 0
   updateRotation: 1
+  _stopTime: 0.5
 --- !u!61 &7745618157090459877
 BoxCollider2D:
   m_ObjectHideFlags: 0
