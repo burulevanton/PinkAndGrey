@@ -84,7 +84,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: UpGreaterSpike Variant
+  m_Name: LaserTrap
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: TriggerActivate
@@ -125,7 +125,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GreaterSpikeIdle
+  m_Name: LaserTrapIdle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -152,7 +152,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GreaterSpikeActivate
+  m_Name: LaserTrapActivate
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -179,7 +179,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GreaterSpikeActivated
+  m_Name: LaserTrapActivated
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

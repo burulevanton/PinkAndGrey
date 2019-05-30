@@ -58,7 +58,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1326838210027291855}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &495700075
 GameObject:
@@ -88,7 +88,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1326838210027291855}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &669542888
 GameObject:
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 669542889}
   m_Layer: 0
-  m_Name: GreaterSpikes
+  m_Name: LaserTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,7 +208,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1326838210027291855}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1287074298
 GameObject:
@@ -240,36 +240,6 @@ Transform:
   m_Father: {fileID: 1326838210027291855}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1531176817
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1531176818}
-  m_Layer: 0
-  m_Name: InnerWalls
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1531176818
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531176817}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1326838210027291855}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1690742977
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +268,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1326838210027291855}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1947129967
 GameObject:
@@ -328,37 +298,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1326838210027291855}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1970812374
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1970812375}
-  m_Layer: 0
-  m_Name: Spikes
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1970812375
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970812374}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1326838210027291855}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2045690877
 GameObject:
@@ -389,36 +329,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1326838210027291855}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &730736355897678700
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5250304421333907029}
-  m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5250304421333907029
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730736355897678700}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1326838210027291855}
-  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1326838210027291889
 GameObject:
@@ -454,14 +364,11 @@ Transform:
   - {fileID: 269691584}
   - {fileID: 2045690878}
   - {fileID: 669542889}
-  - {fileID: 1531176818}
   - {fileID: 1118947636}
   - {fileID: 1690742978}
   - {fileID: 486629242}
   - {fileID: 495700076}
-  - {fileID: 1970812375}
   - {fileID: 1947129968}
-  - {fileID: 5250304421333907029}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -489,37 +396,28 @@ MonoBehaviour:
     type: 3}
   EnemyPrefab: {fileID: 7745618157090459873, guid: 01a18bc8ce9bc094fbec29780236f404,
     type: 3}
-  GreaterSpikePrefab: {fileID: 8012542957621456420, guid: bdf73e14aaa47b74bae293828f345ff2,
-    type: 3}
+  laserTrapPrefab: {fileID: 0}
   MovingChangingPlatformPrefab: {fileID: 9122252305163014754, guid: ad8b3ef8e801e4c4683f515746f667e1,
     type: 3}
   MovingPlatformPrefab: {fileID: 7540214138292355392, guid: ef39059271d46a64395e4f20d98cecb9,
     type: 3}
   PortalPrefab: {fileID: 4794014789862434698, guid: ae6c7ae7bcc7c624ead999ec27416269,
     type: 3}
-  SpikePrefab: {fileID: 3008908165799384174, guid: 678eff2e188e58340986348e45168f7d,
-    type: 3}
   TimerWallPrefab: {fileID: 3067022059819926278, guid: ad3f5f21b8300244d9375b3e88fd2595,
-    type: 3}
-  InnerWallPrefab: {fileID: 8350231374895167449, guid: a90d676e3ba0fc84090427bc259a7197,
     type: 3}
   LevelEndPrefab: {fileID: 4548738660180714173, guid: ec3f54df03bd6e34daf741d04c44a6aa,
     type: 3}
-  PlayerPrefab: {fileID: 1865605985, guid: 51eeb69562d9fc247bb83ea08b192975, type: 3}
   _breakingPlatforms: {fileID: 895330509}
   _cannons: {fileID: 1287074298}
   _collectables: {fileID: 873379415}
   _copyingPortals: {fileID: 269691583}
   _enemies: {fileID: 2045690877}
-  _greaterSpikes: {fileID: 669542888}
-  _innerWalls: {fileID: 1531176817}
+  _laserTraps: {fileID: 0}
   _levelEnds: {fileID: 1118947635}
   _movingChangingPlatforms: {fileID: 1690742977}
   _movingPlatforms: {fileID: 486629241}
   _portals: {fileID: 495700075}
-  _spikes: {fileID: 1970812374}
   _timerWalls: {fileID: 1947129967}
-  _playerWrap: {fileID: 730736355897678700}
   tilemapEnvironment: {fileID: 0}
   tilemapWalls: {fileID: 0}
   tilemapSpikes: {fileID: 0}

@@ -23,7 +23,7 @@ public class LevelController : Singleton<LevelController>
     [SerializeField] private GameObject CollectablePrefab;
     [SerializeField] private GameObject CopyingPortalPrefab;
     [SerializeField] private GameObject EnemyPrefab;
-    [SerializeField] private GameObject GreaterSpikePrefab;
+    [SerializeField] private GameObject laserTrapPrefab;
     [SerializeField] private GameObject MovingChangingPlatformPrefab;
     [SerializeField] private GameObject MovingPlatformPrefab;
     [SerializeField] private GameObject PortalPrefab;
@@ -35,7 +35,7 @@ public class LevelController : Singleton<LevelController>
     [SerializeField] private GameObject _collectables;
     [SerializeField] private GameObject _copyingPortals;
     [SerializeField] private GameObject _enemies;
-    [SerializeField] private GameObject _greaterSpikes;
+    [SerializeField] private GameObject _laserTraps;
     [SerializeField] private GameObject _levelEnds;
     [SerializeField] private GameObject _movingChangingPlatforms;
     [SerializeField] private GameObject _movingPlatforms;
@@ -220,10 +220,10 @@ public class LevelController : Singleton<LevelController>
                         enemyClone.transform.parent = _enemies.transform;
                         break;
                     case TileType.LaserTrap:
-                        var greaterSpikeClone = PoolManager.SpawnObject(GreaterSpikePrefab)
+                        var laserTrapClone = PoolManager.SpawnObject(laserTrapPrefab)
                             .GetComponent<LaserTrapController>();
-                        greaterSpikeClone.Deserialize(tile);
-                        greaterSpikeClone.transform.parent = _greaterSpikes.transform;
+                        laserTrapClone.Deserialize(tile);
+                        laserTrapClone.transform.parent = _laserTraps.transform;
                         break;
                     case TileType.MovingPlatform:
                         var movingPlatformClone = PoolManager.SpawnObject(MovingPlatformPrefab).GetComponent<MovingPlatform>();
