@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using ObjectPool;
 using UnityEngine;
@@ -39,9 +40,9 @@ public class ProjectileController : MonoBehaviour
                 case "LaserTrap":
                     stop = StopByTransform(raycastHit2D.point);
                     break;
-                case "Player":
-                    PoolManager.ReleaseObject(gameObject);
-                    break;
+//                case "Player":
+//                    PoolManager.ReleaseObject(gameObject);
+//                    break;
             }
 //            if (raycastHit2D.collider.tag == "TimerWall")
 //            {
@@ -68,17 +69,5 @@ public class ProjectileController : MonoBehaviour
         PoolManager.SpawnObject(BulletExplodePrefab, vector, Quaternion.Euler(rotation));
         return true;
     }
-    //todo сделать layermask
-//    private void OnTriggerEnter2D(Collider2D other)
-//    {
-//        if (other.CompareTag("TimerWall"))
-//        {
-//            var clone = other.gameObject.GetComponent<TimerWallController>();
-//            if (!clone.IsActivated)
-//                return;
-//        }
-//        if(other.CompareTag("Collectable"))
-//            return;
-//        PoolManager.ReleaseObject(gameObject);
-//    }
+    
 }

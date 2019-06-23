@@ -324,6 +324,7 @@ public class PlayerController : MonoBehaviour
                     DamageTaken(other.gameObject);
                     break;
                 case "Projectile":
+                    PoolManager.ReleaseObject(other.gameObject);
                     DamageTaken(other.gameObject);
                     break;
                 case "MovingChangingPlatform":
